@@ -1,0 +1,83 @@
+{
+  "output_dir": "data/processed/theory",
+  "files": {
+    "group12_unified_oxygen_theory": "data/processed/theory/group12_unified_oxygen_theory.json",
+    "dblock_oxi_unified_oxygen_theory": "data/processed/theory/dblock_oxi_unified_oxygen_theory.json",
+    "master_oxygen_summary_theory": "data/processed/theory/master_oxygen_summary_theory.json"
+  },
+  "sources": {
+    "group12": {
+      "accepted_sources": [
+        "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+      ],
+      "high_uncertainty_sources": [],
+      "tracker_paths": [
+        "data/raw/ima/group12_candidates.json",
+        "data/raw/ima/group1_candidates.json",
+        "data/raw/ima/group2_candidates.json"
+      ]
+    },
+    "dblock": {
+      "accepted_sources": [
+        "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+      ],
+      "high_uncertainty_sources": [],
+      "tracker_paths": [
+        "data/raw/ima/dblock_3d_candidates.json"
+      ]
+    },
+    "master_oxygen_summary": {
+      "group12": {
+        "accepted_sources": [
+          "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+        ],
+        "high_uncertainty_sources": [],
+        "tracker_paths": [
+          "data/raw/ima/group12_candidates.json",
+          "data/raw/ima/group1_candidates.json",
+          "data/raw/ima/group2_candidates.json"
+        ]
+      },
+      "lanthanides": {
+        "accepted_sources": [
+          "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+        ],
+        "high_uncertainty_sources": [],
+        "tracker_paths": [
+          "data/raw/ima/fblock_4f_candidates.json"
+        ]
+      },
+      "transition": {
+        "accepted_sources": [
+          "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+        ],
+        "high_uncertainty_sources": [],
+        "tracker_paths": [
+          "data/raw/ima/dblock_3d_candidates.json",
+          "data/raw/ima/dblock_4d_post_o_candidates_20260412T155839Z.json",
+          "data/raw/ima/all_remaining_o_candidates_20260413T030533Z.json"
+        ]
+      },
+      "post_transition": {
+        "accepted_sources": [
+          "data/processed/bond_valence/consolidated_store.json::oxygen_authoritative"
+        ],
+        "high_uncertainty_sources": [],
+        "tracker_paths": [
+          "data/raw/ima/dblock_4d_post_o_candidates_20260412T155839Z.json",
+          "data/raw/ima/post_transition_remaining_o_candidates_20260414T045256Z.json"
+        ]
+      }
+    }
+  },
+  "summary": {
+    "group1_alpha_lines": 5,
+    "group2_alpha_lines": 5,
+    "dblock_species": 38,
+    "dblock_cluster_species": 26,
+    "master_oxygen_rows": 103,
+    "master_oxygen_excluded_sparse_rows": 2,
+    "master_oxygen_R0_star_mean": 1.903160435326104,
+    "master_oxygen_B_star_mean": 0.3672784152646415
+  }
+}

@@ -1,0 +1,422 @@
+\documentclass[aps,prl,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{longtable}
+\providecommand{\texorpdfstring}[2]{#1}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{Supplemental Material: Yukawa screening derivation of the bond-valence rule}
+
+\author{Michael L. Whittaker}
+\affiliation{Energy Geosciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\affiliation{Materials Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\author{Pan Wang}
+\affiliation{Energy Geosciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\author{Chunhui Li}
+\affiliation{Meta Platforms, Inc., Menlo Park, CA 94025}
+\author{Naman Katyal}
+\affiliation{Energy Geosciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\author{Piotr Zarzycki}
+\affiliation{Materials Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+
+\maketitle
+
+\onecolumngrid
+
+\section{Data provenance}
+
+The figures and tables in this Supplemental Material cover the same
+103 cation--oxygen species analyzed in the main text, spanning $s$-,
+$p$-, $d$-, and $f$-block cations.
+
+Source structures are DFT-relaxed entries from the Materials Project.
+For each structure, bond strengths were obtained by solving the
+valence-sum and loop constraints on the cation--oxygen bond graph,
+and $(R_0,B)$ were determined by linear least squares.  For
+rank-deficient bond graphs (fewer independent bonds than parameters),
+an anion-centered reparameterization was used; any remaining
+ill-conditioned cases were resolved with the constrained nonlinear
+procedure of Ref.~\citenum{Li2025}, with $R_0$ bounds $(-10,10)$~\AA.
+Coordination numbers were determined from the bond graph.
+
+The DFT-centroid comparison in Fig.~2 uses ten $s$-block oxides in
+panel~a (Li$_2$O, Na$_2$O, K$_2$O, Rb$_2$O, Cs$_2$O, BeO, MgO, CaO,
+SrO, and BaO) and 25 non-$s$-block oxides in panel~b: Al$_2$O$_3$,
+SiO$_2$, GeO$_2$, SnO$_2$, PbO, TiO$_2$, V$_2$O$_5$, CoO, NiO, CuO,
+ZnO, ZrO$_2$, MoO$_3$, PdO, Ag$_2$O, HfO$_2$, Ta$_2$O$_5$, Au$_2$O$_3$,
+La$_2$O$_3$, Gd$_2$O$_3$, Yb$_2$O$_3$, B$_2$O$_3$, P$_2$O$_5$,
+As$_2$O$_3$, and Sb$_2$O$_3$.  The panel-$b$ regression is defined
+a priori as a test of the Yukawa screening picture only for
+ground-state binary oxides whose cation environments approximate an
+isotropic first-shell ionic screening cloud.  It therefore uses the 21
+filled-symbol oxides and excludes B$_2$O$_3$, P$_2$O$_5$,
+As$_2$O$_3$, and Au$_2$O$_3$, whose ground-state structures are dominated by
+directional, non-isotropic bonding motifs; those four compounds are shown
+as open symbols.  The 21 oxides shown as filled symbols in Fig.~2(b)
+are the 25 listed above minus the four directional cases just named;
+no further data-driven exclusion was applied beyond this fixed list.  The excluded oxides are the cases in this benchmark whose
+ground-state cation environments are not compact first-shell ionic
+polyhedra but directional or terminal-oxyanion motifs, so a single
+shell centroid $m_i$ is not an adequate descriptor of the screening
+cloud.
+
+\section{\texorpdfstring{Coordination-number-resolved $B$--$R_0$ fit lines}{Coordination-number-resolved B-R0 fit lines}}
+
+Figures~\ref{fig:group1_fits}--\ref{fig:fblock_fits_2} show the
+$n$-resolved $B$ vs.\ $R_0$ fit lines for every species in the
+103-cation set, grouped by block: Group~1 (Fig.~\ref{fig:group1_fits}),
+Group~2 (Fig.~\ref{fig:group2_fits}), $3d$/$4d$/$5d$ transition metals
+(Figs.~\ref{fig:dblock_fits_1}--\ref{fig:dblock_fits_8}), $p$-block
+(Figs.~\ref{fig:pblock_fits_1}--\ref{fig:pblock_fits_3}), and $f$-block
+lanthanides plus actinides
+(Figs.~\ref{fig:fblock_fits_1}--\ref{fig:fblock_fits_2}).  Within each
+coordination shell, the fitted parameters lie on a linear family
+$B=\beta^{(n)}R_0+\beta_0^{(n)}$, and the lines converge toward
+cation-specific characteristic pairs $(R_0^*,B^*)$ as described in the
+main text.  Together, these atlas pages display every coordination-resolved
+fit that contributes to the pole form $\beta=1/\ln(z/n)$ shown in
+Fig.~1 of the main text.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{group1_oxygen_cn_fit_lines.png}
+\caption[Group~1 coordination-resolved $B$--$R_0$ lines.]{$n$-resolved $B$ vs.\ $R_0$ fit lines for Group~1 X--O pairs
+(H, Li, Na, K, Rb, Cs).  Each colored line is a different coordination
+number.  The convergence of the lines defines the characteristic pair
+$(R_0^*,B^*)$ for each cation.}
+\label{fig:group1_fits}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{group2_oxygen_cn_fit_lines_part01.png}
+\caption[Group~2 coordination-resolved $B$--$R_0$ lines.]{$n$-resolved
+$B$ vs.\ $R_0$ fit lines for Group~2 X--O pairs (Be, Mg, Ca, Sr, Ba).}
+\label{fig:group2_fits}
+\end{figure}
+
+\paragraph*{Weighting scheme for the goodness-of-fit metrics.}
+The weighted $R^2$ and mean absolute error reported with Fig.~1 of the
+main text use weights $w_i=\max(N_i,1)$, where $N_i$ is the number of
+DFT-relaxed structures contributing to the linear $B$--$R_0$ fit at
+species $i$ and coordination $n$.  This gives more populous (species,
+$n$) cells more leverage, in proportion to the number of independent
+structures backing each fitted slope $\beta_i$.  Letting
+$\hat\beta_i=1/\ln(z_i/n)$ be the parameter-free closed-form prediction
+and $\bar\beta_w=\sum_i w_i\beta_i/\sum_i w_i$, the reported metrics are
+\[
+R^2_w
+= 1 - \frac{\sum_i w_i\,(\beta_i-\hat\beta_i)^2}
+            {\sum_i w_i\,(\beta_i-\bar\beta_w)^2},
+\qquad
+\mathrm{MAE}_w
+= \frac{\sum_i w_i\,|\beta_i-\hat\beta_i|}{\sum_i w_i}.
+\]
+Pooling 68 species at $n=4$ ($\sum w=13{,}370$) with 82 species at
+$n=6$ ($\sum w=17{,}162$) -- the $z\ne n$ subset shown in Fig.~1 --
+gives $R^2_w=0.986$ and $\mathrm{MAE}_w=0.15$ for the parameter-free
+closed form $\beta=1/\ln(z/n)$.  Per panel:
+$R^2_w=0.973$, $\mathrm{MAE}_w=0.23$ at $n=4$; $R^2_w=0.979$,
+$\mathrm{MAE}_w=0.089$ at $n=6$.
+
+\paragraph*{Exclusion of $z=n$ species from Fig.~1.}
+Species at $z=n$ (U$^{4+}$, Mn$^{4+}$, Ti$^{4+}$, V$^{4+}$, Zr$^{4+}$,
+Ir$^{4+}$, P$^{4+}$, Pb$^{4+}$, and Te$^{4+}$ for $n=4$; Mo$^{6+}$ and
+W$^{6+}$ for $n=6$) are omitted from
+Fig.~1 of the main text.  The valence-sum rule at $z=n$ enforces
+$S_{ij}=1$ for every bond, so $\exp[(R_0-R_{ij})/B]=1$ identically; in
+the symmetric-shell limit this is satisfied for any $B$ with
+$R_0=\bar R$, leaving the $B$--$R_0$ slope $\beta$ formally
+unconstrained.  Even with the slight bond-length distortions present in
+real shells, the resulting fits exhibit very large variance (see the
+$z=n$ panels in
+Figs.~\ref{fig:dblock_fits_1}--\ref{fig:dblock_fits_8} and
+\ref{fig:pblock_fits_1}--\ref{fig:fblock_fits_2}, where the
+coordination-resolved lines have widely scattered slopes and
+intercepts).  The closed-form expression $\beta=1/\ln(z/n)$ correctly
+diverges at $z=n$, and the divergence itself is a quantitative
+prediction of the Yukawa screening picture; we plot only $z\ne n$
+species so that finite, well-conditioned fitted slopes are not
+visually conflated with the formal pole.  Fig.~1 therefore shows the
+94 species (150 fitted slopes) for which $z\ne n$ at $n=4$ or $n=6$.
+Six species (Cl$^{1-}$, C$^{4+}$, Hg$^{1+}$, H$^{1+}$, N$^{3+}$,
+S$^{4+}$) lack a fittable line at either $n=4$ or $n=6$, P$^{4+}$
+lies exactly at the $n=4$ pole, and Te$^{6+}$ and U$^{6+}$ fall
+below the $R^2\ge 0.3$ acceptance threshold at $n=6$.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part01.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 3$d$
+X--O pairs (Sc--Cr).}
+\label{fig:dblock_fits_1}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part02.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 3$d$
+X--O pairs (Cr$^{5+}$--Fe$^{4+}$).}
+\label{fig:dblock_fits_2}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part03.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 3$d$
+X--O pairs (Co--Cu$^{2+}$).}
+\label{fig:dblock_fits_3}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part04.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 3$d$/4$d$
+X--O pairs (Cu$^{3+}$--Nb).}
+\label{fig:dblock_fits_4}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part05.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 4$d$
+X--O pairs (Mo--Ru).}
+\label{fig:dblock_fits_5}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part06.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 4$d$/5$d$
+X--O pairs (Rh--Ta$^{4+}$).}
+\label{fig:dblock_fits_6}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part07.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 5$d$
+X--O pairs (Ta$^{5+}$--Os).}
+\label{fig:dblock_fits_7}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{dblock_oxi_oxygen_cn_fit_lines_part08.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved 5$d$
+X--O pairs (Ir--Hg).}
+\label{fig:dblock_fits_8}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{pblock_oxygen_cn_fit_lines_part01.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved
+$p$-block X--O pairs (Al$^{3+}$--S$^{4+}$).}
+\label{fig:pblock_fits_1}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{pblock_oxygen_cn_fit_lines_part02.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for oxidation-state--resolved
+$p$-block X--O pairs (S$^{6+}$--Cl).}
+\label{fig:pblock_fits_2}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{pblock_oxygen_cn_fit_lines_part03.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for the remaining $p$-block and
+hydrogen X--O pairs (H$^{1+}$, N$^{3+}$, N$^{5+}$, I$^{5+}$,
+I$^{7+}$).}
+\label{fig:pblock_fits_3}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{fblock_oxygen_cn_fit_lines_part01.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for $f$-block trivalent
+lanthanide X--O pairs (Ce$^{3+}$--Tb$^{3+}$).}
+\label{fig:fblock_fits_1}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{fblock_oxygen_cn_fit_lines_part02.png}
+\caption{$n$-resolved $B$ vs.\ $R_0$ for the remaining $f$-block
+lanthanide and actinide X--O pairs (Tm$^{3+}$--Yb$^{3+}$ and
+Th$^{4+}$--U$^{6+}$).}
+\label{fig:fblock_fits_2}
+\end{figure}
+
+\clearpage
+
+\section{Characteristic pairs and bond-length identity}
+
+Figure~\ref{fig:r0star_bstar} shows the characteristic pairs
+$(R_0^*,B^*)$ for Group~1 (including H$^+$), Group~2, and the
+trivalent lanthanides.
+
+For each species and coordination shell $n$, the fitted points define a
+line $B=\beta^{(n)}R_0+\beta_0^{(n)}$.  The characteristic pair is the
+weighted least-spread intersection of those $n$-resolved lines.  If the
+final line fit for shell $n$ contains $N_n$ structures, we assign weight
+$w_n=N_n$ and define the weighted means
+\[
+\bar\beta=\frac{\sum_n w_n\beta^{(n)}}{\sum_n w_n},
+\qquad
+\bar\beta_0=\frac{\sum_n w_n\beta_0^{(n)}}{\sum_n w_n}.
+\]
+The characteristic abscissa is then
+\[
+R_0^*=
+-\frac{\sum_n w_n\bigl(\beta^{(n)}-\bar\beta\bigr)
+\bigl(\beta_0^{(n)}-\bar\beta_0\bigr)}
+{\sum_n w_n\bigl(\beta^{(n)}-\bar\beta\bigr)^2},
+\]
+which is the point that minimizes the weighted variance of the
+line-by-line values $B_n(R_0)=\beta^{(n)}R_0+\beta_0^{(n)}$.  The
+characteristic ordinate and its spread are
+\[
+B^*=
+\frac{\sum_n w_n B_n(R_0^*)}{\sum_n w_n},
+\qquad
+\sigma_B=
+\left[
+\frac{\sum_n w_n\bigl(B_n(R_0^*)-B^*\bigr)^2}
+{\sum_n w_n}
+\right]^{1/2}.
+\]
+The tabulated $n_{\mathrm{CN}}$ counts how many distinct coordination
+shells contribute to that intersection, while the weights entering the
+intersection are the fitted structure counts in those shells.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{group1_group2_lanthanide_r0_star_vs_b_star.png}
+\caption[Characteristic pairs for Group~1, Group~2, and lanthanides.]{Characteristic $(R_0^*,B^*)$ for Group~1 including H$^+$
+(left), Group~2 (center), and trivalent lanthanides (right).}
+\label{fig:r0star_bstar}
+\end{figure}
+
+Figure~\ref{fig:identity} validates the bond-length identity
+$R_0\approx\bar R+B\ln(z/n)$ across 50{,}706 cation--oxygen structures
+(Pearson $r=0.969$, MAE$\,=0.018$~\AA).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{r0_bond_length_identity_parity.png}
+\caption[Bond-length-identity parity checks.]{Left: parity between fitted $R_0$ and $\bar R+B\ln(z/n)$ for
+50{,}706 cation--oxygen structures.  Right: parity between fitted $B$
+and $\beta(R_0-\bar R)$.}
+\label{fig:identity}
+\end{figure}
+
+\section{\texorpdfstring{$s$-block screening-centroid controls}{s-block screening-centroid controls}}
+
+For the ten Group~1/Group~2 ground-state binary oxides used in Fig.~2 of the
+main text, the DFT screening centroid $r_{\mathrm{eff}}$ is compared
+against three linear descriptors: the bond-valence shell centroid $m_i$,
+the fitted bond-valence intercept $R_0$, and the Shannon cation radius.
+Leave-one-out mean absolute errors are $0.006$~\AA\ for $m_i$,
+$0.078$~\AA\ for $R_0$, and $0.094$~\AA\ for the Shannon-radius control,
+showing that the $r_{\mathrm{eff}}$--$m_i$ collapse is substantially
+sharper than a generic monotone size trend.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.55\textwidth]{thomas_fermi_reff_null_models_si.png}
+\caption[Null-model check for the ten binary oxides.]{Leave-one-out null-model check for the ten Group~1/Group~2
+binary oxides used in Fig.~2 of the main text.  Bars report the mean
+absolute error of linear regressions against the bond-valence shell
+centroid $m_i$, the fitted intercept $R_0$, and the Shannon cation radius.}
+\label{fig:sblock_controls}
+\end{figure}
+
+Each oxide contributes one point $(m_i,r_{\mathrm{eff}})$ to
+Fig.~2.  For a given oxide, the bond-valence shell centroid is computed
+from the same fitted $(R_0,B)$ and coordination number $n$ used for its
+bond-valence record, taking the $n$ shortest M--O distances in the
+ground-state structure and forming
+\[
+p_{ij}=\frac{e^{-R_{ij}/B}}{\sum_{k=1}^n e^{-R_{ik}/B}},
+\qquad
+m_i=\sum_{j=1}^n p_{ij}R_{ij}.
+\]
+The DFT-side centroid is then built bond by bond over all oxygen
+neighbors with $R_{ij}\le 3.5$~\AA.  Each such bond contributes one
+oxygen-side path centroid
+$r_{\mathrm{eff}}^{(\mathrm{path})}$, and the oxide-level
+$r_{\mathrm{eff}}$ plotted in Fig.~2 is the simple arithmetic mean of
+those finite bond-path centroids.
+
+The offset in the main-text regression is quantified directly from that same
+discrete bond-path construction.  Defining the oxygen-side pre-cusp valence centroid
+shift by
+\[
+\Delta_{\mathrm{O,val}}:=\langle R_{ij}-r_{\mathrm{eff}}^{(\mathrm{path})}\rangle,
+\]
+let $\{r_g,\rho_g\}_{g=1}^{200}$ denote the total-density samples on the
+nearest-image straight M--O segment at 200 uniformly spaced points.  The
+bond critical-point proxy is the interior density minimum on the interval
+$0.15R_{ij}<r<0.85R_{ij}$; denote its location and value by
+$r_{\mathrm{BCP}}$ and $\rho_{\mathrm{BCP}}$.  The oxygen-side pre-cusp
+window is the subset of sampled points with
+$r_{\mathrm{BCP}}\le r_g\le 0.93R_{ij}$, finite $\rho_g$, and positive
+finite Thomas--Fermi screening length $\lambda_{\mathrm{TF}}(\rho_g)$.
+The Thomas--Fermi length enters here only as a positivity filter on the
+sample window and does not appear in the centroid weights or in any of
+the regression results; the \texttt{thomas\_fermi} tag in the
+Fig.~2 file label reflects only the screening interpretation of
+$r_{\mathrm{eff}}$, not its construction.
+On that discrete window we use the excess-density weights
+$w_g=\max[\rho_g-\rho_{\mathrm{BCP}},0]$; in the rare case that these
+clipped weights vanish identically, we use $w_g=\rho_g$ instead.  Thus
+\[
+r_{\mathrm{eff}}^{(\mathrm{path})}=
+\frac{\sum_g w_g r_g}{\sum_g w_g},
+\]
+and the oxide-level centroid used in Fig.~2 is the arithmetic mean of
+$r_{\mathrm{eff}}^{(\mathrm{path})}$ over those first-shell M--O bonds.
+No spline fitting, path relaxation, or topological bond-path search is
+introduced beyond this fixed straight-segment sampling rule.  With that
+definition, the ten-oxide $s$-block shift fit is
+$\Delta_{\mathrm{O,val}} = 0.0613\,m_i + 0.2394$~\AA\
+($R^2=0.963$), with mean $0.3910\pm0.0269$~\AA.  Equivalently,
+$r_{\mathrm{eff}}=0.9387\,m_i-0.2394$~\AA, whose rounded form is the
+main-text relation.  The intercept is therefore the zero-radius limit of
+a directly measured oxygen-side screening shift, not an unconstrained
+empirical parameter.
+
+\paragraph*{Species-level screening length from the characteristic pair.}
+The shell-level Yukawa inversion in the main text is written in terms of the
+representative radius $R^*$, chosen operationally as the Boltzmann shell
+centroid $m_i$.  To pass from that shell-level relation to a species-level
+constant, we evaluate the inversion at the characteristic fixed point
+$(R_0^*,B^*)$ on the characteristic reference shell defined by $m_i=R_0^*$.
+Using the exact identity
+\[
+R_0 = m_i + B(\ln q_i - H_i),
+\]
+this reference-shell condition is equivalent at the fixed point to
+$H_i=\ln q_i$, so the representative radius entering the Yukawa inversion is
+$R^*=R_0^*$.  Substituting $B=B^*$ and $R^*=R_0^*$ into the positive screening
+branch therefore gives
+\[
+\lambda^*=\frac{-R_0^*+\sqrt{R_0^{*2}+4B^*R_0^*}}{2},
+\]
+which is the species-level screening length reported in
+Table~\ref{tab:lambda_star} for entries with $B^*>0$.
+
+\section{Screening lengths for the analyzed species}
+
+\input{si_lambda_table}
+
+\bibliography{references}
+
+\end{document}

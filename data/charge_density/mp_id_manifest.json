@@ -1,0 +1,344 @@
+{
+  "description": "Materials Project structure IDs whose DFT-relaxed CHGCAR files were used to compute the screening centroid r_eff in PRL Fig. 2 and the SI null-model controls.",
+  "fetch_instructions": "Charge densities are not bundled in this repository. To regenerate, install pymatgen and mp-api, set the MP_API_KEY environment variable, and use MPRester().get_charge_density_from_material_id(mpid) for each entry below. The notebook analysis/notebooks/thomas_fermi_screening.ipynb reads the resulting CHGCAR objects.",
+  "mp_dataset_doi": "https://materialsproject.org",
+  "count": 62,
+  "records": [
+    {
+      "oxide": "Sc2O3",
+      "mpid": "mp-216",
+      "cation": "Sc"
+    },
+    {
+      "oxide": "Sm2O3",
+      "mpid": "mp-218",
+      "cation": "Sm",
+      "z": 3
+    },
+    {
+      "oxide": "B2O3",
+      "mpid": "mp-306",
+      "cation": "B"
+    },
+    {
+      "oxide": "HfO2",
+      "mpid": "mp-352",
+      "cation": "Hf"
+    },
+    {
+      "oxide": "Ag2O",
+      "mpid": "mp-353",
+      "cation": "Ag"
+    },
+    {
+      "oxide": "TiO2",
+      "mpid": "mp-390",
+      "cation": "Ti",
+      "z": 4,
+      "n": 6
+    },
+    {
+      "oxide": "GeO2",
+      "mpid": "mp-470",
+      "cation": "Ge"
+    },
+    {
+      "oxide": "ThO2",
+      "mpid": "mp-643",
+      "cation": "Th"
+    },
+    {
+      "oxide": "Er2O3",
+      "mpid": "mp-679",
+      "cation": "Er",
+      "z": 3
+    },
+    {
+      "oxide": "RuO2",
+      "mpid": "mp-825",
+      "cation": "Ru"
+    },
+    {
+      "oxide": "SnO2",
+      "mpid": "mp-856",
+      "cation": "Sn"
+    },
+    {
+      "oxide": "Ga2O3",
+      "mpid": "mp-886",
+      "cation": "Ga"
+    },
+    {
+      "oxide": "Nd2O3",
+      "mpid": "mp-1045",
+      "cation": "Nd",
+      "z": 3
+    },
+    {
+      "oxide": "CdO",
+      "mpid": "mp-1132",
+      "cation": "Cd"
+    },
+    {
+      "oxide": "Al2O3",
+      "mpid": "mp-1143",
+      "cation": "Al",
+      "z": 3,
+      "n": 6
+    },
+    {
+      "oxide": "HgO",
+      "mpid": "mp-1224",
+      "cation": "Hg"
+    },
+    {
+      "oxide": "MgO",
+      "mpid": "mp-1265",
+      "cation": "Mg",
+      "z": 2,
+      "n": 6
+    },
+    {
+      "oxide": "PtO2",
+      "mpid": "mp-1285",
+      "cation": "Pt"
+    },
+    {
+      "oxide": "PdO",
+      "mpid": "mp-1336",
+      "cation": "Pd"
+    },
+    {
+      "oxide": "UO2",
+      "mpid": "mp-1597",
+      "cation": "U"
+    },
+    {
+      "oxide": "Tl2O3",
+      "mpid": "mp-1658",
+      "cation": "Tl"
+    },
+    {
+      "oxide": "CuO",
+      "mpid": "mp-1692",
+      "cation": "Cu"
+    },
+    {
+      "oxide": "Rh2O3",
+      "mpid": "mp-1716",
+      "cation": "Rh"
+    },
+    {
+      "oxide": "La2O3",
+      "mpid": "mp-1968",
+      "cation": "La",
+      "z": 3
+    },
+    {
+      "oxide": "Pr2O3",
+      "mpid": "mp-2063",
+      "cation": "Pr",
+      "z": 3
+    },
+    {
+      "oxide": "ZnO",
+      "mpid": "mp-2133",
+      "cation": "Zn"
+    },
+    {
+      "oxide": "Sb2O3",
+      "mpid": "mp-2136",
+      "cation": "Sb"
+    },
+    {
+      "oxide": "P2O5",
+      "mpid": "mp-2173",
+      "cation": "P"
+    },
+    {
+      "oxide": "As2O3",
+      "mpid": "mp-2184",
+      "cation": "As"
+    },
+    {
+      "oxide": "Dy2O3",
+      "mpid": "mp-2345",
+      "cation": "Dy",
+      "z": 3
+    },
+    {
+      "oxide": "Na2O",
+      "mpid": "mp-2352",
+      "cation": "Na",
+      "z": 1,
+      "n": 4
+    },
+    {
+      "oxide": "CaO",
+      "mpid": "mp-2605",
+      "cation": "Ca",
+      "z": 2,
+      "n": 6
+    },
+    {
+      "oxide": "Y2O3",
+      "mpid": "mp-2652",
+      "cation": "Y"
+    },
+    {
+      "oxide": "IrO2",
+      "mpid": "mp-2723",
+      "cation": "Ir"
+    },
+    {
+      "oxide": "Yb2O3",
+      "mpid": "mp-2814",
+      "cation": "Yb",
+      "z": 3
+    },
+    {
+      "oxide": "ZrO2",
+      "mpid": "mp-2858",
+      "cation": "Zr"
+    },
+    {
+      "oxide": "SiO2",
+      "mpid": "mp-6922",
+      "cation": "Si"
+    },
+    {
+      "oxide": "SiO2",
+      "mpid": "mp-7000",
+      "cation": "Si",
+      "z": 4,
+      "n": 4
+    },
+    {
+      "oxide": "Ta2O5",
+      "mpid": "mp-10390",
+      "cation": "Ta"
+    },
+    {
+      "oxide": "Tb2O3",
+      "mpid": "mp-13063",
+      "cation": "Tb",
+      "z": 3
+    },
+    {
+      "oxide": "Ho2O3",
+      "mpid": "mp-13065",
+      "cation": "Ho",
+      "z": 3
+    },
+    {
+      "oxide": "Tm2O3",
+      "mpid": "mp-13067",
+      "cation": "Tm",
+      "z": 3
+    },
+    {
+      "oxide": "Lu2O3",
+      "mpid": "mp-13068",
+      "cation": "Lu",
+      "z": 3
+    },
+    {
+      "oxide": "NiO",
+      "mpid": "mp-19009",
+      "cation": "Ni"
+    },
+    {
+      "oxide": "Cr2O3",
+      "mpid": "mp-19399",
+      "cation": "Cr"
+    },
+    {
+      "oxide": "Fe2O3",
+      "mpid": "mp-19770",
+      "cation": "Fe"
+    },
+    {
+      "oxide": "PbO",
+      "mpid": "mp-19921",
+      "cation": "Pb"
+    },
+    {
+      "oxide": "CeO2",
+      "mpid": "mp-20194",
+      "cation": "Ce",
+      "z": 4
+    },
+    {
+      "oxide": "Gd2O3",
+      "mpid": "mp-20470",
+      "cation": "Gd",
+      "z": 3
+    },
+    {
+      "oxide": "EuO",
+      "mpid": "mp-21394",
+      "cation": "Eu",
+      "z": 2
+    },
+    {
+      "oxide": "CoO",
+      "mpid": "mp-22408",
+      "cation": "Co"
+    },
+    {
+      "oxide": "In2O3",
+      "mpid": "mp-22598",
+      "cation": "In"
+    },
+    {
+      "oxide": "Bi2O3",
+      "mpid": "mp-23195",
+      "cation": "Bi"
+    },
+    {
+      "oxide": "V2O5",
+      "mpid": "mp-25279",
+      "cation": "V"
+    },
+    {
+      "oxide": "Au2O3",
+      "mpid": "mp-27253",
+      "cation": "Au"
+    },
+    {
+      "oxide": "Nb2O5",
+      "mpid": "mp-581967",
+      "cation": "Nb"
+    },
+    {
+      "oxide": "MoO3",
+      "mpid": "mp-715584",
+      "cation": "Mo"
+    },
+    {
+      "oxide": "Rb2O",
+      "mpid": "mp-755738",
+      "cation": "Rb"
+    },
+    {
+      "oxide": "K2O",
+      "mpid": "mp-776016",
+      "cation": "K"
+    },
+    {
+      "oxide": "Re2O7",
+      "mpid": "mp-1016092",
+      "cation": "Re"
+    },
+    {
+      "oxide": "MnO",
+      "mpid": "mp-1232659",
+      "cation": "Mn"
+    },
+    {
+      "oxide": "WO3",
+      "mpid": "mp-2383161",
+      "cation": "W"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.eggs/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*Notes.bib
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Notebook
+.ipynb_checkpoints/
+
+# Charge-density downloads (regenerated from manifest)
+data/charge_density/*.chgcar
+data/charge_density/cache/

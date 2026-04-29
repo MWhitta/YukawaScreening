@@ -1,0 +1,50 @@
+# Nature Communications-like scientific plotting style
+# Optimized for compact, publication-style Matplotlib figures
+
+figure.figsize: 3.4, 2.4
+figure.dpi: 300
+
+font.family: sans-serif
+font.sans-serif: DejaVu Sans, Arial, Helvetica
+font.size: 8
+mathtext.fontset: dejavusans
+
+axes.linewidth: 0.8
+axes.labelsize: 8
+axes.titlesize: 8
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: False
+axes.axisbelow: True
+
+xtick.labelsize: 7
+ytick.labelsize: 7
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 3
+ytick.major.size: 3
+xtick.major.width: 0.8
+ytick.major.width: 0.8
+xtick.minor.size: 1.5
+ytick.minor.size: 1.5
+xtick.minor.width: 0.6
+ytick.minor.width: 0.6
+
+lines.linewidth: 1.2
+lines.markersize: 4
+
+legend.fontsize: 7
+legend.frameon: False
+legend.handlelength: 1.5
+legend.handletextpad: 0.4
+legend.borderaxespad: 0.2
+
+errorbar.capsize: 2
+
+savefig.bbox: tight
+savefig.pad_inches: 0.02
+savefig.dpi: 300
+
+pdf.fonttype: 42
+ps.fonttype: 42
+svg.fonttype: none

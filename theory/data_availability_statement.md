@@ -1,0 +1,3 @@
+Data availability statement draft for APS submission:
+
+The crystal structures analyzed in this study are publicly available from the Materials Project. The fitted bond-valence parameters and characteristic pairs $(R_0^*, B^*)$ for all 103 analyzed cation--oxygen species, and physical screening lengths $\lambda^*$ for the 101 screening-branch species, are provided in the Supplemental Material; the two anti-screening cases are retained there as signed diagnostics. The analysis scripts and cached charge-density data used for the DFT screening-centroid comparison can be made available to the editor upon request and will be made public upon acceptance.

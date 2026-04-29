@@ -1,0 +1,69 @@
+{
+  "cation": "Li",
+  "anion": "O",
+  "cn": 6,
+  "n_materials": 1360,
+  "n_shells": 10241,
+  "n_bonds": 61446,
+  "bond_length_min": 1.855455330930605,
+  "bond_length_max": 2.875290615208588,
+  "monotone_fit": {
+    "model": "monotone_piecewise_log_g",
+    "rmse_r0": 0.03390682612006984,
+    "weighted_mse_r0": 0.0011496728575366502,
+    "parameters": {
+      "knots": [
+        1.855455330930605,
+        2.0616252392553855,
+        2.099928949215187,
+        2.130202379973777,
+        2.161148627711831,
+        2.1967416925816035,
+        2.259938084895453,
+        2.875290615208588
+      ],
+      "log_g_at_knots": [
+        0.0,
+        -0.054336938063327435,
+        -0.06443204036313883,
+        -0.07241072913231948,
+        -0.08056674161880757,
+        -0.08994744211495448,
+        -0.10660311453041649,
+        -0.2687818369173137
+      ],
+      "g_at_knots": [
+        1.0,
+        0.9471129343363446,
+        0.9375998310409792,
+        0.9301487781425739,
+        0.9225933261568021,
+        0.9139792208237156,
+        0.8988823555503438,
+        0.7643099816825366
+      ],
+      "smoothness_lambda": 0.001,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "optimizer_objective": 0.0011535383965086163
+    }
+  },
+  "exponential_fit": {
+    "model": "exponential",
+    "rmse_r0": 0.03390682612006984,
+    "weighted_mse_r0": 0.0011496728575366502,
+    "parameters": {
+      "tau": 3.7942864591394194
+    }
+  },
+  "comparison": {
+    "monotone_rmse_r0": 0.03390682612006984,
+    "exponential_rmse_r0": 0.03390682612006984,
+    "relative_rmse_improvement_pct": 0.0,
+    "best_exponential_tau": 3.7942864591394194,
+    "curve_log_rmse": 1.2018516789897274e-17,
+    "curve_log_linear_r2": 1.0,
+    "curve_log_linear_slope": -0.26355416512932694,
+    "curve_log_linear_intercept": 0.4890129806781745
+  }
+}

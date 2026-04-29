@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yukawa-screening-bv"
+version = "1.0.0"
+description = "Code accompanying Whittaker et al., 'Yukawa screening derivation of the bond-valence rule' (PRL, 2026)"
+readme = "../README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Michael L. Whittaker", email = "mwhittaker@lbl.gov" },
+]
+keywords = [
+    "bond-valence",
+    "yukawa-screening",
+    "crystal-chemistry",
+    "materials-project",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "pandas>=2.0,<4",
+    "numpy>=1.24,<3",
+    "matplotlib>=3.7,<4",
+    "scipy>=1.10,<2",
+    "networkx>=3.0,<4",
+    "scikit-learn>=1.4,<2",
+]
+
+[project.optional-dependencies]
+charge-density = [
+    "pymatgen>=2024.1",
+    "mp-api>=0.42",
+]
+dev = [
+    "pytest>=7.0,<9",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["critmin*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
