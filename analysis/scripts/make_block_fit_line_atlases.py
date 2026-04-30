@@ -10,6 +10,7 @@ produces the d-block atlas already in the Supplemental Material).
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 import warnings
 from pathlib import Path
@@ -136,10 +137,22 @@ def _color_for(element: str) -> str:
 
 # Block groupings for the SI.  Lanthanides and actinides are combined into a
 # single f-block atlas because together they only fill two atlas pages.
-BLOCK_GROUPS: dict[str, dict[str, list[str]]] = {
+BLOCK_GROUPS: dict[str, dict[str, object]] = {
+    "group1_oxygen_cn_fit_lines": {
+        "title": "Group 1",
+        "family_keys": ["group1"],
+        "extra_elements": ["H"],
+        "chunk_size": 6,
+        "partless_when_single": True,
+    },
     "group2_oxygen_cn_fit_lines": {
         "title": "Group 2",
         "family_keys": ["group2"],
+    },
+    "dblock_oxi_oxygen_cn_fit_lines": {
+        "title": "d-block",
+        "family_keys": ["transition_3d", "transition_4d", "transition_5d"],
+        "chunk_size": 6,
     },
     "pblock_oxygen_cn_fit_lines": {
         "title": "p-block",
@@ -169,9 +182,10 @@ def build_block_atlases() -> dict[str, list[str]]:
     outputs: dict[str, list[str]] = {}
     for prefix, spec in BLOCK_GROUPS.items():
         family_keys = set(spec["family_keys"])
+        extra_elements = set(spec.get("extra_elements", []))
         block_labels = [
             label for label, _e, _c, family_key in species_index
-            if family_key in family_keys
+            if family_key in family_keys or _e in extra_elements
         ]
         if not block_labels:
             continue
@@ -193,8 +207,22 @@ def build_block_atlases() -> dict[str, list[str]]:
                 figures_dir=FIGURES_DIR,
                 theory_figures_dir=THEORY_FIGURES_DIR,
                 color_fn=lambda label: _color_for(parse_charge_from_label(label)[0]),
+                chunk_size=int(spec.get("chunk_size", 12)),
             )
-        outputs[prefix] = list(files)
+        output_files = list(files)
+
+        # The manuscript references the lone Group 1 atlas page without a
+        # ``_part01`` suffix, so mirror that filename when only one page exists.
+        if spec.get("partless_when_single") and len(output_files) == 1:
+            part_file = FIGURES_DIR / output_files[0]
+            canonical_name = f"{prefix}.png"
+            canonical_path = FIGURES_DIR / canonical_name
+            shutil.copy2(part_file, canonical_path)
+            if THEORY_FIGURES_DIR.is_dir() and THEORY_FIGURES_DIR.resolve() != FIGURES_DIR.resolve():
+                shutil.copy2(part_file, THEORY_FIGURES_DIR / canonical_name)
+            output_files.append(canonical_name)
+
+        outputs[prefix] = output_files
         print(f"{spec['title']}: {len(block_labels)} species -> {files}")
     return outputs
 

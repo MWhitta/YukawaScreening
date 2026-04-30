@@ -1,0 +1,593 @@
+{
+  "description": "Canonical oxide-level screening-centroid benchmark for PRL Fig. 2 and the SI null-model bar chart.",
+  "provenance": {
+    "source_notebook": "analysis/notebooks/thomas_fermi_screening.ipynb",
+    "source_cell_index": 30,
+    "mp_manifest": "data/charge_density/mp_id_manifest.json",
+    "note": "The point coordinates below are the notebook's printed benchmark values rounded to 0.001 A. The regression coefficients and null-model metrics are the exact notebook outputs and should be treated as the manuscript-facing source of record. Block labels are frozen here as manuscript styling metadata so Fig. 2 can be reproduced without re-deriving periodic-table classes from analysis code."
+  },
+  "points": [
+    {
+      "formula": "Cs2O",
+      "element": "Cs",
+      "z": 1,
+      "family": "Group 1",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.893,
+      "r_eff": 2.48,
+      "r_eff_over_m_i": 0.857,
+      "mpids": []
+    },
+    {
+      "formula": "K2O",
+      "element": "K",
+      "z": 1,
+      "family": "Group 1",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.809,
+      "r_eff": 2.395,
+      "r_eff_over_m_i": 0.852,
+      "mpids": [
+        "mp-776016"
+      ]
+    },
+    {
+      "formula": "Li2O",
+      "element": "Li",
+      "z": 1,
+      "family": "Group 1",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.017,
+      "r_eff": 1.649,
+      "r_eff_over_m_i": 0.817,
+      "mpids": []
+    },
+    {
+      "formula": "Na2O",
+      "element": "Na",
+      "z": 1,
+      "family": "Group 1",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.423,
+      "r_eff": 2.027,
+      "r_eff_over_m_i": 0.837,
+      "mpids": [
+        "mp-2352"
+      ]
+    },
+    {
+      "formula": "Rb2O",
+      "element": "Rb",
+      "z": 1,
+      "family": "Group 1",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.978,
+      "r_eff": 2.553,
+      "r_eff_over_m_i": 0.857,
+      "mpids": [
+        "mp-755738"
+      ]
+    },
+    {
+      "formula": "BaO",
+      "element": "Ba",
+      "z": 2,
+      "family": "Group 2",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.807,
+      "r_eff": 2.401,
+      "r_eff_over_m_i": 0.855,
+      "mpids": []
+    },
+    {
+      "formula": "BeO",
+      "element": "Be",
+      "z": 2,
+      "family": "Group 2",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.656,
+      "r_eff": 1.321,
+      "r_eff_over_m_i": 0.798,
+      "mpids": []
+    },
+    {
+      "formula": "CaO",
+      "element": "Ca",
+      "z": 2,
+      "family": "Group 2",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.42,
+      "r_eff": 2.036,
+      "r_eff_over_m_i": 0.842,
+      "mpids": [
+        "mp-2605"
+      ]
+    },
+    {
+      "formula": "MgO",
+      "element": "Mg",
+      "z": 2,
+      "family": "Group 2",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.128,
+      "r_eff": 1.754,
+      "r_eff_over_m_i": 0.824,
+      "mpids": [
+        "mp-1265"
+      ]
+    },
+    {
+      "formula": "SrO",
+      "element": "Sr",
+      "z": 2,
+      "family": "Group 2",
+      "block": "s",
+      "panel": "a",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.603,
+      "r_eff": 2.208,
+      "r_eff_over_m_i": 0.848,
+      "mpids": []
+    },
+    {
+      "formula": "Ag2O",
+      "element": "Ag",
+      "z": 1,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.096,
+      "r_eff": 1.746,
+      "r_eff_over_m_i": 0.833,
+      "mpids": [
+        "mp-353"
+      ]
+    },
+    {
+      "formula": "CoO",
+      "element": "Co",
+      "z": 2,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.991,
+      "r_eff": 1.642,
+      "r_eff_over_m_i": 0.825,
+      "mpids": [
+        "mp-22408"
+      ]
+    },
+    {
+      "formula": "CuO",
+      "element": "Cu",
+      "z": 2,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.955,
+      "r_eff": 1.61,
+      "r_eff_over_m_i": 0.824,
+      "mpids": [
+        "mp-1692"
+      ]
+    },
+    {
+      "formula": "NiO",
+      "element": "Ni",
+      "z": 2,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.108,
+      "r_eff": 1.75,
+      "r_eff_over_m_i": 0.83,
+      "mpids": [
+        "mp-19009"
+      ]
+    },
+    {
+      "formula": "PbO",
+      "element": "Pb",
+      "z": 2,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.354,
+      "r_eff": 1.985,
+      "r_eff_over_m_i": 0.843,
+      "mpids": [
+        "mp-19921"
+      ]
+    },
+    {
+      "formula": "PdO",
+      "element": "Pd",
+      "z": 2,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.061,
+      "r_eff": 1.711,
+      "r_eff_over_m_i": 0.83,
+      "mpids": [
+        "mp-1336"
+      ]
+    },
+    {
+      "formula": "ZnO",
+      "element": "Zn",
+      "z": 2,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.006,
+      "r_eff": 1.659,
+      "r_eff_over_m_i": 0.827,
+      "mpids": [
+        "mp-2133"
+      ]
+    },
+    {
+      "formula": "Al2O3",
+      "element": "Al",
+      "z": 3,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.93,
+      "r_eff": 1.517,
+      "r_eff_over_m_i": 0.786,
+      "mpids": [
+        "mp-1143"
+      ]
+    },
+    {
+      "formula": "As2O3",
+      "element": "As",
+      "z": 3,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": false,
+      "is_outlier": true,
+      "m_i": 1.832,
+      "r_eff": 1.718,
+      "r_eff_over_m_i": 0.937,
+      "mpids": [
+        "mp-2184"
+      ]
+    },
+    {
+      "formula": "Au2O3",
+      "element": "Au",
+      "z": 3,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": false,
+      "is_outlier": true,
+      "m_i": 2.048,
+      "r_eff": 2.034,
+      "r_eff_over_m_i": 0.993,
+      "mpids": [
+        "mp-27253"
+      ]
+    },
+    {
+      "formula": "B2O3",
+      "element": "B",
+      "z": 3,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": false,
+      "is_outlier": true,
+      "m_i": 1.378,
+      "r_eff": 1.788,
+      "r_eff_over_m_i": 1.298,
+      "mpids": [
+        "mp-306"
+      ]
+    },
+    {
+      "formula": "Gd2O3",
+      "element": "Gd",
+      "z": 3,
+      "family": "Other",
+      "block": "f",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.381,
+      "r_eff": 2.037,
+      "r_eff_over_m_i": 0.855,
+      "mpids": [
+        "mp-20470"
+      ]
+    },
+    {
+      "formula": "La2O3",
+      "element": "La",
+      "z": 3,
+      "family": "Other",
+      "block": "f",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.499,
+      "r_eff": 2.142,
+      "r_eff_over_m_i": 0.857,
+      "mpids": [
+        "mp-1968"
+      ]
+    },
+    {
+      "formula": "Sb2O3",
+      "element": "Sb",
+      "z": 3,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.109,
+      "r_eff": 1.776,
+      "r_eff_over_m_i": 0.842,
+      "mpids": [
+        "mp-2136"
+      ]
+    },
+    {
+      "formula": "Yb2O3",
+      "element": "Yb",
+      "z": 3,
+      "family": "Other",
+      "block": "f",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.304,
+      "r_eff": 1.935,
+      "r_eff_over_m_i": 0.84,
+      "mpids": [
+        "mp-2814"
+      ]
+    },
+    {
+      "formula": "GeO2",
+      "element": "Ge",
+      "z": 4,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.914,
+      "r_eff": 1.586,
+      "r_eff_over_m_i": 0.828,
+      "mpids": [
+        "mp-470"
+      ]
+    },
+    {
+      "formula": "HfO2",
+      "element": "Hf",
+      "z": 4,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.139,
+      "r_eff": 1.797,
+      "r_eff_over_m_i": 0.84,
+      "mpids": [
+        "mp-352"
+      ]
+    },
+    {
+      "formula": "SiO2",
+      "element": "Si",
+      "z": 4,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.627,
+      "r_eff": 1.207,
+      "r_eff_over_m_i": 0.742,
+      "mpids": [
+        "mp-6922",
+        "mp-7000"
+      ]
+    },
+    {
+      "formula": "SnO2",
+      "element": "Sn",
+      "z": 4,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.093,
+      "r_eff": 1.744,
+      "r_eff_over_m_i": 0.833,
+      "mpids": [
+        "mp-856"
+      ]
+    },
+    {
+      "formula": "TiO2",
+      "element": "Ti",
+      "z": 4,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.962,
+      "r_eff": 1.635,
+      "r_eff_over_m_i": 0.834,
+      "mpids": [
+        "mp-390"
+      ]
+    },
+    {
+      "formula": "ZrO2",
+      "element": "Zr",
+      "z": 4,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 2.17,
+      "r_eff": 1.83,
+      "r_eff_over_m_i": 0.843,
+      "mpids": [
+        "mp-2858"
+      ]
+    },
+    {
+      "formula": "P2O5",
+      "element": "P",
+      "z": 5,
+      "family": "Other",
+      "block": "p",
+      "panel": "b",
+      "included_in_regression": false,
+      "is_outlier": true,
+      "m_i": 1.536,
+      "r_eff": 1.886,
+      "r_eff_over_m_i": 1.228,
+      "mpids": [
+        "mp-2173"
+      ]
+    },
+    {
+      "formula": "Ta2O5",
+      "element": "Ta",
+      "z": 5,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.994,
+      "r_eff": 1.678,
+      "r_eff_over_m_i": 0.842,
+      "mpids": [
+        "mp-10390"
+      ]
+    },
+    {
+      "formula": "V2O5",
+      "element": "V",
+      "z": 5,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.797,
+      "r_eff": 1.513,
+      "r_eff_over_m_i": 0.842,
+      "mpids": [
+        "mp-25279"
+      ]
+    },
+    {
+      "formula": "MoO3",
+      "element": "Mo",
+      "z": 6,
+      "family": "Other",
+      "block": "d",
+      "panel": "b",
+      "included_in_regression": true,
+      "is_outlier": false,
+      "m_i": 1.886,
+      "r_eff": 1.644,
+      "r_eff_over_m_i": 0.872,
+      "mpids": [
+        "mp-715584"
+      ]
+    }
+  ],
+  "summary": {
+    "counts": {
+      "total_points": 35,
+      "panel_a_points": 10,
+      "panel_b_points": 25,
+      "panel_b_fit_points": 21,
+      "panel_b_outliers": 4
+    },
+    "panel_a_fit": {
+      "slope": 0.9387,
+      "intercept": -0.2394,
+      "r2": 0.999835
+    },
+    "panel_a_oxygen_shift": {
+      "slope": 0.0613,
+      "intercept": 0.2394,
+      "r2": 0.962647,
+      "mean": 0.391,
+      "std": 0.0269
+    },
+    "panel_b_fit": {
+      "slope": 0.9804,
+      "intercept": -0.3039,
+      "r2": 0.96657
+    },
+    "panel_a_null_models": {
+      "mae_m_i": 0.0062,
+      "mae_R0": 0.0779,
+      "mae_shannon_radius": 0.0946
+    }
+  }
+}

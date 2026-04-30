@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the repository metadata below and the submitted PRL manuscript."
+title: "YukawaScreening"
+type: software
+version: 1.0.0
+date-released: 2026-04-29
+repository-code: "https://github.com/MWhitta/YukawaScreening"
+license: MIT
+keywords:
+  - bond valence
+  - yukawa screening
+  - crystal chemistry
+  - materials project
+  - manuscript source package
+authors:
+  - family-names: Whittaker
+    given-names: Michael L.
+    email: mwhittaker@lbl.gov
+  - family-names: Wang
+    given-names: Pan
+  - family-names: Li
+    given-names: Chunhui
+  - family-names: Katyal
+    given-names: Naman
+  - family-names: Zarzycki
+    given-names: Piotr
+abstract: >-
+  Code, processed data, and manuscript sources for "Yukawa screening derivation
+  of the bond-valence rule", including the authoritative 103-species oxygen
+  summary, manuscript figure assets, and charge-density benchmark metadata.
+preferred-citation:
+  type: article
+  title: "Yukawa screening derivation of the bond-valence rule"
+  journal: "Physical Review Letters"
+  year: 2026
+  note: "submitted manuscript"
+  authors:
+    - family-names: Whittaker
+      given-names: Michael L.
+    - family-names: Wang
+      given-names: Pan
+    - family-names: Li
+      given-names: Chunhui
+    - family-names: Katyal
+      given-names: Naman
+    - family-names: Zarzycki
+      given-names: Piotr

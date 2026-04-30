@@ -1,0 +1,541 @@
+{
+  "title": "YukawaScreening FAIR artifact catalog",
+  "repository": {
+    "name": "YukawaScreening",
+    "url": "https://github.com/MWhitta/YukawaScreening",
+    "license": "MIT for code and manuscript text; data terms are documented separately"
+  },
+  "generated_at": "2026-04-29T22:54:53.275076+00:00",
+  "artifact_count": 17,
+  "artifacts": [
+    {
+      "id": "ima_group1_candidates",
+      "path": "data/raw/ima/group1_candidates.json",
+      "title": "Group 1 IMA candidate tracker",
+      "category": "raw-tracker",
+      "description": "IMA-derived candidate tracker for Group 1 oxygen-containing materials queried from the Materials Project.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 3727867,
+      "sha256": "7fd8170781f0afbfb62cb20db302391aab24cba75bdf08dca7645b54724a308d",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "Li",
+          "Na",
+          "K",
+          "Rb",
+          "Cs"
+        ],
+        "candidate_count": 16261
+      }
+    },
+    {
+      "id": "ima_group2_candidates",
+      "path": "data/raw/ima/group2_candidates.json",
+      "title": "Group 2 IMA candidate tracker",
+      "category": "raw-tracker",
+      "description": "IMA-derived candidate tracker for Group 2 oxygen-containing materials queried from the Materials Project.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 2316819,
+      "sha256": "1f63e33c5f5ec651d26a13eaa0f995fcd6062f23f91e6c06c60f0b9624302a75",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "Be",
+          "Mg",
+          "Ca",
+          "Sr",
+          "Ba"
+        ],
+        "candidate_count": 10106
+      }
+    },
+    {
+      "id": "ima_group12_candidates",
+      "path": "data/raw/ima/group12_candidates.json",
+      "title": "Group 1+2 combined IMA candidate tracker",
+      "category": "raw-tracker",
+      "description": "Merged Group 1 / Group 2 candidate tracker for the oxygen-authoritative screening workflow.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 5871264,
+      "sha256": "084032f2977ec46f45950fbcd72b5fd2f27a8592397613658edf98035406f442",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "Li",
+          "Na",
+          "K",
+          "Rb",
+          "Cs",
+          "Be",
+          "Mg",
+          "Ca",
+          "Sr",
+          "Ba"
+        ],
+        "candidate_count": 25577
+      }
+    },
+    {
+      "id": "ima_dblock_3d_candidates",
+      "path": "data/raw/ima/dblock_3d_candidates.json",
+      "title": "3d transition-metal candidate tracker",
+      "category": "raw-tracker",
+      "description": "IMA-derived candidate tracker for 3d transition-metal oxygen materials queried from the Materials Project.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 6206011,
+      "sha256": "4c2def75b4c25e3030296ee9b92fbf2d884a407fec4e51c4e7508c4d0bc4636f",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "Sc",
+          "Ti",
+          "V",
+          "Cr",
+          "Mn",
+          "Fe",
+          "Co",
+          "Ni",
+          "Cu",
+          "Zn"
+        ],
+        "candidate_count": 21562
+      }
+    },
+    {
+      "id": "ima_dblock_4d_post_candidates",
+      "path": "data/raw/ima/dblock_4d_post_o_candidates_20260412T155839Z.json",
+      "title": "4d / post-transition oxygen candidate tracker",
+      "category": "raw-tracker",
+      "description": "Candidate tracker for the 4d transition-metal and post-transition oxygen expansion phase of the manuscript workflow.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 2759768,
+      "sha256": "7620ec296558e2a585ea338f17d04db5fedea6c61e0eb93760516f1929836952",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "Y",
+          "Zr",
+          "Nb",
+          "Mo",
+          "Tc",
+          "Ru",
+          "Rh",
+          "Pd",
+          "Ag",
+          "Cd",
+          "In",
+          "Sn",
+          "Sb",
+          "Te"
+        ],
+        "candidate_count": 9726
+      }
+    },
+    {
+      "id": "ima_all_remaining_oxygen_candidates",
+      "path": "data/raw/ima/all_remaining_o_candidates_20260413T030533Z.json",
+      "title": "All-remaining oxygen candidate tracker",
+      "category": "raw-tracker",
+      "description": "Candidate tracker for the remaining oxygen-bearing cation families included in the master manuscript summary.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 10645762,
+      "sha256": "38cf5c3b1ddb3b74a41f2d38b51c3e241c4634d6689fdb533ef83d7430183c02",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "H",
+          "He",
+          "B",
+          "C",
+          "N",
+          "F",
+          "Ne",
+          "Al",
+          "Si",
+          "P",
+          "S",
+          "Cl",
+          "Ar",
+          "Ga",
+          "Ge",
+          "As",
+          "Se",
+          "Br",
+          "Kr",
+          "I",
+          "Xe",
+          "Pm",
+          "Hf",
+          "Ta",
+          "W",
+          "Re",
+          "Os",
+          "Ir",
+          "Pt",
+          "Au",
+          "Hg",
+          "Tl",
+          "Pb",
+          "Bi",
+          "Po",
+          "At",
+          "Rn",
+          "Fr",
+          "Ra",
+          "Ac",
+          "Th",
+          "Pa",
+          "U"
+        ],
+        "candidate_count": 38022
+      }
+    },
+    {
+      "id": "ima_post_transition_remaining_candidates",
+      "path": "data/raw/ima/post_transition_remaining_o_candidates_20260414T045256Z.json",
+      "title": "Post-transition remaining oxygen candidate tracker",
+      "category": "raw-tracker",
+      "description": "Candidate tracker for the late-stage post-transition oxygen family expansion in the manuscript workflow.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 6391219,
+      "sha256": "6eeb206f475bc8b6d3388ae22beab23e6c2b7909988dec381c53b4c7bb918f25",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "B",
+          "Al",
+          "Si",
+          "P",
+          "S",
+          "Ga",
+          "Ge",
+          "As",
+          "Se",
+          "Tl",
+          "Pb",
+          "Bi"
+        ],
+        "candidate_count": 22644
+      }
+    },
+    {
+      "id": "ima_fblock_4f_candidates",
+      "path": "data/raw/ima/fblock_4f_candidates.json",
+      "title": "Lanthanide candidate tracker",
+      "category": "raw-tracker",
+      "description": "Candidate tracker for 4f-block oxygen-containing materials used in the lanthanide manuscript summary.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_candidate_tracker",
+      "size_bytes": 1775050,
+      "sha256": "efa313848a1e36709f6014dfedae28621c1ae931ecc5359c760d856b28f7eb5f",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "La",
+          "Ce",
+          "Pr",
+          "Nd",
+          "Sm",
+          "Eu",
+          "Gd",
+          "Tb",
+          "Dy",
+          "Ho",
+          "Er",
+          "Tm",
+          "Yb",
+          "Lu"
+        ],
+        "candidate_count": 6222
+      }
+    },
+    {
+      "id": "oxygen_authoritative_store",
+      "path": "data/processed/bond_valence/consolidated_store.json",
+      "title": "Oxygen-authoritative consolidated bond-valence store",
+      "category": "processed-dataset",
+      "description": "Canonical grouped payload containing per-structure (R0, B) fits and diagnostics for the oxygen-authoritative manuscript workflow.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "analysis/critmin/analysis/payload_schema.py::validate_grouped_payload",
+      "generated_by": [
+        "analysis/critmin/analysis/bond_valence_store.py"
+      ],
+      "size_bytes": 87123684,
+      "sha256": "40ec600476ec6a765e02f43ae0385f4073f21ffe13b37c678788d860e5e06ea3",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "schema_version",
+          "generated_at",
+          "record_fields",
+          "datasets"
+        ],
+        "dataset_keys": [
+          "oxygen_authoritative"
+        ],
+        "oxygen_authoritative_cation_count": 81,
+        "oxygen_authoritative_record_count": 85661
+      }
+    },
+    {
+      "id": "group12_unified_oxygen_theory",
+      "path": "data/processed/theory/group12_unified_oxygen_theory.json",
+      "title": "Group 1 / Group 2 unified oxygen theory summary",
+      "category": "processed-dataset",
+      "description": "Coordination-number-resolved fit summary for the Group 1 and Group 2 manuscript families.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#group12_unified_oxygen_theoryjson",
+      "generated_by": [
+        "analysis/critmin/analysis/bond_valence_theory.py"
+      ],
+      "size_bytes": 804415,
+      "sha256": "8d7564124221b5e1f6b408bff3ae8b654da200550ceee3ae48fc1adbf8aa5819",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "sources",
+          "workflow",
+          "groups"
+        ]
+      }
+    },
+    {
+      "id": "dblock_oxi_unified_oxygen_theory",
+      "path": "data/processed/theory/dblock_oxi_unified_oxygen_theory.json",
+      "title": "d-block oxidation-state-resolved oxygen theory summary",
+      "category": "processed-dataset",
+      "description": "Coordination-number-resolved fit summary for the oxidation-state-resolved d-block manuscript families.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#dblock_oxi_unified_oxygen_theoryjson",
+      "generated_by": [
+        "analysis/critmin/analysis/bond_valence_theory.py"
+      ],
+      "size_bytes": 985705,
+      "sha256": "d05ca11bf86949ac4fa05a34f3e62ccba486a47c63cd6b95e3d59a08c1437287",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "sources",
+          "workflow",
+          "group_label",
+          "elements",
+          "species",
+          "mixed_counts",
+          "total_pure_fitted_records",
+          "target_cns",
+          "cn_fits",
+          "outliers",
+          "alpha_lines",
+          "intersections",
+          "cluster_summary"
+        ]
+      }
+    },
+    {
+      "id": "master_oxygen_summary_theory",
+      "path": "data/processed/theory/master_oxygen_summary_theory.json",
+      "title": "Master oxygen summary theory payload",
+      "category": "processed-dataset",
+      "description": "Authoritative 103-species manuscript summary with characteristic pairs, branch assignment, and family-level summaries.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#master_oxygen_summary_theoryjson",
+      "generated_by": [
+        "analysis/critmin/analysis/bond_valence_theory.py",
+        "analysis/scripts/export_theory_lambda_tables.py"
+      ],
+      "size_bytes": 137808,
+      "sha256": "42bbed3d272894f7c1a4c6e39873f1b5da3a28dde880a6e5728d85397f251370",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "workflow",
+          "sources",
+          "families",
+          "master_rows",
+          "excluded_rows",
+          "family_summary",
+          "global_summary"
+        ],
+        "master_row_count": 103,
+        "excluded_row_count": 2
+      }
+    },
+    {
+      "id": "manuscript_theory_manifest",
+      "path": "data/processed/theory/manuscript_theory_manifest.json",
+      "title": "Manuscript theory manifest",
+      "category": "processed-dataset",
+      "description": "Compact manifest for the manuscript theory exports, including file paths, source trackers, and aggregate counts.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#manuscript_theory_manifestjson",
+      "generated_by": [
+        "analysis/critmin/analysis/bond_valence_theory.py"
+      ],
+      "size_bytes": 2856,
+      "sha256": "7e9e85e4d2dcd2f11b0ce659e6cd252ce9cf764e89e81676e284251a84012c22",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "output_dir",
+          "files",
+          "sources",
+          "summary"
+        ]
+      }
+    },
+    {
+      "id": "lambda_mixed_cation_holdout_prediction_json",
+      "path": "data/processed/theory/lambda_mixed_cation_holdout_prediction.json",
+      "title": "Mixed-cation lambda holdout prediction payload",
+      "category": "processed-dataset",
+      "description": "JSON export for the manuscript's mixed-cation holdout prediction experiment.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#lambda_mixed_cation_holdout_predictionjson",
+      "generated_by": [
+        "analysis/critmin/analysis/shell_thermodynamics.py"
+      ],
+      "size_bytes": 321194,
+      "sha256": "b9b761a962b56d607b1749225f416b8016d92e185cee1c8186f57d50f8b93941",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "workflow",
+          "inputs",
+          "parameters",
+          "proxy_rankings",
+          "summary",
+          "species",
+          "shell_prediction_rows",
+          "material_prediction_rows"
+        ],
+        "shell_prediction_row_count": 129,
+        "material_prediction_row_count": 16
+      }
+    },
+    {
+      "id": "lambda_mixed_cation_holdout_prediction_csv",
+      "path": "data/processed/theory/lambda_mixed_cation_holdout_prediction.csv",
+      "title": "Mixed-cation lambda holdout prediction table",
+      "category": "processed-dataset",
+      "description": "CSV summary of the material-level mixed-cation holdout prediction results.",
+      "format": "csv",
+      "media_type": "text/csv",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#lambda_mixed_cation_holdout_predictioncsv",
+      "generated_by": [
+        "analysis/critmin/analysis/shell_thermodynamics.py"
+      ],
+      "size_bytes": 3827,
+      "sha256": "df3c6dca70a92df1c4b05c48e031313c3b752c3ee84844e3e23abef1f3a833bd",
+      "content_summary": {
+        "header": [
+          "species",
+          "element",
+          "oxi_state",
+          "chemistry_class",
+          "mid",
+          "formula",
+          "n_shell_rows",
+          "target_cns",
+          "observed_R0",
+          "predicted_R0_from_lambda_star",
+          "R0_error",
+          "observed_B",
+          "predicted_B_from_lambda_star",
+          "B_error",
+          "train_R0_star",
+          "train_B_star",
+          "train_lambda_star"
+        ],
+        "row_count": 16
+      }
+    },
+    {
+      "id": "charge_density_benchmark",
+      "path": "data/processed/theory/charge_density_benchmark.json",
+      "title": "Charge-density screening-centroid benchmark",
+      "category": "processed-dataset",
+      "description": "Checked-in point set and regression summary for PRL Fig. 2 and the SI null-model control.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#charge_density_benchmarkjson",
+      "generated_by": [
+        "analysis/notebooks/thomas_fermi_screening.ipynb",
+        "analysis/scripts/make_charge_density_benchmark_figures.py"
+      ],
+      "size_bytes": 12522,
+      "sha256": "23a547be98927c7531ef089999203392c706a123e57abc54eee4dea317396d28",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "description",
+          "provenance",
+          "points",
+          "summary"
+        ],
+        "point_count": 35
+      }
+    },
+    {
+      "id": "charge_density_mp_id_manifest",
+      "path": "data/charge_density/mp_id_manifest.json",
+      "title": "Charge-density Materials Project ID manifest",
+      "category": "external-manifest",
+      "description": "Materials Project identifier manifest for the charge-density workflow used to derive the manuscript's screening-centroid benchmark.",
+      "format": "json",
+      "media_type": "application/json",
+      "license": "Materials Project Terms of Use (redistributed derived data); see metadata/DATA_LICENSES.md",
+      "schema_reference": "metadata/DATA_DICTIONARY.md#mp_id_manifestjson",
+      "size_bytes": 6087,
+      "sha256": "b16b01018b397148108394fa6fe9af2e70295cf7f0e293fe812777f3844b882b",
+      "content_summary": {
+        "top_level_type": "dict",
+        "top_level_keys": [
+          "description",
+          "fetch_instructions",
+          "mp_dataset_doi",
+          "count",
+          "records"
+        ],
+        "record_count": 62
+      }
+    }
+  ]
+}

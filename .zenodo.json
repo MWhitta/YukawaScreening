@@ -1,0 +1,37 @@
+{
+  "title": "YukawaScreening",
+  "description": "Code, processed data, and manuscript sources for the submitted Physical Review Letters manuscript 'Yukawa screening derivation of the bond-valence rule'.",
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "bond-valence",
+    "yukawa-screening",
+    "crystal-chemistry",
+    "materials-project",
+    "manuscript-source-package"
+  ],
+  "creators": [
+    {
+      "name": "Whittaker, Michael L.",
+      "affiliation": "Lawrence Berkeley National Laboratory"
+    },
+    {
+      "name": "Wang, Pan",
+      "affiliation": "Lawrence Berkeley National Laboratory"
+    },
+    {
+      "name": "Li, Chunhui",
+      "affiliation": "Meta Platforms, Inc."
+    },
+    {
+      "name": "Katyal, Naman",
+      "affiliation": "Lawrence Berkeley National Laboratory"
+    },
+    {
+      "name": "Zarzycki, Piotr",
+      "affiliation": "Lawrence Berkeley National Laboratory"
+    }
+  ],
+  "notes": "Repository-level FAIR metadata and dataset provenance are documented in metadata/README.md. Derived Materials Project data remain subject to the Materials Project terms of use."
+}

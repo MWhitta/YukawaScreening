@@ -15,7 +15,6 @@ We believe this Letter is suited to PRL for three reasons. First, it resolves a 
 **Suggested referees:**
 - Ferdi Aryasetiawan, Division of Mathematical Physics, Department of Physics, Lund University [Ferdi.Aryasetiawan@teorfys.lu.se]
 - James M. Rondinelli, Department of Materials Science and Engineering, Northwestern University [jrondinelli@northwestern.edu]
-- Stefan Adams, Department of Materials Science and Engineering, National University of Singapore [mseasn@nus.edu.sg]
 - Olivier C. Gagné, Earth and Planets Laboratory, Carnegie Institution for Science [ogagne@carnegiescience.edu]
 - Silke Biermann, Centre de Physique Theorique (CPHT), Ecole Polytechnique, CNRS [silke.biermann@polytechnique.edu]
 

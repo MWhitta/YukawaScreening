@@ -305,15 +305,16 @@ intersection are the fitted structure counts in those shells.
 \end{figure}
 
 Figure~\ref{fig:identity} validates the bond-length identity
-$R_0\approx\bar R+B\ln(z/n)$ across 50{,}706 cation--oxygen structures
-(Pearson $r=0.969$, MAE$\,=0.018$~\AA).
+$R_0\approx\bar R+B\ln(z/n)$ across 44{,}844 screening-branch
+cation--oxygen structures (records with $B>0$, $0<R_0<4$~\AA, and
+$z\ne n$; Pearson $r=0.976$, MAE$\,=0.019$~\AA).
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.85\textwidth]{r0_bond_length_identity_parity.png}
 \caption[Bond-length-identity parity checks.]{Left: parity between fitted $R_0$ and $\bar R+B\ln(z/n)$ for
-50{,}706 cation--oxygen structures.  Right: parity between fitted $B$
-and $\beta(R_0-\bar R)$.}
+44{,}844 screening-branch cation--oxygen structures.  Right: parity
+between fitted $B$ and $(R_0-\bar R)/\ln(z/n)$ for the same set.}
 \label{fig:identity}
 \end{figure}
 
@@ -324,7 +325,7 @@ main text, the DFT screening centroid $r_{\mathrm{eff}}$ is compared
 against three linear descriptors: the bond-valence shell centroid $m_i$,
 the fitted bond-valence intercept $R_0$, and the Shannon cation radius.
 Leave-one-out mean absolute errors are $0.006$~\AA\ for $m_i$,
-$0.078$~\AA\ for $R_0$, and $0.094$~\AA\ for the Shannon-radius control,
+$0.078$~\AA\ for $R_0$, and $0.095$~\AA\ for the Shannon-radius control,
 showing that the $r_{\mathrm{eff}}$--$m_i$ collapse is substantially
 sharper than a generic monotone size trend.
 
