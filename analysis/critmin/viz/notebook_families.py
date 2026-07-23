@@ -16,6 +16,7 @@ from itertools import combinations
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -952,8 +953,15 @@ def plot_fixed_cn_beta_panel(
     series_line_alpha: float = 1.0,
     fit_zorder: float = 2.0,
     crossover_annotation_fontsize: float | None = None,
+    marker_alpha: float | None = None,
+    show_series_lines: bool = True,
 ) -> None:
-    """Plot beta versus oxidation state for one fixed CN branch."""
+    """Plot beta versus oxidation state for one fixed CN branch.
+
+    When ``marker_alpha`` is set, markers render semi-transparent so that
+    coincident species accumulate opacity: a lone point stays light while a
+    stack of agreeing species darkens toward the full series color.
+    """
     shown_elements: set[str] = set()
     crossover_labels: list[tuple[str, float, float, str]] = []
     if element_order is None:
@@ -971,26 +979,41 @@ def plot_fixed_cn_beta_panel(
 
         label = element if element not in shown_elements else None
         if not left.empty:
-            ax.plot(
-                left["charge"],
-                left["beta"],
-                "-o",
-                color=color,
-                linewidth=1.5,
-                markersize=6.5,
-                alpha=series_line_alpha,
-                label=label,
-                zorder=3,
-            )
-            ax.scatter(
-                left["charge"],
-                left["beta"],
-                s=6.5**2,
-                color=color,
-                edgecolors=color,
-                linewidths=0.8,
-                zorder=4,
-            )
+            if show_series_lines:
+                ax.plot(
+                    left["charge"],
+                    left["beta"],
+                    "-" if marker_alpha is not None else "-o",
+                    color=color,
+                    linewidth=1.5,
+                    markersize=6.5,
+                    alpha=series_line_alpha,
+                    label=label,
+                    zorder=3,
+                )
+                label = None
+            if marker_alpha is not None:
+                ax.scatter(
+                    left["charge"],
+                    left["beta"],
+                    s=6.5**2,
+                    facecolors=mcolors.to_rgba(color, marker_alpha),
+                    edgecolors="white",
+                    linewidths=0.6,
+                    label=label,
+                    zorder=4,
+                )
+            else:
+                ax.scatter(
+                    left["charge"],
+                    left["beta"],
+                    s=6.5**2,
+                    color=color,
+                    edgecolors=color,
+                    linewidths=0.8,
+                    label=label,
+                    zorder=4,
+                )
             ax.errorbar(
                 left["charge"],
                 left["beta"],
@@ -1005,29 +1028,44 @@ def plot_fixed_cn_beta_panel(
             label = None
 
         if not right.empty:
-            ax.plot(
-                right["charge"],
-                right["beta"],
-                "-o",
-                color=color,
-                linewidth=1.5,
-                markersize=6.5,
-                alpha=series_line_alpha,
-                markerfacecolor="white",
-                markeredgecolor=color,
-                markeredgewidth=1.4,
-                label=label,
-                zorder=3,
-            )
-            ax.scatter(
-                right["charge"],
-                right["beta"],
-                s=6.5**2,
-                facecolors="white",
-                edgecolors=color,
-                linewidths=1.4,
-                zorder=4,
-            )
+            if show_series_lines:
+                ax.plot(
+                    right["charge"],
+                    right["beta"],
+                    "-" if marker_alpha is not None else "-o",
+                    color=color,
+                    linewidth=1.5,
+                    markersize=6.5,
+                    alpha=series_line_alpha,
+                    markerfacecolor="white",
+                    markeredgecolor=color,
+                    markeredgewidth=1.4,
+                    label=label,
+                    zorder=3,
+                )
+                label = None
+            if marker_alpha is not None:
+                ax.scatter(
+                    right["charge"],
+                    right["beta"],
+                    s=6.5**2,
+                    facecolors="none",
+                    edgecolors=mcolors.to_rgba(color, marker_alpha),
+                    linewidths=1.4,
+                    label=label,
+                    zorder=4,
+                )
+            else:
+                ax.scatter(
+                    right["charge"],
+                    right["beta"],
+                    s=6.5**2,
+                    facecolors="white",
+                    edgecolors=color,
+                    linewidths=1.4,
+                    label=label,
+                    zorder=4,
+                )
             ax.errorbar(
                 right["charge"],
                 right["beta"],

@@ -48,11 +48,13 @@ PANEL_A_LABEL_OFFSETS = {
     "Cs": (8, -18),
     "Rb": (14, -18),
 }
+# (dx, dy, ha, va) in points; each label sits beside its own marker in the
+# nearest clear space, off the identity/fit lines and the point cluster.
 OUTLIER_LABEL_OFFSETS = {
-    "B": (16, -2),
-    "P": (10, 14),
-    "As": (10, 10),
-    "Au": (12, -16),
+    "B": (0, -9, "center", "top"),
+    "P": (0, 8, "center", "bottom"),
+    "As": (-9, -16, "right", "center"),
+    "Au": (11, 0, "left", "center"),
 }
 VALID_BLOCKS = {"s", "d", "p", "f"}
 PANEL_B_BLOCKS = ("d", "p", "f")
@@ -161,13 +163,20 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
     )
     ax1, ax2 = axes
 
+    # Axis and tick labels run at 0.8625x the original explicit sizes (25%
+    # reduction, then 15% back up) and panel/data annotations at 0.80x;
+    # legends keep the original size. Sizes must be passed explicitly to the
+    # artists — the axes are created before the rc context, so rcParams
+    # never reach their label text.
+    axis_scale = 0.75 * 1.15
+    text_scale = 0.80
     with plt.rc_context(
         style.rcparams()
         | {
             "font.family": "DejaVu Sans",
-            "axes.labelsize": 10.6,
-            "xtick.labelsize": 8.3,
-            "ytick.labelsize": 8.3,
+            "axes.labelsize": 10.6 * axis_scale,
+            "xtick.labelsize": 8.3 * axis_scale,
+            "ytick.labelsize": 8.3 * axis_scale,
             "legend.fontsize": 8.1,
         }
     ):
@@ -179,17 +188,27 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
             ax.plot([lo, hi], [lo, hi], "--", color="0.68", lw=1.05, alpha=0.95, zorder=1)
             ax.set_xlim(lo, hi)
             ax.set_ylim(ylo, yhi)
+            # Pin the tick layout; the auto-locator would densify the ticks
+            # to match the reduced tick-label size.
+            ax.set_xticks([1.5, 2.0, 2.5, 3.0])
+            ax.set_yticks([1.5, 2.0, 2.5])
             ax.grid(True, color="0.80", linewidth=0.6, alpha=0.45)
-            ax.tick_params(direction="out", length=4.0, width=0.8, pad=6)
+            ax.tick_params(
+                direction="out",
+                length=4.0,
+                width=0.8,
+                pad=6,
+                labelsize=8.3 * axis_scale,
+            )
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
             ax.spines["left"].set_linewidth(1.0)
             ax.spines["bottom"].set_linewidth(1.0)
             ax.spines["left"].set_color("0.45")
             ax.spines["bottom"].set_color("0.45")
-            ax.set_xlabel(r"$m_i$ ($\AA$)")
+            ax.set_xlabel(r"$m_i$ ($\AA$)", fontsize=10.6 * axis_scale)
 
-        ax1.set_ylabel(r"$r_{\mathrm{eff}}$ ($\AA$)")
+        ax1.set_ylabel(r"$r_{\mathrm{eff}}$ ($\AA$)", fontsize=10.6 * axis_scale)
         ax2.tick_params(labelleft=False)
 
         ax1.text(
@@ -199,7 +218,7 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
             transform=ax1.transAxes,
             ha="left",
             va="top",
-            fontsize=10.8,
+            fontsize=10.8 * text_scale,
             fontweight="bold",
         )
         ax2.text(
@@ -209,7 +228,7 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
             transform=ax2.transAxes,
             ha="left",
             va="top",
-            fontsize=10.8,
+            fontsize=10.8 * text_scale,
             fontweight="bold",
         )
 
@@ -251,7 +270,7 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
                 textcoords="offset points",
                 ha="center",
                 va="center",
-                fontsize=7.7,
+                fontsize=7.7 * text_scale,
                 color="0.10",
             )
         ax1.legend(
@@ -297,22 +316,26 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
         _plot_block_points(ax2, other_fit, open_symbols=False, size=86.0)
         _plot_block_points(ax2, outliers, open_symbols=True, size=106.0)
         for point in outliers:
-            dx, dy = OUTLIER_LABEL_OFFSETS.get(str(point["element"]), (10, 10))
+            dx, dy, ha, va = OUTLIER_LABEL_OFFSETS.get(
+                str(point["element"]), (10, 10, "left", "center")
+            )
             block = str(point["block"])
             ax2.annotate(
                 _charge_label(point),
                 (float(point["m_i"]), float(point["r_eff"])),
                 xytext=(dx, dy),
                 textcoords="offset points",
-                ha="left",
-                va="center",
-                fontsize=7.8,
+                ha=ha,
+                va=va,
+                fontsize=7.8 * text_scale,
                 color=str(PANEL_B_STYLES[block]["color"]),
             )
         ax2.legend(
             handles=[
-                Line2D([0], [0], marker="o", linestyle="None", markerfacecolor=PANEL_B_STYLES["d"]["color"], markeredgecolor="#444444", markeredgewidth=0.65, markersize=4.9, label=str(PANEL_B_STYLES["d"]["label"])),
+                # Ordered p, d, f — the order the blocks first occur on the
+                # periodic table.
                 Line2D([0], [0], marker="s", linestyle="None", markerfacecolor=PANEL_B_STYLES["p"]["color"], markeredgecolor="#444444", markeredgewidth=0.65, markersize=5.0, label=str(PANEL_B_STYLES["p"]["label"])),
+                Line2D([0], [0], marker="o", linestyle="None", markerfacecolor=PANEL_B_STYLES["d"]["color"], markeredgecolor="#444444", markeredgewidth=0.65, markersize=4.9, label=str(PANEL_B_STYLES["d"]["label"])),
                 Line2D([0], [0], marker="D", linestyle="None", markerfacecolor=PANEL_B_STYLES["f"]["color"], markeredgecolor="#444444", markeredgewidth=0.65, markersize=4.9, label=str(PANEL_B_STYLES["f"]["label"])),
             ],
             loc="lower right",

@@ -1,0 +1,79 @@
+Report of the Referee -- LR20628MR/Whittaker
+----------------------------------------------------------------------
+
+This manuscript presents an interesting and potentially important attempt to
+place the bond-valence model on a more fundamental physical footing by deriving
+its exponential form as the leading-order limit of Yukawa-screened
+electrostatics. The idea is original, and if correct it would provide a welcome
+physical interpretation of empirical bond-valence parameters that have been
+widely used for decades. The manuscript is also supported by a substantial
+amount of numerical analysis and by extensive supplementary material.
+
+I should state, however, that I am not a specialist of the bond-valence model.
+My comments therefore reflect the perspective of a reader familiar with
+condensed-matter physics and electronic structure, but not with the technical
+details of bond-valence parameterization. I think this perspective may actually
+be relevant for the readership of Physical Review Materials, since many readers
+will likely be in a similar situation.
+
+My main concern is that the introduction of the theory is rather abrupt. Several
+key objects are introduced without sufficient explanation for readers outside
+the bond-valance community. In particular, the coordination-resolved B(R0)
+lines, which play a central role throughout the manuscript and in the
+Supplementary Information, appear almost without motivation. From the text, it
+is not immediately clear how these lines are constructed numerically. Are they
+obtained by fixing R0​ and re-optimizing B, or by some other procedure? Since
+the subsequent theoretical analysis is built upon these lines, I think the
+fitting procedure should be described explicitly in the manuscript. In addition,
+I think the Introduction would benefit from a broader discussion of previous
+work aimed at providing a physical interpretation of the bond-valence model and
+related electrostatic approaches, so that the reader can more clearly appreciate
+what is genuinely new in the present contribution.
+
+More generally, I found that several conceptual steps in the derivation would
+benefit from additional discussion. For example, the partition-function
+formulation and the definition of the first-principles screening centroid are
+mathematically interesting, but their physical motivation is introduced rather
+quickly. Readers unfamiliar with bond-valence theory may struggle to distinguish
+what is an exact reformulation, what is an approximation, and what is a physical
+interpretation.
+
+I am also only partially convinced by the empirical validation presented in Fig.
+1. The overall agreement with the predicted slope is encouraging, but there
+remains a substantial spread for some oxidation states, particularly around z=3.
+The reported weighted R2 values are excellent, yet the visual impression is
+considerably less compelling. It would therefore be useful to discuss the origin
+of this scatter more explicitly, and, if possible, to indicate the uncertainty
+associated with the fitted slopes.
+
+Conversely, while examining the Supplementary Information, I was somewhat
+surprised by a different feature: for many species the coordination-dependent
+B(R0​) lines are almost coincident, making the determination of their
+intersection appear rather delicate. This may simply reflect the logarithmic
+dependence of the predicted slopes on z/n, so that the expected differences
+between coordination numbers are intrinsically small, but if so I think it would
+be worthwhile to comment on this point explicitly. As presented, the figures
+leave the impression that the characteristic intersection is in some cases only
+weakly constrained.
+
+These comments should not be interpreted as a negative assessment of the work.
+On the contrary, I found the central idea original and interesting, and I
+appreciated the transparency of the Supplementary Information, which documents
+the fitting procedure and underlying data in considerable detail. My impression
+is that the manuscript would become considerably more accessible—and,
+consequently, more convincing to a broad materials-physics audience—if the
+authors devoted somewhat more space to explaining the construction of the
+empirical B(R0​) lines, the assumptions entering the derivation, and the
+interpretation of the validation figures.
+
+Overall, I believe the manuscript has the potential to make a valuable
+contribution, but I would encourage the authors to improve the presentation and
+clarify the methodological aspects before publication.
+
+Note: many figure captions in the Supplementary seem to be incorrect.
+
+Justification for/against Letter:
+
+I am not sure if the Letter format is the most appropriate for this paper. As
+now, I find it a bit abrupt, but it is also quite short, so maybe the authors
+can add enough explanations while keeping it a Letter.
