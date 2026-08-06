@@ -263,7 +263,7 @@ def render_box_figure(beta_charge_frames: dict[int, pd.DataFrame]) -> Path:
     fig, axes, style = manuscript_subplots(
         "full_width_2panel",
         ncols=len(panels),
-        panel_height_ratio=0.78,
+        panel_height_ratio=0.85,
         sharey=False,
         constrained_layout=False,
     )
@@ -405,8 +405,8 @@ def render_box_figure(beta_charge_frames: dict[int, pd.DataFrame]) -> Path:
                 label=r"$\beta = 1 / \ln(z/n)$",
             ),
         ]
-        fig.subplots_adjust(bottom=0.27, top=0.95, wspace=0.10)
-        fig.supxlabel(r"$z$", fontsize=style.axis_label_pt, y=0.09)
+        fig.subplots_adjust(bottom=0.30, top=0.95, wspace=0.10)
+        fig.supxlabel(r"$z$", fontsize=style.axis_label_pt, y=0.085)
         legend_ax = fig.add_axes([0.10, 0.01, 0.80, 0.05])
         legend_ax.set_axis_off()
         style_manuscript_legend(

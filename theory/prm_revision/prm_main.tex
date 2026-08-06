@@ -1,4 +1,4 @@
-\documentclass[aps,prl,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
+\documentclass[aps,prmaterials,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
 
 \usepackage{amsmath}
 \usepackage{mathtools}
@@ -8,6 +8,15 @@
 \Urlmuskip=0mu plus 2mu\relax
 
 \graphicspath{{figures/}}
+
+% Keep natural paragraph spacing; pool column slack at the bottom instead
+% of stretching the parskip glue (visible in equation-free columns).
+\raggedbottom
+
+% Run-in section heads. Adds a little vertical space above the paragraph
+% to separate the Letter's sections; the glue is discardable at column
+% tops. Tune the amount here.
+\newcommand{\runinsec}[1]{\medskip\emph{#1}}
 
 \begin{document}
 
@@ -26,9 +35,10 @@
 
 \author{Naman Katyal}
 \affiliation{Energy Geosciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\affiliation{Materials Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
 
 \author{Piotr Zarzycki}
-\affiliation{Materials Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
+\affiliation{Energy Geosciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720}
 
 \begin{abstract}
 The bond-valence model is a standard way to estimate bond strengths in
@@ -40,12 +50,14 @@ an electronic screening length.  This turns bond valence from an
 empirical fitting rule into a transferable descriptor of local screened
 charge response across coordination environments.  The resulting theory predicts how the
 bond-valence parameters should vary with ionic charge and coordination
-number, and that prediction agrees with 150 fitted valences from 94
-cation--oxygen species, including 68 in fourfold coordination and 
-82 in sixfold coordination, at an abundance-weighted
-coefficient of determination of 0.986.  A comparison with
-first-principles charge densities shows that the bond-valence shell 
-radius tracks the electronic screening cloud with coefficients of determination 
+number, and that prediction agrees with 150 fitted relationships from 94
+cation--oxygen species, including 68 in fourfold coordination and
+82 in sixfold coordination.  The screening length also
+sets a valence-dependent cation--oxygen contact distance that
+reproduces tabulated crystal radii, with an effective oxygen size
+that grows by about 0.09~\AA{} per unit of cation charge.  A comparison with
+first-principles charge densities shows that the bond-valence shell
+radius tracks the electronic screening cloud with coefficients of determination
 of 0.9998 for ten alkali and alkaline-earth oxides and 0.967 for 21 other binary oxides
 whose nearest-neighbor environments match the theory's assumptions.  The
 widely used bond-valence model is thus the leading-order expression of
@@ -66,38 +78,60 @@ S_{ij}=\exp\!\left(\frac{R_0-R_{ij}}{B}\right),
 where $R_0$ and $B$ are parameters fitted to crystallographic data and the
 valence-sum rule $\sum_j S_{ij}=z_i$ (formal charge) is enforced.  The
 model is used routinely for structure validation
-\cite{Brown2009,Brown2016,Gagn2015}.
+\cite{Brown2009,Brown2016} and increasingly as a structural descriptor
+in machine-learning models \cite{Li2021,Zhang2023,Miller2023}.
 
 Several lines of work have sought a physical foundation for the
-bond-valence exponential.  Preiser \emph{et al.}\ \cite{Preiser1999} 
-interpreted bond valence as localized
-electrostatic flux constrained by Gauss's-law. Brown developed this picture further within a
-broader electrostatic framework \cite{Brown2009,Brown2016}. However, in those
-treatments the exponential distance dependence is postulated rather than
-derived from a specific potential, leaving $B$ as an empirical fit
-parameter with length units but no associated physical grounding.  
-Adams related the softness $B$ to Morse-potential curvature and motivated non-universal
-$B$ values \cite{Adams2001,Chen2017}, but does not connect $B$ to a screening length.
-Modern first-principles work can compute screened local interactions
-from electronic structure \cite{Aryasetiawan2004,Shih2012}, but does not
-derive the bond-valence form itself.  Here we show that a Yukawa
-expansion obtains the exponential as the leading term of a specific
-screened potential, ties $B$ to a measurable screening length, predicts
-the $B$--$R_0$ correlation with no fitted constants, and connects the
-fitted parameters to electronic structure.
+bond-valence exponential.  Preiser \emph{et al.}\ \cite{Preiser1999}
+showed that bond valences closely
+track the electrostatic flux linking each cation--anion pair,
+recasting the model as localized electrostatics constrained by
+Gauss's law. Brown developed this flux picture into a broader
+framework in which bonds act as localized capacitors
+\cite{Brown2009,Brown2016}.  In these treatments the exponential
+distance dependence is postulated rather than derived from a
+specific potential, so the softness $B$ remains an empirical length
+with no associated interaction. In practice the near-degeneracy of jointly
+fitted $(R_0,B)$ is well documented \cite{Gagn2015}, and it has been suppressed
+by fixing $B\simeq0.37$~\AA\ \cite{Brown1985}. Adams and co-workers connected $B$
+to Morse-potential curvature and showed that transferable parameter sets require
+non-universal $B$ \cite{Adams2001,Chen2017}.
 
-\emph{Screened-flux derivation.} A cation with charge $Q_i=z_i e$ emits
-electrostatic flux $Q_i/\epsilon_0$.  In a Yukawa field with screening
-length $\lambda$, the signed flux amplitude captured by bond $i$--$j$ is
+The $(R_0,B)$ correlation itself has not been treated as physical content of
+the theory, but here we show that a Yukawa expansion obtains
+the exponential as the leading term of a specific screened
+potential, ties $B$ to a measurable screening length, predicts the
+$B$--$R_0$ correlation with no fitted constants, and connects the
+fitted parameters to electronic structure.  In what follows,
+we extend Brown's postulate that screened flux partitions among coordinating anions,
+from which isotropic Yukawa weight and its linearization are the two controlled
+approximations. We show that partition-thermodynamic relations emerge as exact
+identities of Eq.~\eqref{eq:bv}. Modern first-principles methods that compute
+screened local Coulomb interactions directly from electronic structure
+\cite{Aryasetiawan2004,Shih2012} are shown to correlate with the Yukawa screening
+length, establishing a physical foundation for the bond-valence model.
+
+\runinsec{Screened-flux derivation.} A cation with charge $Q_i=z_i e$ emits
+electrostatic flux $Q_i/\epsilon_0$.  In a polarizable medium the
+intervening electrons screen this flux, and the standard static
+description of screening replaces the Coulomb potential by the Yukawa
+form $\phi(r)\propto e^{-r/\lambda}/r$, with $\lambda$ the screening
+length \cite{Debye1923,Thomas1927,Fermi1928,Yukawa1935}.  Applying
+Gauss's law to this potential, the flux threading a sphere of radius
+$R$ is $(Q_i/\epsilon_0)\,e^{-R/\lambda}(1+R/\lambda)$, so the signed
+flux amplitude captured by bond $i$--$j$ at length $R_{ij}$ is
 $\widetilde\Phi_{ij}\propto e^{-R_{ij}/\lambda}(1+R_{ij}/\lambda)$.
+Preiser \emph{et al.}\ \cite{Preiser1999} partitioned flux according to
+Gauss's law such that each bond carries a valence proportional to the
+electrostatic flux it subtends.  We retain the same correspondence, but for
+the screened field. 
+
+Adopting this single-$\lambda$ Yukawa weight for every bond of the
+shell is the physical ansatz of the derivation.
 Bond valence is a nonnegative partition of the cation valence among its
 anion neighbors, and two conditions fix that partition.  The
 valence-sum rule $\sum_j S_{ij}=z_i$ sets the total.
-In the unscreened electrostatic picture of
-Preiser \emph{et al.}\ \cite{Preiser1999}, flux is partitioned according to
-Gauss's law, in which each bond carries a valence proportional to the
-electrostatic flux it subtends.  We retain the same correspondence, but for a
-the screened field.  Screening attenuates the flux, and the sum rule renormalizes 
+Screening attenuates the flux, and the sum rule renormalizes
 the total back to the formal charge, so the screened field determines only the
 relative apportionment among bonds.  Preserving that
 apportionment means that ratios of bond valences equal ratios of the
@@ -106,26 +140,26 @@ captured screened-flux magnitudes,
 \frac{S_{ij}}{S_{ik}}=\frac{w_{ij}}{w_{ik}},
 \qquad w_{ij}:=|\widetilde\Phi_{ij}|.
 \end{equation*}
-This guarantees the non-negativity that bond valence requires,
+This guarantees the non-negativity that Eq.~\eqref{eq:bv} requires,
 imports the distance dependence of the screened interaction into the
 partition, and introduces a single screening parameter, $\lambda$, to
 scale the distance dependence.  Together the two conditions uniquely give
 \begin{equation}\label{eq:partition}
 S_{ij}=z_i\,\frac{w_{ij}}{\sum_k w_{ik}}.
 \end{equation}
-To linearize, expand $\ln w_{ij}$ about a reference bond length $R^*$
+To linearize, we expand $\ln w_{ij}$ about a reference bond length $R'$
 chosen within the coordination shell, giving
 \begin{equation}\label{eq:expansion}
-\ln w_{ij}= C_i - \frac{R^*}{\lambda(\lambda+R^*)}\,(R_{ij}-R^*)+\delta_{ij},
+\ln w_{ij}= C_i - \frac{R'}{\lambda(\lambda+R')}\,(R_{ij}-R')+\delta_{ij},
 \end{equation}
 where $C_i$ is independent of bond index $j$ and
-$\delta_{ij}=O[(R_{ij}-R^*)^2/(\lambda+R^*)^2]$.
+$\delta_{ij}=O[(R_{ij}-R')^2/(\lambda+R')^2]$.
 Exponentiating the linear
 term and renormalizing therefore reproduces Eq.~\eqref{eq:bv} at
-$R_{ij}=R^*$ with only quadratic log-weight error away from $R^*$.  Define
+$R_{ij}=R'$ with only quadratic log-weight error away from $R'$.  Define
 the leading-order Yukawa exponent denominator
 \begin{equation}\label{eq:B_composite}
-B = \frac{\lambda(\lambda+R^*)}{R^*}.
+B = \frac{\lambda(\lambda+R')}{R'}.
 \end{equation}
 This $B$ is the first-order exponent denominator produced by the Taylor
 expansion of the Yukawa weight. The screening length $\lambda$ is the
@@ -133,40 +167,71 @@ primary physical variable, and the sign of $\lambda$ distinguishes
 screening from anti-screening.  For $\lambda>0$ the Yukawa weight
 decays with bond length, so flux reaching the more distant anions is
 attenuated and shorter bonds capture the larger share of the valence.
-Eq.~\eqref{eq:B_composite} then gives $B>0$, coinciding with the
-conventional bond-valence parameter in Eq.~\eqref{eq:bv}.  For
-$-R^*<\lambda<0$ the weight instead grows with bond length, with the result
-that the medium enhances the far field rather than attenuating it. Longer bonds carry
-the larger share of the valence, and Eq.~\eqref{eq:B_composite} gives
-$B<0$.  This anti-screening branch is realized only rarely.  Just two
-of the 103 fitted species below fall on it.  The branch sign of $B$ is
-distinct from the sign reversal of the slope across the pole in
-Eq.~\eqref{eq:pole}, which reverses the sense of the $B$--$R_0$
-correlation between $z<n$ and $z>n$ while $B$ itself remains positive
-for nearly all species on both sides.
+For $-R'<\lambda<0$ the weight instead grows with bond length, and
+longer bonds carry the larger share.  Fits return this anti-screening
+sign for 16\% of the coordination shells in the corpus analyzed below,
+but roughly half of those are nearly degenerate shells whose fitted
+$B$ is barely constrained (Supplemental Material \cite{suppmat}).  The
+chemically systematic cases are square-planar and linear late
+transition metals (Pd$^{2+}$, Au$^{3+}$, linear O--Cu--O) and large,
+soft cations in high, irregular coordination, where directional
+bonding or ambiguous coordination produces anisotropic flux capture
+outside the isotropic Yukawa assumption.
 
-\emph{Parameter-free slope.} In the uniform-bond limit, where
+\runinsec{Parameter-free slope.} In the uniform-bond limit, where
 $R_{ij}=\bar R$ for all $j$, the valence-sum rule gives
 $R_0=\bar R+B\ln(z/n)$.  Differentiating:
 \begin{equation}\label{eq:pole}
 \beta := \frac{dB}{dR_0} = \frac{1}{\ln(z/n)}.
 \end{equation}
-This is parameter-free: the slope of the $B$--$R_0$ correlation at fixed
+The slope of the $B$--$R_0$ correlation at fixed
 coordination number $n$ is determined entirely by the charge-to-coordination
-ratio $z/n$, with a pole at $z=n$.
+ratio $z/n$, with a pole at $z=n$, with no fitting parameters.
 Figure~\ref{fig:pole} shows that Eq.~\eqref{eq:pole} reproduces the
 fitted slopes for 94 cation--oxygen species at $n=4$ and $n=6$ (68 at
 $n=4$, 82 at $n=6$, 150 slopes in total).  The weighted $R^2$ is
 $0.986$, with mean absolute error $0.15$ under the weighting scheme
 defined in the Supplemental Material \cite{suppmat}.  Each fitted
-slope is the regression slope
-of one species' per-structure $(R_0,B)$ fits at fixed $n$,
-constructed as described in the empirical validation below.
+slope is the regression of one species' per-structure $(R_0,B)$ fits at fixed $n$,
+constructed as described in the empirical validation below.  The
+slopes carry bootstrap standard errors, with median relative
+standard error $0.2\%$ across the 150 slopes and 90th percentile
+$4\%$, so the scatter at fixed $(z,n)$---most visible near
+$z=3$---reflects real differences among species rather than fit
+uncertainty (per-species slopes with error bars in the Supplemental
+Material \cite{suppmat}).
 
-\emph{Screening collapse at $z=n$.} The pole has direct physical
-content, but stating it requires a distinction that the valence-sum
-rule alone does not make.  At $z=n$ the sum rule fixes only the
-mean bond valence at unity.  It does not force $S_{ij}=1$ bond
+\runinsec{Origin of the near-pole spread.}  The spread in
+Fig.~\ref{fig:pole} concentrates in the charge classes nearest each
+pole, and the pole form itself sets that pattern.  At leading order
+$1/\beta=\ln(z/n)$, and the second-order terms $\delta_{ij}$ of
+Eq.~\eqref{eq:expansion} perturb this inverse slope, so a
+species-level perturbation $u$ shifts the fitted slope by
+$-\beta^{2}u$.  Fixed chemical scatter is thus amplified
+quadratically toward the pole, and across the charge classes of
+Fig.~\ref{fig:pole} the per-class spread indeed grows as
+$|\beta|^{1.8}$.  The $z=3$ class at $n=4$ is the clearest case.
+The same cations at $n=6$ match Eq.~\eqref{eq:pole} to a median
+$|\Delta\beta|=0.03$, so chemical diversity alone is not the
+origin.  The largest deviations belong to species for which
+fourfold oxygen coordination is rare, chiefly the trivalent
+lanthanides and Y (median 17 structures per fit), whereas the
+well-populated trivalents Ga$^{3+}$ (209 structures), B$^{3+}$
+(214), and Fe$^{3+}$ (160) lie on the curve.  The deviant slopes
+are almost all shallower than predicted, consistent with
+$\delta_{ij}$ attenuating the leading-order link in sparse,
+atypical shells, and the structure-count weighting downweights
+such shells on physical grounds.
+
+\runinsec{Screening collapse at $z=n$.} What degenerates at $z=n$ is the
+leading-order link between the fitted parameters.
+The $B$ dependence of $R_0$ vanishes as
+$z\to n$, so the intercept ceases to constrain the softness.  $B$ is
+then fixed only by the second-order spread terms $\delta_{ij}$ in
+Eq.~\eqref{eq:expansion}.  The branch change across the pole is
+carried by the sign reversal of the slope $\beta=1/\ln(z/n)$, negative
+for $z<n$ and positive for $z>n$. At $z=n$ the sum rule fixes only the
+mean bond valence at unity, but it does not force $S_{ij}=1$ bond
 by bond.  For a truly degenerate shell---all bond lengths equal by
 symmetry, as for Si$^{4+}$ in zircon (ZrSiO$_4$), whose four Si--O
 bonds are symmetry-equivalent---Eq.~\eqref{eq:bv}
@@ -181,14 +246,6 @@ $0.01$~\AA{} that finite $B$ resolves.  Both cases are common.  Of
 the 7,565 shells with $z=n$ in our corpus, 959 are
 degenerate within $10^{-3}$~\AA{} and 2,960 more have bond-length
 spreads within $0.05$~\AA{}.
-
-What degenerates at $z=n$ is therefore the leading-order link between
-the fitted parameters.  The $B$ dependence of $R_0$ vanishes as
-$z\to n$, so the intercept ceases to constrain the softness.  $B$ is
-then fixed only by the second-order spread terms $\delta_{ij}$ in
-Eq.~\eqref{eq:expansion}.  The branch change across the pole is
-carried by the sign reversal of the slope $\beta=1/\ln(z/n)$, negative
-for $z<n$ and positive for $z>n$.
 
 \begin{figure}[tb]
 \centering
@@ -211,7 +268,7 @@ Material \cite{suppmat}.}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{thomas_fermi_reff_prl.png}
-\caption{First-principles screening centroid $r_{\mathrm{eff}}$ vs.\ Boltzmann shell
+\caption{First-principles screening centroid $r_{\mathrm{eff}}$ vs.\ Gibbs shell
 centroid $m_i$.  (a) Ten $s$-block ground-state binary oxides.  The solid
 line is the shared fit and the dashed line is $r_{\mathrm{eff}}=m_i$.  (b)
 Twenty-five non-$s$-block ground-state binary oxides, color-coded by
@@ -221,30 +278,30 @@ Au$_2$O$_3$).}
 \label{fig:centroid}
 \end{figure*}
 
-\emph{Characteristic intersections.} Species that sit at or near
-$z=n$---B$^{3+}$ in trigonal coordination (B$_2$O$_3$, band gap
+\runinsec{Characteristic intersections.} Species that sit at or near
+$z=n$, e.g., B$^{3+}$ in trigonal coordination (B$_2$O$_3$, band gap
 6~eV), C$^{4+}$ at $n=4$, and Si$^{4+}$ in tetrahedral coordination
-(SiO$_2$, 9~eV)---lie in the wide-gap covalent limit where weak
-screening is physically plausible.  For these species the pole is the limit of the
-first-order approximation, so the $B$--$R_0$ line fitted at the pole
-coordination cannot by itself constrain the softness.  The data,
-however, resolve each cation at more than one coordination number,
-and the $n$-resolved $B$--$R_0$ lines of a given cation (slopes
-$\beta^{(n)}$) do not scatter independently. Plotted together, they
-intersect at a nearly common point (Supplemental Material \cite{suppmat}).
-Because the slopes are fixed by $z/n$, the intersection is set
-entirely by the line intercepts. Writing each $n$-resolved line as $B=\beta^{(n)}R_0+\beta_0^{(n)}$,
-the uniform-limit relation $R_0=\bar R+B\ln(z/n)$ gives
-
+(SiO$_2$, 9~eV), lie in the wide-gap covalent limit where weak
+screening is physically plausible.  For these species the pole marks
+the breakdown of the first-order link between $R_0$ and $B$, so the
+$B$--$R_0$ line fitted at the pole coordination cannot by itself
+constrain the softness.  The data, however, resolve each cation at
+more than one coordination number, and the $n$-resolved $B$--$R_0$
+lines of a given cation (slopes $\beta^{(n)}$) are not independent.
+Plotted together, they intersect at a nearly common point
+(Supplemental Material \cite{suppmat}).  Because the slopes are fixed
+by $z/n$, the intersection is set entirely by the line intercepts.
+Writing each $n$-resolved line as $B=\beta^{(n)}R_0+\beta_0^{(n)}$,
+\cite{Li2025} the uniform-limit relation $R_0=\bar R+B\ln(z/n)$ gives
 \begin{equation}\label{eq:intercept}
 \beta_0^{(n)}=-\frac{\bar R^{(n)}}{\ln(z/n)},
 \end{equation}
 where $\bar R^{(n)}$ is the characteristic shell radius of the
-species at coordination $n$. Each line crosses $B=0$ at the shell radius itself, so the
-slope carries the charge-to-coordination ratio while the intercept
-defines the unscreened shell radius.  The intersection of two
-coordination branches $n_1<n_2$ is therefore fixed by the dilation of
-the shell with coordination number,
+species at coordination $n$.  Each line crosses $B=0$ at the shell
+radius itself, so the slope carries the charge-to-coordination ratio
+while the intercept records where the shell sits.  The intersection
+of two coordination branches $n_1<n_2$ is therefore fixed by the
+dilation of the shell with coordination number,
 \begin{equation}\label{eq:bstar_dilation}
 B^*=\frac{\bar R^{(n_2)}-\bar R^{(n_1)}}{\ln(n_2/n_1)},
 \end{equation}
@@ -254,96 +311,98 @@ Eq.~\eqref{eq:bstar_dilation} gives $B^*>0$ naturally on the
 screening branch, and the characteristic softness acquires a direct
 geometric meaning.  It is the logarithmic rate at which the
 coordination shell dilates with $n$.
-These intersections define characteristic points
-$(R_0^*,B^*)$, which are species-level constants fixed by the family of lines
-rather than by any single member, and therefore well defined even
-when one line steepens toward the pole.
 
-Within each $(z,n)$ group, the slope $\beta^{(n)}$ confirms
-Eq.~\eqref{eq:pole} across all families.  The $n$-resolved lines
-for a given element and oxidation state converge to characteristic pairs
-$(R_0^*,B^*)$, defined as the intersection that minimizes
-the weighted variance of the coordination-resolved $B$--$R_0$ lines,
-with each line weighted by the final fit population of that
-coordination shell (Supplemental Material \cite{suppmat}).
-Of the 103 species, 101 have $B^*>0$ (screening branch).
+These intersections define the characteristic pair $(R_0^*,B^*)$,
+species-level constants fixed by the family of lines rather than by
+any single member, and therefore well defined even when one line
+steepens toward the pole.  Two lines on the same branch differ in
+slope by $\ln(n_2/n_1)/[\ln(z/n_1)\ln(z/n_2)]$, which is small
+whenever $z$ is well separated from both coordination numbers, so
+such lines can appear nearly coincident.  Their intersection
+nonetheless remains constrained exactly to the extent that the data
+resolve the shell dilation in Eq.~\eqref{eq:bstar_dilation}.
+Operationally, $(R_0^*,B^*)$ minimizes the weighted variance of the
+coordination-resolved lines, with each line weighted by the number
+of structures retained in its final fit, and the pooled construction
+reports the residual spread $\sigma_B$ as its conditioning
+diagnostic (Supplemental Material \cite{suppmat}).  The
+screening-branch $B^*$ values are not universal but cluster near the
+conventional $B=0.37$~\AA{} \cite{Brown1985}, and their comparison
+with published softness parameterizations
+\cite{Adams2001,Chen2017,Gagn2015} is given in the Supplemental
+Material \cite{suppmat}.
 
-On the
-screening branch ($\lambda>0$, $B>0$), inverting
-Eq.~\eqref{eq:B_composite}
-at the shell level gives the structure-specific screening length
-$\lambda=(-R^*+\sqrt{R^{*2}+4BR^*})/2$.  Evaluating the same
+On the screening branch ($\lambda>0$, $B>0$), inverting
+Eq.~\eqref{eq:B_composite} at the shell level gives the
+structure-specific screening length
+$\lambda=(-R'+\sqrt{R'^2+4BR'})/2$.  Evaluating the same
 positive-branch inversion at the characteristic point, where the
-operational choice of $R^*$ equals the characteristic intercept $R_0^*$, gives
-the tabulated species constant
+operational choice of $R'$ equals the characteristic intercept
+$R_0^*$, gives the tabulated species constant
 $\lambda^*=(-R_0^*+\sqrt{R_0^{*2}+4B^*R_0^*})/2$.  The root is real
 for $B^*\ge -R_0^*/4$.  It is positive on the screening branch and
-negative on the anti-screening branch.
+negative on the anti-screening branch.  The pole itself has a
+screening interpretation.  The species at $z=n$ are wide-gap
+insulators (B$_2$O$_3$ and SiO$_2$ above), and in conventional
+screening theory gapped systems screen weakly because low-energy
+charge response is suppressed, in contrast to the finite
+Thomas--Fermi screening set by a metal's density of states at the
+Fermi level \cite{Thomas1927,Fermi1928,Debye1923,AshcroftMermin1976}.
+The fitted family behaves the same way.  Approaching the pole
+($z=n\mp\varepsilon$, $\varepsilon\to 0$), sustaining a finite
+intercept offset $R_0-R_0^*$ requires the inferred screening length
+to grow as $|\lambda|\sim\varepsilon^{-1/2}$, so the species where
+weak screening is physically expected are exactly those for which
+the model demands an unbounded screening length.  Our coarse-grained
+$\lambda$ is not identical to those microscopic lengths, but the two
+weak-screening limits agree.
 
-Approaching the pole from either
-side ($z=n\mp\varepsilon$, $\varepsilon\to 0$), the leading-order
-relation can sustain a finite intercept offset $R_0-R_0^*$ (with
-$R_0^*$ the characteristic intercept introduced above) only if the
-fitted parameters grow as
-\begin{equation*}
-|B| \sim \frac{n\,|R_0-R_0^*|}{\varepsilon},
-\qquad
-|\lambda| \sim \sqrt{\frac{R^*\,n\,|R_0-R_0^*|}{\varepsilon}}.
-\end{equation*}
-
-The inferred screening length grows as $\varepsilon^{-1/2}$.  In conventional
-screening theory, metals have finite Thomas--Fermi screening set by a
-nonzero density of states at the Fermi level, whereas gapped or
-correlated insulators suppress low-energy charge response and therefore
-screen more weakly \cite{Thomas1927,Fermi1928,Debye1923,AshcroftMermin1976}.
-Our coarse-grained $\lambda$ is not identical to those microscopic
-lengths, but its pole at $z=n$ is consistent with the same weak-screening
-limit: the bond-valence partition becomes insensitive to finite
-bond-length differences and the fitted $B$--$R_0$ parameters cease to
-resolve the shell.  
-
-For the 101 screening-branch species, $\lambda^*$ is a tabulated
-constant (Supplemental Material \cite{suppmat}).  The remaining two
-species (Mo$^{3+}$, Sb$^{3+}$) have $B^*<0$ and fall on the
-anti-screening branch.  The same inversion assigns them negative
-$\lambda^*$ values, tabulated as signed diagnostics (Supplemental
-Material \cite{suppmat}).  Both sit outside the first-order
-Yukawa regime: Sb$^{3+}$ has a stereoactive $5s^2$ lone pair driving
-strong directional distortion, and Mo$^{3+}$ is constrained by only two
-coordination shells (Supplemental Material \cite{suppmat}), so its
-$(R_0^*,B^*)$ is provisional.  The screening-branch $B^*$ values are non-universal
-(mean $0.38\pm0.15$~\AA), in qualitative agreement with Adams's softBV
-parameterization \cite{Adams2001}, while $\lambda^*$ provides a
-single-parameter species descriptor.
-
-The second root of the inversion supplies an independent
-crystal-chemical check.  The two roots of the quadratic behind
-Eq.~\eqref{eq:B_composite} sum to $-R_0^*$, so on the screening
-branch the anti-screening alias of $\lambda^*$ has magnitude
+The $\lambda^*$ values determined from the $B^*$ are tabulated in
+the Supplemental Material \cite{suppmat} for all 103 species,
+positive for the 101 screening-branch species and negative for the
+two anti-screening species (Mo$^{3+}$, Sb$^{3+}$), whose departures
+from the first-order Yukawa regime are diagnosed there.  The two
+roots of the species-level screening length also have physical
+meaning.  The anti-screening alias of $\lambda^*$ has magnitude
 $|\lambda^*_-|=R_0^*+\lambda^*$.  This is the characteristic shell
 radius extended by one screening length, the outer reach of the
 screened bond.  Compared against Shannon crystal radii
-\cite{Shannon1976} averaged over each species' observed coordination
-numbers, $|\lambda^*_-|$ behaves as a valence-dependent contact
-distance (Supplemental Material \cite{suppmat}).  Unit-slope fits
-$|\lambda^*_-|=r_{\mathrm{cr}}+c(z)$ hold within each formal-charge
-class, and the offsets follow $c(z)\approx 1.05+0.09\,z$~\AA.  The
-constant sits at the scale of the oxygen crystal radius, so at low
-charge the second root reproduces the geometric cation--oxygen
+\cite{Shannon1976}, $|\lambda^*_-|$ behaves as a valence-dependent
+contact distance (Supplemental Material \cite{suppmat}).  Here
+$r_{\mathrm{cr}}$ denotes the cation's Shannon crystal radius
+averaged over its observed coordination numbers, the geometric
+baseline for the cation--oxygen contact.  The comparison is
+empirical, with no assumption about the physics that sets the
+crystallographic radii.  Within each formal-charge class the slope
+of $|\lambda^*_-|$ against $r_{\mathrm{cr}}$ is fixed at one and a
+single offset $c(z)$ is fitted,
+\begin{equation*}
+|\lambda^*_-|=r_{\mathrm{cr}}+c(z),
+\end{equation*}
+so $c(z)$ measures how far the outer reach of the screened bond
+extends beyond the cation radius.  These one-parameter fits describe
+each class well, and the offsets grow linearly with formal charge,
+$c(z)\approx 1.05+0.09\,z$~\AA.  The two terms have direct physical
+readings.  The constant $1.05$~\AA{} sits at the scale of the oxygen
+crystal radius, so at low charge $r_{\mathrm{cr}}+c(z)$ is the
+cation radius plus an oxygen radius, the geometric cation--oxygen
 contact distance.  The increment shows the screened bond reaching
-about $0.09$~\AA{} beyond that contact per unit of formal charge.
-The effective oxygen size seen by the bond-valence partition is
-therefore not a fixed sphere.  It grows with cation valence, which is
-the statement that the bond-valence shell follows the electronic
-screening cloud rather than a hard ionic contact.  The
-first-principles comparison tests this directly.
+about $0.09$~\AA{} beyond that contact per unit of formal charge, so
+$c(z)$ acts as an effective oxygen size.  The effective oxygen size
+seen by the bond-valence partition is therefore not a fixed sphere.
+It grows with cation valence, which is the statement that the
+bond-valence shell follows the electronic screening cloud rather
+than a hard ionic contact.  Comparison to first-principles electron
+densities tests this directly, but first requires a shell
+radius that the bond-valence partition itself defines.
 
-
-
-\emph{Partition thermodynamics.} The partition of
-Eq.~\eqref{eq:partition} carries a thermodynamic structure, developed
-here in three steps.  First, normalize the bond valences within the
-shell:
+\runinsec{Partition thermodynamics.} Reading
+Eq.~\eqref{eq:partition} as a statistical ensemble supplies a characteristic
+shell radius and also fixes the reference length $R'$ left open above.
+These are the direct consequence of Eqs.~\eqref{eq:bv} and
+\eqref{eq:partition}.  We introduce thermodynamic language as interpretation,
+and develop the structure in three
+steps.  First, normalize the bond valences within the shell:
 \begin{equation}\label{eq:pweights}
 p_{ij}:=\frac{S_{ij}}{\sum_k S_{ik}}
 =\frac{w_{ij}}{\sum_k w_{ik}}
@@ -353,30 +412,17 @@ where $Z_i:=\sum_j e^{-R_{ij}/B}$.  The middle form follows from
 Eq.~\eqref{eq:partition}, whose shell total is $z_i$, so $p_{ij}$ is
 the normalized screened-flux weight of bond $j$.  The last form
 follows from Eq.~\eqref{eq:bv}, in which $R_0/B$ cancels in the
-ratio.  Equation~\eqref{eq:pweights} is a Gibbs distribution over the
+ratio.  The middle and last forms coincide to the first order of
+Eq.~\eqref{eq:expansion}.  Equation~\eqref{eq:pweights} is a Gibbs distribution over the
 coordination shell.  Bond length plays the role of energy, $Z_i$ is
 the canonical partition function, and $B$ is the temperature-like
-scale.  Both signs of $B$ are admissible, because a finite
-coordination shell has a bounded bond-length spectrum, the same
-condition that admits negative temperatures in bounded statistical
-systems.  On the screening branch, $B>0$ acts as an ordinary positive
-temperature.  Weight decays with bond length and the shorter bonds
-dominate.  On the anti-screening branch, $B<0$ acts as a negative
-temperature.  The shell is population-inverted, weight grows with
-bond length, and bonds longer than $R_0$ carry more than one valence
-unit [$S_{ij}=e^{(R_0-R_{ij})/B}>1$ requires $R_{ij}>R_0$ when
-$B<0$].  The branches meet at the pole.  $|B|\to\infty$ is the
-infinite-temperature limit, where $p_{ij}\to 1/n$ and the partition
-ceases to resolve bond-length differences---the screening collapse of
-$z=n$.  The crossing occurs through $1/B=0$, the same way a bounded
-system passes from positive to negative temperature.  Second,
-define two coordination  shell properties,
+scale. Second, define two coordination shell properties,
 \begin{equation}\label{eq:mean_entropy}
 m_i:=\sum_j p_{ij}R_{ij},
 \qquad
 H_i:=-\sum_j p_{ij}\ln p_{ij},
 \end{equation}
-the Boltzmann mean---the valence-weighted centroid of the
+the Gibbs mean---the valence-weighted centroid of the
 coordination shell---and the Shannon entropy of the bond-weight
 distribution.  Third, invert Eq.~\eqref{eq:bv} bond by bond,
 $R_0=R_{ij}+B\ln S_{ij}$, and average over the weights $p_{ij}$.
@@ -385,30 +431,31 @@ identity
 \begin{equation}\label{eq:R0_identity}
 R_0 = m_i + B(\ln q_i - H_i),
 \end{equation}
-where $q_i:=\sum_j S_{ij}$.  Here $H_i$ measures how uniformly the
+where $q_i:=\sum_j S_{ij}$, equal to $z_i$ when the valence-sum rule
+is enforced exactly.  Here $H_i$ measures how uniformly the
 bond-valence weight is distributed across the coordination shell.  It
 reaches $\ln n$ for a symmetric shell and falls below it as distortion
 concentrates weight on the extremal bonds.
 Thus, $R_0$ is an entropy-corrected weighted
 mean. It reduces to the unit-valence limit $R_0=R_{ij}$ that Brown
-\emph{et al.}\ \cite{Brown2016} derived for a single bond with $S_{ij}=1$. 
-The Boltzmann mean also fixes the reference length left open in
-the screened-flux derivation. We take $R^*=m_i$, which centers the
+\emph{et al.}\ \cite{Brown2016} derived for a single bond with $S_{ij}=1$.
+The Gibbs mean also fixes the reference length left open in
+the screened-flux derivation. We take $R'=m_i$, which centers the
 log-weight expansion of Eq.~\eqref{eq:expansion} on the weighted
 shell centroid that the partition function singles out and makes the
-operational content of $R^*$ in Eq.~\eqref{eq:B_composite} explicit.
+operational content of $R'$ in Eq.~\eqref{eq:B_composite} explicit.
 
-\emph{Empirical validation.} Bond-valence parameters $(R_0,B)$ were
+\runinsec{Empirical validation.} Bond-valence parameters $(R_0,B)$ were
 determined for 103 cation--oxygen species using first-principles
 relaxed crystal
 structures from the Materials Project \cite{MaterialsProject,Horton2025}.
 For each structure, bond strengths were obtained by solving the
 valence-sum and loop constraints on the cation--oxygen bond graph
-\cite{Li2025}, and $(R_0,B)$ were fitted by linear least squares. 
-Each structure thus contributes
-one $(R_0,B)$ pair with both parameters fitted jointly, rather than
-$B$ being re-optimized at fixed $R_0$.  The coordination-resolved
-lines of Fig.~\ref{fig:pole} are then obtained by regressing $B$ on
+\cite{Li2025}, and $(R_0,B)$ were fitted jointly by linear least
+squares, not by re-optimizing $B$ at fixed $R_0$.
+The coordination-resolved
+lines of Fig.~\ref{fig:pole}, first introduced in
+Ref.~\cite{Li2025}, are then obtained by regressing $B$ on
 $R_0$ across the per-structure pairs of each species at fixed $n$ (at
 least five structures per cell), using an outlier-robust RANSAC
 estimator refit by least squares on its inliers.  A fitted slope
@@ -419,12 +466,15 @@ $p$-, $d$-, and $f$-block cations.  Figure~\ref{fig:pole} shows the 94
 species (150 fitted slopes) for which the prediction is finite at
 $n=4$ and/or $n=6$.
 
-
-\emph{First-principles confirmation.} The connection to electronic structure is tested
-by comparing the bond-valence Boltzmann shell centroid $m_i$ of
-Eq.~\eqref{eq:mean_entropy} to a first-principles screening centroid
-$r_{\mathrm{eff}}$ extracted from charge densities in the
-Materials Project \cite{MaterialsProject,Horton2025}.  For each M--O
+\runinsec{First-principles confirmation.} If bond valence is captured
+screened flux, the shell radius resolved by the bond-valence
+partition---the Gibbs shell centroid $m_i$ of
+Eq.~\eqref{eq:mean_entropy}---should track the radius at which
+screening charge accumulates along each bond.  We test this by
+comparing $m_i$ to a first-principles screening centroid
+$r_{\mathrm{eff}}$, the centroid of the excess electron density on
+the oxygen side of the bond path, extracted from charge densities in
+the Materials Project \cite{MaterialsProject,Horton2025}.  For each M--O
 bond with $R_{ij}\le 3.5$~\AA, the total valence-electron density
 $\rho(r)$ is sampled at 200 uniformly spaced points along the
 nearest-image straight M--O segment.  An interior density-minimum proxy
@@ -468,57 +518,70 @@ The correspondence therefore spans the $p$, $d$, and $f$ blocks, and
 its breakdown is confined to strongly anisotropic directional-bonding
 environments outside the isotropic Yukawa regime.
 
-\emph{Discussion.} The main result is that the bond-valence
-exponential is the leading-order term of Yukawa screened electrostatics.  The
-fitted exponent denominator $B$ is not a free parameter but the
-leading-order Yukawa denominator set by the screening length and shell geometry, 
-with its sign carrying the screening/anti-screening branch information. The empirical correlation
-between $R_0$ and $B$ is determined by $\beta=1/\ln(z/n)$ and exact in the uniform-bond limit.
-The partition-function structure for inequivalent bonds gives an entropy-corrected identity
-for $R_0$ and a free energy $F=m_i-BH_i=R_0-B\ln q_i$ in length units.
+\runinsec{Discussion.} The main result is that the bond-valence
+exponential is the leading-order term of Yukawa screened
+electrostatics.  The fitted exponent denominator $B$ is not a free
+parameter but the leading-order Yukawa denominator set by the
+screening length and shell geometry, with its sign carrying the
+screening/anti-screening branch information that diagnoses the applicability
+of the first order, linear assumption employed here. The empirical
+correlation between $R_0$ and $B$ is determined by
+$\beta=1/\ln(z/n)$ and exact in the uniform-bond limit.  The
+partition-function structure for inequivalent bonds gives an
+entropy-corrected identity for $R_0$ and a free energy
+$F=m_i-BH_i=R_0-B\ln q_i$ in length units.
 
-The derivation rests on two approximations: (i) the first-order Taylor
-expansion, which breaks down for highly distorted shells ($d^4$/$d^9$
-Jahn--Teller octahedra), and (ii) isotropic flux capture, in which
-the ansatz $w_{ij}\propto e^{-R_{ij}/\lambda}(1+R_{ij}/\lambda)$
-assigns each bond a weight that depends on its length alone.  
-
-as in stereoactive lone-pair and strongly anisotropic
-environments \cite{Bosi2014,Brown2016}.  The empirical signature of
-this breakdown is visible in Fig.~\ref{fig:centroid}b: the four
-oxides whose ground-state structures fail the isotropic flux-capture
+The derivation rests on two approximations: (i) the first-order
+Taylor expansion, which breaks down for highly distorted shells
+($d^4$/$d^9$ Jahn--Teller octahedra), and (ii) isotropic flux
+capture, in which the ansatz
+$w_{ij}\propto e^{-R_{ij}/\lambda}(1+R_{ij}/\lambda)$ assigns each
+bond a weight that depends on its length alone.  Both assumptions
+fail when directional bonding concentrates flux capture into
+particular solid angles, adding a bond-dependent geometric term that
+the expansion of Eq.~\eqref{eq:expansion} cannot absorb into $C_i$,
+as in stereoactive lone-pair and strongly anisotropic environments
+\cite{Bosi2014,Brown2016}.  The empirical signature of this
+breakdown is visible in Fig.~\ref{fig:centroid}b: the four oxides
+whose ground-state structures fail the isotropic flux-capture
 assumption (B$_2$O$_3$, P$_2$O$_5$, As$_2$O$_3$, Au$_2$O$_3$) are
 precisely those that depart from the centroid line, identifying
 ground-state directional bonding as the empirical boundary of the
-first-order Yukawa regime.  Extending the first-principles centroid comparison to the full set of
-transition-metal and $f$-block oxides beyond the subset treated here
-will require going beyond the Thomas--Fermi approximation to include
-orbital directionality and correlation effects.
+first-order Yukawa regime.  Extending the first-principles centroid
+comparison to the full set of transition-metal and $f$-block oxides
+beyond the subset treated here will require going beyond the
+Thomas--Fermi approximation to include orbital directionality and
+correlation effects.
 
-The first-principles centroid comparison confirms that this is not merely a
-mathematical analogy, but that the electronic screening cloud and the bond-valence
-weights describe the same shell geometry. The small deviation from the
-identity line is explained by the oxygen-side valence centroid shift
-measured directly from the same charge-density paths, while the null-model
-controls show that the collapse is substantially sharper than a generic
-monotone size trend.
+The first-principles centroid comparison confirms that this is not
+merely a mathematical analogy, but that the electronic screening
+cloud and the bond-valence weights describe the same shell geometry.
+The offset from the identity line has a direct origin.  The Gibbs
+shell centroid $m_i$ is built from internuclear M--O distances and
+therefore references the oxygen nucleus, whereas $r_{\mathrm{eff}}$
+tracks the oxygen-side screening charge, whose centroid is displaced
+from the nucleus into the bond.  The same charge-density paths
+measure this oxygen-side valence shift directly,
+$\Delta_{\mathrm{O,val}}=0.39\pm0.03$~\AA{} on average, matching the
+$m_i-r_{\mathrm{eff}}$ gap of the fitted lines across the shell
+radii (Supplemental Material \cite{suppmat}).  The null-model
+controls show that the collapse is substantially sharper than a
+generic monotone size trend.
 
-Bond valence is therefore recast as a coarse-grained observable of local
-screened charge response rather than a purely empirical structural
-heuristic.  Concretely, the species-specific screening length
-$\lambda^*$ is a compact tabulated descriptor that organizes the shell
-thermodynamics and, through the identities above, provides a calibrated
-starting point for estimating bond weights, entropy, effective
-coordination number, and $R_0$ in new coordination environments without
-additional adjustable parameters.  Establishing the full predictive scope of that program
-beyond the families validated here remains future work.  This connects
-Pauling's 1929 valence rules
-\cite{Pauling1929} to Yukawa's 1935 screened potential \cite{Yukawa1935}
-through a quantitative bridge that has been missing for nearly a century.
+Bond valence is therefore recast as a coarse-grained observable of
+local screened charge response in specific screening environments. 
+Through species-level aggregation of screening across formal charge 
+and coordination number, the screened bond coincides 
+with the cation's Shannon crystal radius plus an effective oxygen size that grows with cation
+valence.  Establishing the full predictive scope of that program beyond the families
+validated here remains future work.  This connects Pauling's 1929
+valence rules \cite{Pauling1929} to Yukawa's 1935 screened potential
+\cite{Yukawa1935} through a quantitative bridge that has been
+missing for nearly a century.
 
 \begin{acknowledgments}
-This work was supported by the the U.S.\ Department of Energy, Office of Science, 
-Office of Basic Energy Sciences, under Contract No.\ DE-AC02-05-CH11231 
+This work was supported by the U.S.\ Department of Energy, Office of Science,
+Office of Basic Energy Sciences, under Contract No.\ DE-AC02-05-CH11231
 (MINES: The Science of Direct MINeral to Energy Storage Synthesis, FWP: FP00014914).
 \end{acknowledgments}
 

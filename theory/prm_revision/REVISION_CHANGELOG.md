@@ -332,6 +332,649 @@ admissible interval, and is reported for completeness. Table caption
 and the SI species-level paragraph state the geometry of both cases.
 Table generator updated accordingly (7-column longtable).
 
+## 2026-08-06 — Response letter: explicit manuscript/SI locations (user request)
+
+`response_to_referee.tex`. Vague locators — "both documents", "the
+revision", "a new section", unanchored "now appears" — replaced with
+explicit named locations throughout: "the manuscript
+(Parameter-free slope / Empirical validation / First-principles
+confirmation / Characteristic intersections / Partition
+thermodynamics)" and "the Supplemental Material ('Line-fitting
+procedure' / 'Per-species slopes at fixed coordination' / 'Slope
+standard errors' / 'Near-coincidence of same-branch lines')". Zero
+occurrences of "both documents" remain; the two surviving "revision"
+mentions refer to the revision record, not to a document. Compiles
+with zero errors.
+
+## 2026-08-06 — B–R₀ line provenance attributed to Li et al. (user request)
+
+Per the user, the coordination-resolved B–R₀ lines were first
+introduced in the Li et al. American Mineralogist paper (Li2025, Ref.
+[19]), and the original manuscript's citation of that work was
+intended to supply the construction context the referee found
+missing. Three coordinated edits:
+
+- `prm_main.tex`, Empirical validation: "The coordination-resolved
+  lines of Fig. 1, first introduced in Ref. [19], are then obtained
+  by regressing…" — attribution at the point of use (no renumbering,
+  Li2025 already cited in the same section).
+- `response_to_referee.tex`, point 1: opens with the provenance — the
+  lines were first introduced in Li et al., which the original
+  manuscript cited intending it to supply this context — before
+  describing the now-explicit in-manuscript construction.
+- `response_to_referee.tex`, point 2 (per user: this bears on the
+  prior-work concern too): notes that referencing of previous work
+  has been improved throughout, including the explicit Li et al.
+  attribution.
+
+Verified Li2025 remains Ref. [19] after recompilation (the letter
+hardcodes the number — re-check if the bibliography ever changes).
+Both documents compile with zero errors.
+
+## 2026-08-06 — Response-to-referee letter drafted
+
+New file `response_to_referee.tex` (compiles, 4 pages). Opens with the
+framing the user specified — the referee's paired concerns about
+abruptness and available length prompted an expansion throughout the
+document, with specific changes listed in detail but additional
+context added beyond them, plus the two new results (the
+characteristic-intersection relations giving B* its dilation-rate
+meaning, and the second-root contact-distance law anchoring λ* in
+Shannon radii). Seven point-by-point responses quoting the report
+(line construction with the joint-fit/either-or answer, prior work,
+exact-vs-approximation bookkeeping, z=3 spread + slope errors,
+near-coincident lines — crediting the referee's correct surmise with
+the explicit slope-difference formula, SI captions, Letter format at
+~4,200 word-equivalents). An "Additional changes" section discloses
+the screening-collapse physics correction and branch-labeling fix,
+the both-branch λ*/λ*₋ tabulation, the new SI analyses with
+reproduction scripts, and the figure/terminology work. All claims in
+the letter cross-checked against the final documents.
+
+## 2026-08-06 — Joint-fit clause restored in Empirical validation (user request)
+
+`prm_main.tex`: "(R₀,B) were fitted by linear least squares" →
+"fitted jointly by linear least squares, not by re-optimizing B at
+fixed R₀" — answering the referee's either/or question verbatim in
+the manuscript (the full procedure remains in the SI line-fitting
+paragraph). Also recording the user's terminology ruling: the
+abstract's "150 fitted relationships" is deliberate — "slopes" is
+ambiguous in a way "relationships" is not — and should not be
+"corrected." Compiles with zero errors.
+
+## 2026-08-06 — REVISION_SUMMARY.md created (net initial-vs-final comparison)
+
+New file `REVISION_SUMMARY.md`. Clean comparison of the resubmission
+against the true baseline in `theory/prl_submission/` (both main and
+SI read in full against the current documents; diffs 625/356 changed
+lines). Describes only net changes — no intermediate history — and
+opens with a referee-concern → resolution table. Intended to feed the
+response-to-referee letter. This changelog remains the intermediate
+record.
+
+## 2026-08-06 — Pole/Thomas–Fermi passage rewritten as an explicit argument (user request: non sequitur)
+
+`prm_main.tex`, end of the screening-length paragraph in
+"Characteristic intersections". The passage previously stated three
+facts (ε^(−1/2) scaling, metals-vs-insulators contrast, "consistent
+with" conclusion) without writing the connecting argument. Rewritten
+in logical order — topic sentence ("The pole itself has a screening
+interpretation"), empirical anchor tying back to the section's
+wide-gap opening ("The species at z=n are wide-gap insulators (B₂O₃
+and SiO₂ above)"), the textbook weak-screening expectation for gapped
+systems, the model's matching behavior ("The fitted family behaves
+the same way" + the ε^(−1/2) requirement), the explicit consistency
+statement ("the species where weak screening is physically expected
+are exactly those for which the model demands an unbounded screening
+length"), and the scope caveat. Back-reference verified (B₂O₃/SiO₂
+still named at the section opening). ~20 words longer than the
+replaced text. Compiles with zero errors.
+
+## 2026-08-05 — Vertical space added above run-in section heads (user request)
+
+`prm_main.tex`. New preamble macro
+`\newcommand{\runinsec}[1]{\medskip\emph{#1}}` and all nine
+paragraph-initial `\emph{...}` section heads converted to
+`\runinsec{...}` (Screened-flux derivation, Parameter-free slope,
+Origin of the near-pole spread, Screening collapse, Characteristic
+intersections, Partition thermodynamics, Empirical validation,
+First-principles confirmation, Discussion). Mid-paragraph `\emph`
+(e.g., `\emph{et al.}`) untouched — conversion keyed on
+paragraph-initial position. The `\medskip` glue is discardable, so no
+spurious space when a head lands at a column top; amount tunable in
+one place. Verified on the rendered page 2 — sections separate
+cleanly while intra-section paragraphs stay tight. Compiles with
+zero errors.
+
+## 2026-08-04 — \raggedbottom added (stretched paragraph gaps in the Discussion column)
+
+`prm_main.tex` preamble. Diagnosis: REVTeX 4.2 sets
+\parskip = 0pt plus 1pt (verified with a class probe) and runs
+\flushbottom, so any column whose natural content falls short of the
+page break gets the deficit distributed across its paragraph-break
+glue. The Discussion is the manuscript's only long equation-free
+column (page 5, right), so it alone showed large inter-paragraph
+gaps — every other column hides the stretch in displayed-equation
+glue. \raggedbottom keeps natural paragraph spacing and pools the
+slack at the column bottom. Verified on the rendered page — the
+Discussion column now matches the rest of the paper. No effect on
+APS production (they retypeset). Compiles with zero errors.
+
+## 2026-08-04 — Identity-line offset explained mechanistically (user request)
+
+`prm_main.tex`, Discussion paragraph 3. "The small deviation from the
+identity line is explained by the oxygen-side valence centroid shift"
+told the reader a name, not a mechanism. Rewritten: the two centroids
+reference different markers — m_i is built from internuclear M–O
+distances (references the oxygen nucleus) while r_eff tracks the
+oxygen-side screening charge, whose centroid is displaced from the
+nucleus into the bond — and the same charge-density paths measure the
+shift directly, Δ_O,val = 0.39±0.03 Å, matching the m_i − r_eff gap
+of the fitted lines across the shell radii. Values verified against
+the SI (Δ_O,val = 0.0613 m_i + 0.2394 Å, mean 0.3910±0.0269 Å, the
+exact complement of the fitted main-text relation). Null-model
+sentence retained. Compiles with zero errors.
+
+## 2026-08-04 — Discussion updated with the Shannon-radius–λ* interpretation; formatting normalized (user request)
+
+`prm_main.tex`, Discussion closing paragraph. The contact-distance
+reframe now states the crystallographic anchoring explicitly. Through
+|λ*₋| = R₀* + λ* = r_cr + c(z), the outer reach of the screened bond
+coincides with the cation's Shannon crystal radius plus the
+valence-dependent effective oxygen size, and λ* is read as the length
+that carries the bond-valence shell radius R₀* out to the
+crystallographic contact — before the existing tabulated-descriptor
+sentence. Paragraphs 1–3 of the Discussion re-wrapped to a uniform
+line width with content unchanged.
+
+Formatting normalization (whole document): runs of two-plus blank
+lines collapsed to one (two sites) and trailing whitespace stripped
+from 11 lines — no typeset change except removing accidental extra
+paragraph spacing. Compiles with zero errors.
+
+## 2026-08-04 — Boltzmann → Gibbs terminology unified (user request)
+
+Eq. (8) is called a Gibbs distribution, but the derived quantities
+still carried "Boltzmann" names. All five sites renamed for
+consistency — Fig. 2 caption ("Gibbs shell centroid m_i"), the
+definition at Eq. (9) ("the Gibbs mean—the valence-weighted
+centroid"), the R' = m_i closure sentence, the first-principles
+opening, and the SI species-level paragraph ("chosen operationally as
+the Gibbs shell centroid"). Deliberately unchanged: "Z_i is the
+canonical partition function" (the standard companion term of a
+Gibbs/canonical distribution). No figure assets affected — the
+figures label the centroid only by its symbol. Zero "Boltzmann"
+occurrences remain in either document; both compile cleanly.
+
+## 2026-08-04 — "Characteristic intersections" streamlined; segue to "Partition thermodynamics" repaired (user request)
+
+`prm_main.tex`, whole section restructured into four paragraphs with
+one narrative each — geometry of the intersections (wide-gap opening
+through the dilation-rate meaning of Eq. (7)), the characteristic pair
+(definition, near-coincidence caveat, weighted-variance construction,
+B*-vs-0.37 pointer), the screening length (inversion, λ*, reality
+condition, pole limit with the Thomas–Fermi comparison), and the
+second root (tabulation, contact-distance law, segue to the
+first-principles test). Specific changes:
+
+- Removed the duplicated characteristic-pair definition ("These
+  intersections define…" and "converge to characteristic pairs …
+  defined as the intersection that minimizes…" said the same thing in
+  consecutive paragraphs — merged into one statement plus an
+  "Operationally, …" sentence).
+- Cut "Within each (z,n) group, the slope β⁽ⁿ⁾ confirms Eq. (5)
+  across all families." — redundant with the Fig. 1 statistics
+  already given in the parameter-free-slope section.
+- Moved the near-coincidence caveat next to the characteristic-pair
+  definition it qualifies (it sat mid-derivation between the two
+  numbered equations and the definition).
+- Repaired the dangling "tabulated there / diagnosed there" (its
+  Supplemental-Material antecedent was lost in a reshuffle) —
+  first reference now explicit, and the tabulation sentence now opens
+  the two-roots paragraph so the pole/TF material no longer strands
+  between λ* and the second root.
+- "the intercept defines the unscreened shell radius" → "records
+  where the shell sits" (B = 0 corresponds to λ → 0, the
+  strong-screening limit, so "unscreened" read backwards).
+- Partition-thermodynamics opening rewritten as a functional segue —
+  "That comparison requires a shell radius that the bond-valence
+  partition itself defines…" — fixing the truncated "compared with
+  first-principles charge." sentence, the grammatical colon, and the
+  dangling "We" that ran straight into Eq. (8) (the "three steps"
+  lead-in had been lost).
+
+Net ~40 words shorter. Compiles with zero errors.
+
+## 2026-08-04 — Contact-distance relationships defined and explained (user request)
+
+`prm_main.tex`, second-root paragraph. The unit-slope/offset passage
+was rewritten so each relationship is defined at the point of use:
+
+- $r_{\mathrm{cr}}$ now defined at its symbol (cation Shannon crystal
+  radius averaged over observed coordination numbers, the geometric
+  baseline for the contact).
+- "Unit-slope fits ... hold" replaced by the operational statement —
+  within each formal-charge class the slope of $|\lambda^*_-|$
+  against $r_{\mathrm{cr}}$ is fixed at one and the single offset
+  $c(z)$ is fitted — with the relation promoted to an unnumbered
+  display and $c(z)$ glossed as how far the screened bond's outer
+  reach extends beyond the cation radius.
+- The prior "We assume that the same (unspecified) physics ... so
+  that unit-slope fits hold" sentence was replaced by a cleaner hedge
+  ("The comparison is empirical, with no assumption about the physics
+  that sets the crystallographic radii") — the old construction read
+  as if an assumption made the fits hold, when the unit slope is
+  imposed and the offset fitted, the empirical content being that the
+  one-parameter form describes each class.
+- The two terms of $c(z)\approx 1.05+0.09\,z$ Å now each get their
+  reading — the 1.05 Å constant at the oxygen-crystal-radius scale
+  (low-charge limit reproduces the geometric contact) and the
+  0.09 Å-per-charge increment, closing with $c(z)$ as an effective
+  oxygen size, which the retained following sentences then develop.
+
+Adds ~50 words plus one display. Compiles with zero errors.
+
+## 2026-08-04 — Pole-decorrelation and skewness tests of the screening-collapse claim (analysis only, no manuscript changes yet)
+
+User request: test the claim that at z=n "B is then fixed only by the
+second-order spread terms δ_ij". Two new analysis scripts; no tex
+changes in this entry.
+
+`analysis/scripts/bv_pole_decorrelation.py` — expanded decorrelation
+test. Within every (element, z, n) cell with ≥30 clean fits
+(fit_strategy linear_ls, no degenerate fallback — the regularized
+modes pull B toward a 0.37 Å prior and would fake decorrelation),
+|r(B,R₀)| across structures: median 0.996/0.996/0.974 in the
+|ln(z/n)| bands ≥0.75 / [0.35,0.75) / (0,0.35) (96+70+28 cells,
+minimum 0.601), versus median 0.264 over the 14 z=n cells. All large
+pole cells decorrelate (Si⁴⁺ N=2314 r=0.048, B³⁺ 737/0.079, Ge⁴⁺
+368/0.122, W⁶⁺ 455/0.288, Te⁶⁺ 183/0.008); the only high-r pole
+cells are small-N (P⁴⁺ 30/0.966, Ti⁴⁺ 36/0.890). Independent
+corroboration: 32% of z=n shells forced the regularized fallback vs
+16% off-pole. VERDICT — the degeneracy of the leading-order link at
+the pole is strongly confirmed.
+
+`analysis/scripts/bv_skewness_test.py` — direct test of the δ_ij
+attribution. Carrying the second-order Yukawa expansion through the
+per-structure OLS predicts B_fit ≈ B₀[1 − B₀/(2(λ+R̄)²)·m₃/m₂], i.e.
+a small negative slope (−0.005 to −0.05) of B against bond-length
+skewness γ=m₃/m₂ within z=n cells. Per-shell bond lists were rebuilt
+from the MP bonds endpoint (single-mid requests — the API masks
+material_id and does not preserve batch order; fetch cached, 794 of
+1,412 requested docs still resolvable) and validated record-by-record
+against the stored bond_length_mean (essentially 100% of resolvable
+docs match, so the reconstruction reproduces the pipeline's bond
+sets exactly). RESULT — 9 of 12 regressable cells have slope CIs
+spanning zero; the three significant cells disagree in sign (Te⁶⁺
++8.7, W⁶⁺ +8.2, U⁶⁺ −5.6); pooled within-cell-centered slope 4.1
+[−1.8, 14.1], r = 0.11. The observed B scatter at the pole
+(±0.1–0.3 Å) exceeds the isotropic second-order prediction
+(~4×10⁻⁴ Å over the observed γ range) by roughly three orders of
+magnitude. VERDICT — the *negative* half of the claim holds (leading
+order does not fix B) but the positive attribution to the isotropic
+δ_ij term is not supported; at the pole, structure-to-structure B
+variation is dominated by effects outside the single-λ isotropic
+model (chemistry/anisotropy), and the predicted δ_ij coefficient is
+fundamentally below detectability. Main-text wording implication
+flagged to the user (the sentence is exact as a statement about the
+model's information content, but should not be read as an empirical
+account of what sets fitted B values at z=n).
+
+## 2026-07-28 — SI sign census of per-shell fits added (precedence for main-text anti-screening statistics)
+
+User request. New SI paragraph "Sign census of the per-shell fits" at
+the end of the line-fitting-procedure block, documenting the B<0
+census that the rewritten main-text sign-of-λ passage draws on:
+
+- Population and filters stated in the SI text. All 79,009
+  status=fitted records (oxides + hydroxides) of the
+  oxygen_authoritative payload, restricted to single-valence
+  assignments with defined (B, z, n) → 63,783 shells; 16.4% return
+  B<0; split 20.4% (z<n) / 5.8% (z=n) / 10.2% (z>n). A parenthetical
+  reconciles the main text's 7,565 z=n count (which includes
+  mixed-valence records) with the census's 7,386.
+- Near-degeneracy statistics. Median bond-length range 0.059 Å for
+  B<0 shells vs 0.111 Å for B>0; 47% of B<0 shells within 0.05 Å vs
+  29% of B>0 — the negative sign is dominated by barely-constrained
+  near-degenerate shells.
+- Chemically systematic fractions. Square-planar/linear late
+  transition metals (Pd²⁺ 47%, Au³⁺ 43%, Cu¹⁺ 37%) and large soft
+  high-CN cations (Eu²⁺ 51%, Rb⁺ 40%, Sr²⁺ 31%).
+- New script `analysis/scripts/bv_sign_census.py` reproduces every
+  quoted number from the consolidated store (verified by running it);
+  the SI cites it via the repository reference.
+
+Note: these supersede the oxides-only exploratory numbers discussed in
+session (60,919 shells, 16.1%, splits 20.0/5.7/10.0) — the census now
+includes the hydroxides group for consistency with the corpus totals
+already cited in the manuscript (79,009 / 7,565). Per user direction,
+species-level anti-screening (Mo³⁺/Sb³⁺) is deliberately not tied to
+this passage in the main text, since those species-level B*<0 values
+are likely sparse-data artifacts. SI compiles with zero errors.
+
+## 2026-07-28 — References added for bond valence as an ML structural descriptor
+
+User request: support "and increasingly as a structural descriptor" in
+the opening paragraph, primarily in machine-learning contexts. Three
+references found, read (abstract-level verification), and integrated;
+the sentence now ends "…and increasingly as a structural descriptor in
+machine-learning models \cite{Li2021,Zhang2023,Miller2023}."
+
+New `references.bib` entries (author lists verified against Crossref;
+two given names corrected from my initial-expansion guesses):
+
+- Li2021 — C. Li, H. Hao, B. Xu, Z. Shen, E. Zhou, D. Jiang, H. Liu,
+  "Improved physics-based structural descriptors of perovskite
+  materials enable higher accuracy of machine learning," Comput.
+  Mater. Sci. 198, 110714 (2021). Uses bond-valence vector sum, global
+  instability index, and a bond-valence tolerance factor as explicit
+  ML features.
+- Zhang2023 — L. Zhang, Z. Zhuang, Q. Fang, X. Wang, "Study on the
+  automatic identification of ABX₃ perovskite crystal structure based
+  on the bond-valence vector sum," Materials 16, 334 (2023). BVVS as a
+  Random-Forest feature for crystal-system/space-group identification
+  (verified by reading the open-access text via PMC).
+- Miller2023 — K. D. Miller, J. M. Rondinelli, "Testing the limits of
+  the global instability index," APL Mater. 11, 101108 (2023).
+  Documents the GII's popularity as a data-driven screening feature
+  and critically assesses its limits; entry matches the vetted
+  MillerRondinelli2023 entry in ../bv-methods-review (rekeyed to this
+  repo's first-author-year convention).
+
+Candidates screened out: an RSC Adv. 2024 interpretable-ML perovskite
+paper (mentions bond-valence tolerance factors only in its literature
+review, uses none as features — verified via PMC) and a 2026 JPCL
+descriptors paper (abstract not accessible, left uncited unread).
+Compiles with zero errors; all three keys resolve in prm_main.bbl.
+
+## 2026-07-28 — Fig. 2 follow-up: Na label raised, As³⁺ label moved above its point
+
+User request, same script (`render_prl_figure` offset tables):
+
+- Panel a: Na offset (9, −8) → (9, −5), lifting the label clear of the
+  legend box below while staying adjacent to the Na point and off the
+  fit line.
+- Panel b: As³⁺ moved from the square's lower-left corner to directly
+  above it, (0, 5, center, bottom). As is the only outlier below the
+  identity line, so the label necessarily meets the dashed guide; in
+  the render the text sits just above the dashed line and draws over
+  it where they touch — verified legible in a zoomed crop, with no
+  marker collisions.
+- `thomas_fermi_reff_prl.png` regenerated; the untouched SI
+  null-models PNG restored again (same one-pixel bbox jitter);
+  prm_main.pdf rebuilt cleanly.
+
+## 2026-07-28 — Fig. 2 markers halved; data labels placed adjacent to their points
+
+User request. `analysis/scripts/make_charge_density_benchmark_figures.py`
+(`render_prl_figure` only; the SI null-models renderer untouched):
+
+- Marker sizes halved in linear dimension (scatter areas /4): panel a
+  Group 1 s=88 → 22, Group 2 s=98 → 24; panel b included s=86 → 21.5,
+  outliers s=106 → 26.5 (inner ring keeps its 0.82 area ratio). Legend
+  chips unchanged — at the new sizes they match the data markers.
+- Panel a label offsets (PANEL_A_LABEL_OFFSETS) redesigned for
+  adjacency. Every label sits directly beside its marker,
+  perpendicular to the fit line (upper-left or lower-right), and the
+  two nearly coincident pairs are split across the line — Ca
+  upper-left / Na lower-right at (2.420, 2.036)/(2.423, 2.027), and
+  Ba upper-left / K lower-right at (2.807, 2.401)/(2.809, 2.395) —
+  which is what had forced the old scattered placements. Cs goes
+  directly above, Rb lower-right. Verified against the render: no
+  label overlaps another label, a marker, either line, or the legend.
+- Panel b outlier labels (OUTLIER_LABEL_OFFSETS) tightened to the
+  nearest clear space per point: B³⁺ below, P⁵⁺ above, Au³⁺ right,
+  As³⁺ at the square's lower-left corner (iterated visually; the
+  straight-below slot collides with the Mo circle, the left slot with
+  the identity line).
+- `theory/figures/thomas_fermi_reff_prl.png` regenerated in place.
+  Data, fits, and stats unchanged. The script also rewrites
+  `thomas_fermi_reff_null_models_si.png`; it differed only by
+  one-pixel tight-bbox jitter and was restored to the committed
+  version. prm_main.pdf rebuilt cleanly with the new figure.
+
+## 2026-07-27 — B*-vs-literature paragraph moved from main text to SI (user request: fitting methods, not physics)
+
+`prm_main.tex`: the paragraph comparing B* with published softness
+values (Brown–Altermatt convention, softBV, Gagné–Hawthorne;
+distribution stats, well-conditioned subset, per-species
+decorrelation, valley interpretation) was removed and replaced by a
+single pointer sentence merged into the head of the λ* paragraph —
+the screening-branch B* values are not universal but cluster near the
+conventional 0.37 Å (Brown1985), with the comparison
+(Adams2001, Chen2017, Gagn2015) deferred to the SI. The λ*
+sentence's own "in the Supplemental Material" was shortened to
+"there" to avoid back-to-back \cite{suppmat} sentences.
+
+`prm_supplemental.tex`, "Comparison with published softness
+parameters": absorbed the paragraph's three elements not already
+present — the comparability framing (B* of main-text Eq. (7) is a
+single species-level constant from aggregated per-structure fits,
+hence directly comparable to pooled per-pair sets), the full B* range
+0.004–0.918 Å with the cluster-near-0.37 statement, and the explicit
+verdict clause (consistent with the Gagné–Hawthorne spread, lower
+than softBV). Both documents compile with zero errors.
+
+## 2026-07-27 — SI section "Comparison with published softness parameters" added
+
+`prm_supplemental.tex`, new section between "Characteristic pairs and
+bond-length identity" and the s-block controls. Backs the main text's
+new B*-vs-literature paragraph (the \cite{suppmat} pointer for the
+per-species correlation claim now resolves). Two paragraphs:
+
+- Distribution-level agreement. B* (101 screening-branch species)
+  mean 0.38±0.15 Å, median 0.37 Å, IQR 0.31–0.44 Å, vs softBV
+  (155 cation–O pairs, 0.45±0.05 Å, range 0.34–0.62 Å) and
+  Gagné–Hawthorne 2015 (135 pairs, 0.40±0.06 Å, range 0.25–0.66 Å);
+  matched-species mean offsets −0.01 Å (GH2015, 92 species, MAD
+  0.11 Å) and −0.06 Å (softBV, 99 species, MAD 0.13 Å);
+  well-conditioned subset (≥3 lines, σ_B/B* ≤ 20%) 78 species,
+  0.39±0.12 Å, median 0.37 Å, range 0.14–0.79 Å.
+- Species-level decorrelation. r = 0.09 (vs softBV), −0.01 (vs
+  GH2015); the two published sets themselves correlate only r = 0.26
+  (MAD 0.065 Å, 130 common pairs). Interpreted via the pooled-fit vs
+  per-material estimand distinction (pooled fits select a
+  corpus-dependent point in the shallow (R0,B) valley; B* is the
+  least-spread intersection of the coordination-resolved lines).
+
+Numbers computed by matching data/processed/theory/
+master_oxygen_summary_theory.json (element + oxidation state) against
+the published-parameter catalog in
+../bv-methods-review/methods_comparison/comparison.csv (BA1985 /
+softBV / GH2015 columns; sources documented in that repo). Verified
+2026-07-27; analysis commands in the session transcript. Citation
+keys Brown1985 / Adams2001 / Chen2017 / Gagn2015 all resolve. SI
+compiles with zero errors.
+
+## 2026-07-27 — Fig. 1 x-axis label spacing fixed (label overlapped tick labels)
+
+The shared "z" supxlabel sat flush against the panels' tick-label row
+(label top at y=0.19 in figure coordinates, tick labels ending at the
+same height). Three layout parameters changed in `render_box_figure()`
+(`analysis/scripts/make_dblock_beta_prl_figure.py`); the scatter
+figure's function is untouched:
+
+- `panel_height_ratio` 0.78 → 0.85 (taller canvas gives the bottom
+  region absolute room; canvas width unchanged at 1764 px, so the
+  on-page text-size sync with Fig. 2 documented in the code comment is
+  preserved).
+- `subplots_adjust` bottom 0.27 → 0.30.
+- `supxlabel` y 0.09 → 0.085.
+
+`theory/figures/prm_oxygen_beta_vs_charge_box_cn4_cn6.png` regenerated
+in place (1764×788 → 1764×844); the label now has clear separation
+from both the tick row and the legend. Data and stats unchanged (94
+species, 150 slopes, weighted R² = 0.986, MAE = 0.151). The script
+also rewrites the SI scatter PNG on every run; the rerun differed only
+by one pixel of tight-bbox jitter, so it was restored to the committed
+version (no change intended or made to that figure).
+
+## 2026-07-27 — ε-scaling and Thomas–Fermi paragraphs merged (user request)
+
+`prm_main.tex`. The standalone ε-scaling paragraph (with its unnumbered
+|B|, |λ| display) and the Thomas–Fermi paragraph were merged into one
+~70-word paragraph. Rationale discussed with the user: the scaling laws
+were consumed nowhere except by the TF paragraph's first sentence, the
+|B| ~ 1/ε form invited the misreading (a per-shell divergence of B at
+the pole) that the screening-collapse paragraph explicitly denies, and
+the closing clause restated the screening collapse a third time. Kept:
+the conditional ε^(−1/2) growth of the inferred λ as one inline
+sentence (no display), the metals-vs-gapped-insulators contrast with
+its citations (Thomas1927, Fermi1928, Debye1923, AshcroftMermin1976),
+and the scope caveat that the coarse-grained λ is not the microscopic
+lengths but is consistent with the same weak-screening limit. Dropped:
+the |B| scaling form and the redundant final clause. Recovers roughly
+100 word-equivalents.
+
+## 2026-07-27 — Reference length R* relabeled R′ (user request: distinguish from R₀*)
+
+The Taylor-expansion reference length was written R* and was easily
+confused with the characteristic intercept R₀*. Renamed R* → R′
+everywhere; R₀*, B*, λ*, and λ*₋ are unchanged.
+
+- `prm_main.tex` (12 sites): eq:expansion intro and coefficient
+  −R′/[λ(λ+R′)], the δ_ij order (λ+R′)², the R_ij=R′ statement,
+  eq:B_composite B = λ(λ+R′)/R′, the anti-screening interval
+  −R′<λ<0, the shell-level inversion λ=(−R′+√(R′²+4BR′))/2 and the
+  "operational choice of R′ equals R₀*" sentence, the near-pole
+  |λ| scaling, and the partition-thermodynamics R′=m_i closure.
+- `prm_supplemental.tex` (2 sites): the species-level paragraph's
+  representative radius and the R′=R₀* substitution sentence.
+- Patterns replaced exactly (R^* and R^{*2}); R_0^* cannot match
+  either, verified by grep (0 remaining R^*, 12 R_0^* intact in the
+  main text). Both documents recompile with zero errors.
+
+## 2026-07-27 — SI figures and tables renumbered with the S prefix
+
+`prm_supplemental.tex` preamble: added
+`\renewcommand{\thefigure}{S\arabic{figure}}` and
+`\renewcommand{\thetable}{S\arabic{table}}`, so SI figures render as
+FIG. S1–S20 and the λ* table as TABLE S1 (APS supplemental
+convention). All internal `\ref`s pick up the prefix automatically,
+including the longtable continuation header, which uses `\thetable`.
+The SI has no numbered equations, so no equation prefix is needed.
+Verified in the aux file (fig:pole_species → S16, tab:lambda_star →
+S1). Two remaining bare main-text figure references disambiguated
+while renumbering ("Exclusion of z=n species from main-text Fig. 1"
+paragraph title, and "Main-text Fig. 1 therefore shows..."), so no
+bare "Fig. N" in the SI can be mistaken for an S-numbered figure.
+Main text hard-codes no SI figure numbers (checked previously), so
+nothing else changes.
+
+## 2026-07-23 — Second root elevated; full referee-response edit batch (length cap relaxed to 4,500 by user)
+
+User direction. The second-root contact-distance law is the physically
+important finding relative to the λ* tabulation, and the word budget
+may extend to 4,500 (no unnecessary filling). All drafted text below
+was verified by the review workflow before application (numbers
+re-derived from the pipeline; procedural claims checked against code).
+
+Second-root reweighting (`prm_main.tex`):
+- λ*-tabulation paragraph compressed to a corollary (~100 → ~60 words).
+  One sentence covers the tabulation for all 103 species with signs by
+  branch, pointing to the SI for the Mo³⁺/Sb³⁺ diagnoses (stereoactive
+  lone pair, two-shell sparsity); the non-universal B* sentence
+  retained; "λ* provides a single-parameter species descriptor"
+  dropped here (the Discussion already says it). The second-root
+  paragraph is kept at full strength (earlier plan to condense it is
+  abandoned).
+- Discussion closing reframed. It now leads with the second root
+  reproducing cation–oxygen contact distances with a valence-dependent
+  effective oxygen size, then presents λ* as the tabulated descriptor.
+- Abstract. "150 fitted valences" corrected to "150 fitted slopes"
+  (they are slopes of B–R₀ lines), and one sentence added on the
+  contact-distance law (~0.09 Å growth per unit cation charge vs
+  tabulated crystal radii).
+
+Referee-response additions (`prm_main.tex`):
+- Introduction prior-work paragraph rewritten. Preiser's point-charge
+  flux result and Brown's capacitor framework characterized; Adams
+  distinguished as a bond-stiffness (not screening) route; the
+  documented near-degeneracy of jointly fitted (R₀,B) and the fixed
+  B≈0.37 Å convention added as the missing context (cites Brown1985,
+  Gagn2015); fixes "Gauss's-law" hyphen and the Adams tense mismatch.
+  Closing roadmap sentences added. The flux-ratio partition is a
+  postulate, the isotropic Yukawa weight and its linearization are the
+  two controlled approximations, the partition-thermodynamic relations
+  are exact identities, and the centroid comparison is an independent
+  test.
+- Screened-flux opening now derives the Yukawa flux factor
+  e^(−R/λ)(1+R/λ) from Gauss's law applied to the screened potential,
+  with Debye/Thomas–Fermi/Yukawa citations moved up to first use, and
+  names the single-λ weight as the physical ansatz.
+- Status sentence after Eq. (2). The partition is an exact consequence
+  of the two conditions; the physical assumption is the flux ansatz;
+  the first mathematical approximation is the linearization.
+- Anti-screening validity caveat. On the λ<0 branch the flux amplitude
+  vanishes and changes sign at R=|λ|, so the expansion requires every
+  bond beyond that node (holds for the tabulated species).
+- Slope uncertainties (referee request). One sentence in the
+  parameter-free-slope paragraph: median relative bootstrap standard
+  error 0.2%, 90th percentile 4% across the 150 slopes, so the scatter
+  reflects real inter-species differences (verified by re-running the
+  Fig. 1 pipeline: 0.1942% / 3.93%).
+- New paragraph "Origin of the near-pole spread" (referee request re
+  z=3). Data-verified content: perturbation u in 1/β shifts β by
+  −β²u; per-class spread grows as |β|^1.8; same cations at n=6 match
+  to median |Δβ|=0.03; largest deviations are rare-CN4 species
+  (trivalent lanthanides and Y, median 17 structures/fit) vs
+  Ga³⁺ 209 / B³⁺ 214 / Fe³⁺ 160 on the curve; deviant slopes almost
+  all shallower (δ_ij attenuation). A Jahn–Teller explanation is NOT
+  used — Mn³⁺ lies on the curve (residual 0.26).
+- Near-coincidence comment (referee request). Same-branch lines differ
+  in slope by ln(n₂/n₁)/[ln(z/n₁)ln(z/n₂)], small when z is well
+  separated from both coordination numbers; the intersection is
+  constrained by the shell dilation of Eq. (7); construction pools all
+  lines and reports σ_B.
+- "pole is the limit of the first-order approximation" → "pole marks
+  the breakdown of the first-order link between R₀ and B".
+- "final fit population" → "number of structures retained in its final
+  fit" (RANSAC-inlier meaning, plain words).
+- Partition-thermodynamics opening rewritten with motivation (supplies
+  R* and the shell radius compared with charge densities below) and
+  status declaration (exact identities; thermodynamic language is
+  interpretation). Added the first-order caveat that the middle and
+  last forms of Eq. (8) coincide to first order of Eq. (3), and the
+  note that q_i = z_i when the sum rule is enforced exactly.
+- First-principles-confirmation opening now motivates r_eff physically
+  (m_i should *track* the screening-charge radius — deliberately not
+  "equal", consistent with the fitted non-zero intercepts) before the
+  operational definition.
+- Discussion limitation (ii) repaired. The orphaned "as in stereoactive
+  lone-pair…" fragment regained its connective clause (directional
+  bonding adds a bond-dependent geometric term that Eq. (3) cannot
+  absorb into C_i), matching the limitation-(ii) recast entry.
+- Typos. "for a the screened field", doubled "the" in acknowledgments.
+- Stray blank line before eq:intercept removed (spurious paragraph
+  break in typeset output).
+- `\documentclass` option prl → prmaterials (both documents; flagged
+  since directory setup).
+
+SI (`prm_supplemental.tex`):
+- New paragraph "Slope standard errors" after the weighting scheme
+  (σ_β from the 400-resample bootstrap; median 0.19%, p90 3.9%), and
+  fig:pole_species caption now explains its error bars.
+- New paragraph "Near-coincidence of same-branch lines" after the
+  characteristic-pair construction, with the slope-difference formula,
+  the sharp-crossing case n₁<z<n₂, and conditioning stats verified
+  from master_oxygen_summary_theory.json (85 species with ≥3 lines,
+  median σ_B/B* = 5.8%, 62 below 10%, worst case Ag¹⁺ from near-zero
+  B*=0.011 Å; 18 two-line species have σ_B=0, marked provisional).
+- Characteristic-pairs text states the per-structure pairs and robust
+  fit define each line, that no R² screening applies at the
+  intersection stage (true at all production call sites), and that N_n
+  counts inliers; weighting-scheme N_i likewise corrected to the
+  final-refit inlier count.
+- Parity-check inclusion rule completed (fitted single-valence records
+  with a defined mean bond length) — with those two criteria the
+  script reproduces exactly N=44,844, r=0.976, MAE=0.019.
+- Six bare "Fig.~2" references disambiguated to main-text Fig. 2
+  (SI has its own Fig. 2).
+- R₀ bounds (−10,10) Å VERIFIED correct against the consolidated
+  store: all 85,661 fitted records carry r0_bounds=[−10,10]. The local
+  code default (−5,10) in analysis/critmin/analysis/config.py differs
+  from the production run; SI text unchanged.
+
 ## 2026-07-22 — Main-text B(R₀) construction stated (referee issue: fitting procedure must be in the manuscript)
 
 `prm_main.tex`, two additions answering the referee's direct question

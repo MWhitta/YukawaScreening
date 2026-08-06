@@ -36,25 +36,29 @@ PANEL_B_STYLES = {
     "p": {"color": "#A7C48A", "marker": "s", "label": r"$p$-block"},
     "f": {"color": "#C3A4C2", "marker": "D", "label": r"$f$-block"},
 }
+# (dx, dy) in points, chosen so every label sits directly beside its own
+# marker. Points lie on the fit line, so labels go perpendicular to it —
+# upper-left or lower-right — and the two nearly coincident pairs (Ca/Na
+# and Ba/K) are split to opposite sides.
 PANEL_A_LABEL_OFFSETS = {
-    "Be": (8, 10),
-    "Li": (-8, 12),
-    "Mg": (10, -10),
-    "Ca": (-8, 12),
-    "Sr": (-6, 12),
-    "Na": (-10, -20),
-    "Ba": (-8, 12),
-    "K": (12, -18),
-    "Cs": (8, -18),
-    "Rb": (14, -18),
+    "Be": (-9, 8),
+    "Li": (-9, 8),
+    "Mg": (9, -8),
+    "Ca": (-9, 8),
+    "Na": (9, -5),
+    "Sr": (9, -8),
+    "Ba": (-9, 8),
+    "K": (5, -9),
+    "Cs": (0, 10),
+    "Rb": (9, -7),
 }
 # (dx, dy, ha, va) in points; each label sits beside its own marker in the
 # nearest clear space, off the identity/fit lines and the point cluster.
 OUTLIER_LABEL_OFFSETS = {
-    "B": (0, -9, "center", "top"),
-    "P": (0, 8, "center", "bottom"),
-    "As": (-9, -16, "right", "center"),
-    "Au": (11, 0, "left", "center"),
+    "B": (0, -7, "center", "top"),
+    "P": (0, 7, "center", "bottom"),
+    "As": (0, 5, "center", "bottom"),
+    "Au": (8, 0, "left", "center"),
 }
 VALID_BLOCKS = {"s", "d", "p", "f"}
 PANEL_B_BLOCKS = ("d", "p", "f")
@@ -242,7 +246,7 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
         ax1.scatter(
             [float(point["m_i"]) for point in group1],
             [float(point["r_eff"]) for point in group1],
-            s=88,
+            s=22,
             marker="o",
             c=GROUP1_COLOR,
             edgecolors="#2F475C",
@@ -253,7 +257,7 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
         ax1.scatter(
             [float(point["m_i"]) for point in group2],
             [float(point["r_eff"]) for point in group2],
-            s=98,
+            s=24,
             marker="s",
             c=GROUP2_COLOR,
             edgecolors=PANEL_A_MARKER_EDGE,
@@ -313,8 +317,8 @@ def render_prl_figure(payload: dict[str, object]) -> Path:
             lw=1.55,
             zorder=2,
         )
-        _plot_block_points(ax2, other_fit, open_symbols=False, size=86.0)
-        _plot_block_points(ax2, outliers, open_symbols=True, size=106.0)
+        _plot_block_points(ax2, other_fit, open_symbols=False, size=21.5)
+        _plot_block_points(ax2, outliers, open_symbols=True, size=26.5)
         for point in outliers:
             dx, dy, ha, va = OUTLIER_LABEL_OFFSETS.get(
                 str(point["element"]), (10, 10, "left", "center")
