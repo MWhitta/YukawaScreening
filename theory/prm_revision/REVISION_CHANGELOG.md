@@ -332,6 +332,48 @@ admissible interval, and is reported for completeness. Table caption
 and the SI species-level paragraph state the geometry of both cases.
 Table generator updated accordingly (7-column longtable).
 
+## 2026-08-07 — Fig. 2a labels regrouped: Group 1 below the fit line, Group 2 above (user request)
+
+`analysis/scripts/make_charge_density_benchmark_figures.py`
+(PANEL_A_LABEL_OFFSETS): Li and Cs moved below the fit line, Mg and Sr
+moved above, so that all Group 1 labels (Li, Na, K, Cs, Rb) sit below
+and all Group 2 labels (Be, Mg, Ca, Sr, Ba) above — a systematic
+visual grouping replacing the earlier purely collision-driven
+placement. Note: the request said "Na label above", but Na is Group 1
+and the stated rule puts it below (where it already was); interpreted
+as a slip for Mg, its Group 2 neighbor in the adjacent Li/Mg pair.
+`thomas_fermi_reff_prl.png` regenerated (null-models PNG restored as
+usual); verified in the render — no label collisions, K/Cs/Rb
+staircase clean. prm_main.pdf rebuilt with zero errors.
+
+## 2026-08-07 — SI Fig. S1 added: band-gap-resolved sign census (user request)
+
+New SI figure `theory/figures/si_band_gap_sign_census.png` — stacked
+histogram of the Materials Project band gap for all 62,552 clean
+fitted shells (single-valence, unregularized linear fits), stacked by
+the sign of the fitted B, with metallic hosts (E_g = 0) as a separate
+bar. Headline result: 20% of shells in metallic hosts fit B < 0
+versus 12% across gapped hosts, consistent with over-screening by
+free carriers (the correlation survives a bond-length-spread control
+in session analysis: 21% vs 10% among well-spread shells). Placed
+after the sign-census paragraph with a pointer sentence; label
+fig:gap_sign_census renders as FIG. S1 (later SI figures renumber
+automatically via \ref; the main text hard-codes no SI figure
+numbers).
+
+Supporting assets:
+- `analysis/scripts/make_gap_sign_census_figure.py` — generator; also
+  rebuilds the gap map if absent using formula-unique batches (the MP
+  API masks material_id in responses, so per-batch formula_pretty is
+  the join key; same-formula polymorphs are dealt to different
+  batches).
+- `data/processed/theory/mp_band_gaps.json` — mid → band gap for
+  31,533 of the corpus's 31,779 unique materials (99.2%; the
+  remainder are deprecated MP entries), fetched 2026-08-07.
+- Two-color palette (B>0 blue #2B5FAC, B<0 orange #C96A00) validated
+  for CVD separation and surface contrast.
+- `FIGURE_SOURCES.md` updated. SI compiles with zero errors.
+
 ## 2026-08-06 — Response letter: explicit manuscript/SI locations (user request)
 
 `response_to_referee.tex`. Vague locators — "both documents", "the

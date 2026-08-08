@@ -42,14 +42,14 @@ PANEL_B_STYLES = {
 # and Ba/K) are split to opposite sides.
 PANEL_A_LABEL_OFFSETS = {
     "Be": (-9, 8),
-    "Li": (-9, 8),
-    "Mg": (9, -8),
+    "Li": (9, -8),
+    "Mg": (-9, 8),
     "Ca": (-9, 8),
     "Na": (9, -5),
-    "Sr": (9, -8),
+    "Sr": (-9, 8),
     "Ba": (-9, 8),
     "K": (5, -9),
-    "Cs": (0, 10),
+    "Cs": (7, -9),
     "Rb": (9, -7),
 }
 # (dx, dy, ha, va) in points; each label sits beside its own marker in the

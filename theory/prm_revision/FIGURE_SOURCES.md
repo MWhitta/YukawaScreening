@@ -13,6 +13,7 @@ This file maps every manuscript figure asset in [`theory/figures`](./figures) to
 
 | Figure file(s) | Source of record | Regeneration path |
 | --- | --- | --- |
+| `si_band_gap_sign_census.png` (Fig. S1, band-gap-resolved sign census) | `data/processed/bond_valence/consolidated_store.json::oxygen_authoritative` + `data/processed/theory/mp_band_gaps.json` (mid → MP band gap; refetched via formula-unique batches if absent, requires `MP_API_KEY`) | `python analysis/scripts/make_gap_sign_census_figure.py` |
 | `prl_oxygen_beta_vs_charge_cn4_cn6.png` (per-species scatter; was main-text Fig. 1 in the PRL submission) | `data/processed/bond_valence/consolidated_store.json::oxygen_authoritative` + `data/processed/theory/master_oxygen_summary_theory.json` | `PYTHONPATH=analysis python analysis/scripts/make_dblock_beta_prl_figure.py` |
 | `group1_oxygen_cn_fit_lines.png` | `data/processed/bond_valence/consolidated_store.json::oxygen_authoritative` + `data/processed/theory/master_oxygen_summary_theory.json` | `PYTHONPATH=analysis python analysis/scripts/make_block_fit_line_atlases.py` |
 | `group2_oxygen_cn_fit_lines_part01.png` | same as above | `PYTHONPATH=analysis python analysis/scripts/make_block_fit_line_atlases.py` |
