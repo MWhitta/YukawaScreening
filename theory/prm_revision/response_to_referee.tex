@@ -26,16 +26,18 @@ The referee's paired observations---that the presentation was abrupt,
 and that the Letter was short enough to absorb more explanation---%
 prompted a more extensive expansion than the specific items below.  We
 have enlarged the presentation throughout the manuscript.  The
-point-by-point responses list the specific changes in detail, but
-additional context has been added at many points beyond those listed,
-including a derivation of the Yukawa flux factor at first use, status
-statements distinguishing postulate from approximation from exact
-identity at each stage, and mechanistic explanations accompanying the
-validation figures.  The expansion also produced two new results.
-First, the coordination-resolved line family is now closed by explicit
-intercept and intersection relations, which give the characteristic
-softness $B^*$ a geometric meaning as the logarithmic dilation rate of
-the coordination shell with coordination number.  Second, a second-root
+responses list the specific changes in detail, but additional context
+has been added at many points beyond those listed, including a
+derivation of the Yukawa flux factor at first use, status statements
+distinguishing postulate from approximation from exact identity at
+each stage, and mechanistic explanations accompanying the validation
+figures.  
+
+The expansion also produced two new results.  First, the
+coordination-resolved line family is now closed by explicit intercept
+and intersection relations, which give the characteristic softness
+$B^*$ a geometric meaning as the logarithmic dilation rate of the
+coordination shell with coordination number.  Second, a second-root
 analysis of the screening inversion yields a contact-distance law
 against Shannon crystal radii, $|\lambda^*_-|=r_{\mathrm{cr}}+c(z)$
 with $c(z)\approx 1.05+0.09\,z$~\AA, anchoring the fitted screening
@@ -43,151 +45,199 @@ length in a century of independent crystallographic systematics and
 identifying a valence-dependent effective oxygen size.  Both results
 are validated in the revised Supplemental Material.
 
-\section*{Point-by-point response}
+\section*{The referee's report, with responses}
 
-\textbf{1. Construction of the coordination-resolved $B(R_0)$ lines.}
+\textbf{Block 1 --- introductory remarks.}
 
 \begin{refquote}
-``\ldots the coordination-resolved $B(R_0)$ lines, which play a central
-role throughout the manuscript\ldots appear almost without motivation.
-From the text, it is not immediately clear how these lines are
-constructed numerically.  Are they obtained by fixing $R_0$ and
-re-optimizing $B$, or by some other procedure?  \ldots I think the
-fitting procedure should be described explicitly in the manuscript.''
+``This manuscript presents an interesting and potentially important
+attempt to place the bond-valence model on a more fundamental physical
+footing by deriving its exponential form as the leading-order limit of
+Yukawa-screened electrostatics.  The idea is original, and if correct
+it would provide a welcome physical interpretation of empirical
+bond-valence parameters that have been widely used for decades.  The
+manuscript is also supported by a substantial amount of numerical
+analysis and by extensive supplementary material.
+
+I should state, however, that I am not a specialist of the bond-valence
+model.  My comments therefore reflect the perspective of a reader
+familiar with condensed-matter physics and electronic structure, but
+not with the technical details of bond-valence parameterization.  I
+think this perspective may actually be relevant for the readership of
+Physical Review Materials, since many readers will likely be in a
+similar situation.''
 \end{refquote}
 
-The coordination-resolved $B$--$R_0$ lines were first introduced in
-the American Mineralogist paper of Li \emph{et al.}\ (Ref.~[19] of
-the manuscript), where the underlying bond-valence solver and the
-per-structure fits are developed in detail, and the original
-manuscript cited that work intending it to supply this context.  We
-agree that the construction must be stated in the manuscript itself.
-The fitting procedure is now described explicitly in the manuscript,
-with the attribution to Li \emph{et al.}\ made explicit at the point
-of use, and the referee's direct question is answered directly.  Both
-parameters are fitted jointly by linear least squares for each
-structure, not by re-optimizing $B$ at fixed $R_0$ (Empirical
-validation).  Each DFT-relaxed structure thus contributes one
-$(R_0,B)$ pair, and the coordination-resolved line of a species at
-coordination $n$ is an outlier-robust regression of $B$ on $R_0$
-across those per-structure pairs (RANSAC consensus refit by least
-squares on its inliers, at least five structures per cell), with a
-fitted slope accepted only with at least four inlier structures, slope
-standard error at most 5, and $R^2\ge 0.3$.  The slopes plotted in
-Fig.~1 are these regression slopes, and a pointer to this construction
-now appears at their first use in the manuscript (Parameter-free
-slope).  A new Supplemental Material paragraph
-(``Line-fitting procedure'') documents the complete pipeline, including
-the coordination binning, the RANSAC residual threshold, the bootstrap
-error estimation, and the structure-count weights.
+\textbf{Response.}  We thank the referee for this generous assessment,
+and we agree that the stated perspective matches the journal's
+readership.
 
-\textbf{2. Broader discussion of previous work.}
+\textbf{Block 2 --- construction of the $B(R_0)$ lines and prior work.}
 
 \begin{refquote}
-``\ldots the Introduction would benefit from a broader discussion of
-previous work aimed at providing a physical interpretation of the
-bond-valence model\ldots so that the reader can more clearly appreciate
-what is genuinely new in the present contribution.''
+``My main concern is that the introduction of the theory is rather
+abrupt.  Several key objects are introduced without sufficient
+explanation for readers outside the bond-valance community.  In
+particular, the coordination-resolved $B(R_0)$ lines, which play a
+central role throughout the manuscript and in the Supplementary
+Information, appear almost without motivation.  From the text, it is
+not immediately clear how these lines are constructed numerically.
+Are they obtained by fixing $R_0$ and re-optimizing $B$, or by some
+other procedure?  Since the subsequent theoretical analysis is built
+upon these lines, I think the fitting procedure should be described
+explicitly in the manuscript.  In addition, I think the Introduction
+would benefit from a broader discussion of previous work aimed at
+providing a physical interpretation of the bond-valence model and
+related electrostatic approaches, so that the reader can more clearly
+appreciate what is genuinely new in the present contribution.''
 \end{refquote}
 
-The manuscript's introduction has been rewritten.  It now states concretely what
-Preiser \emph{et al.}\ established with point-charge calculations,
-characterizes Brown's development of the flux picture into a
-capacitor-based framework, and distinguishes the Adams line of work as
-relating $B$ to bond stiffness rather than to screening in the
-surrounding medium.  It also adds the context that makes the novelty
-legible.  The near-degeneracy of jointly fitted $(R_0,B)$ is well
-documented and has commonly been suppressed by fixing
-$B\simeq0.37$~\AA, whereas the present work treats that correlation
-itself as physical content and predicts its slope with no fitted
-constants.  The opening paragraph now also notes the model's growing
-use as a structural descriptor in machine-learning studies, with three
-added references.  Referencing of previous work has been improved
-throughout, including the explicit attribution of the $B$--$R_0$ line
-construction to Li \emph{et al.}\ (Ref.~[19]) at its point of use.
+\textbf{Response.}  This block raises three connected requests, and each
+are addressed below.
 
-\textbf{3. Exact reformulation vs.\ approximation vs.\ interpretation.}
+\emph{Construction of the lines.}  The coordination-resolved
+$B$--$R_0$ lines were first introduced in the American Mineralogist
+paper of Li \emph{et al.}\ (Ref.~[19] of the manuscript), where the
+underlying bond-valence solver and the per-structure fits are
+developed in detail, and the original manuscript cited that work
+intending it to supply this context.  We agree that the construction
+was not fully explained and must be stated in the manuscript itself.  
+The fitting procedure is now described explicitly in the manuscript, 
+with the attribution to Li \emph{et al.}\ made at the point 
+of use, and the referee's question is answered directly.  
+Both parameters are fitted jointly by linear least squares for each structure, not by
+re-optimizing $B$ at fixed $R_0$ (Empirical validation).  Each
+DFT-relaxed structure thus contributes one $(R_0,B)$ pair, and the
+coordination-resolved line of a species at coordination $n$ is an
+outlier-robust regression of $B$ on $R_0$ across those per-structure
+pairs (RANSAC consensus refit by least squares on its inliers, at
+least five structures per cell), with a fitted slope accepted only
+with at least four inlier structures, slope standard error at most 5,
+and $R^2\ge 0.3$.  The slopes plotted in Fig.~1 are these regression
+slopes, and a pointer to this construction now appears at their first
+use in the manuscript (Parameter-free slope).  A new Supplemental
+Material paragraph (``Line-fitting procedure'') documents the
+complete pipeline, including the coordination binning, the RANSAC
+residual threshold, the bootstrap error estimation, and the
+structure-count weights.
+
+\emph{Abruptness of the theory introduction.}  The Yukawa flux factor
+$e^{-R/\lambda}(1+R/\lambda)$ is now derived by applying Gauss's law
+to the screened potential at its first use, with the screening
+citations moved there, and the flux-ratio condition is motivated
+before it is imposed (Screened-flux derivation).
+
+\emph{Prior work.}  The manuscript's introduction has been rewritten.
+It now states concretely what Preiser \emph{et al.}\ established with
+point-charge calculations, characterizes Brown's development of the
+flux picture into a capacitor-based framework, and distinguishes the
+Adams line of work as relating $B$ to bond stiffness rather than to
+screening in the surrounding medium.  It also adds the context that
+makes the novelty clear.  The near-degeneracy of jointly fitted
+$(R_0,B)$ is well documented and has commonly been suppressed by
+fixing $B\simeq0.37$~\AA, whereas the present work treats that
+correlation itself as physical content and predicts its slope with no
+fitted constants.  The opening paragraph now also notes the model's
+growing use as a structural descriptor in machine-learning studies,
+with three added references.  Referencing of previous work has been
+improved throughout, including the explicit attribution of the
+$B$--$R_0$ line construction to Li \emph{et al.}\ (Ref.~[19]) at its
+point of use.
+
+\textbf{Block 3 --- exact reformulation vs.\ approximation vs.\
+interpretation.}
 
 \begin{refquote}
-``\ldots the partition-function formulation and the definition of the
-first-principles screening centroid are mathematically interesting, but
-their physical motivation is introduced rather quickly.  Readers
-unfamiliar with bond-valence theory may struggle to distinguish what is
-an exact reformulation, what is an approximation, and what is a
+``More generally, I found that several conceptual steps in the
+derivation would benefit from additional discussion.  For example, the
+partition-function formulation and the definition of the
+first-principles screening centroid are mathematically interesting,
+but their physical motivation is introduced rather quickly.  Readers
+unfamiliar with bond-valence theory may struggle to distinguish what
+is an exact reformulation, what is an approximation, and what is a
 physical interpretation.''
 \end{refquote}
 
-The manuscript now makes this bookkeeping explicit at every stage.
-Its introduction closes with a roadmap stating that the screened
-flux-ratio partition is a physical postulate, that the isotropic
-Yukawa weight and its linearization are the two controlled
+\textbf{Response.}  The manuscript now makes this bookkeeping explicit
+at every stage.  Its introduction closes with a roadmap stating that
+the screened flux-ratio partition is a physical postulate, that the
+isotropic Yukawa weight and its linearization are the two controlled
 approximations, and that the partition-thermodynamic relations are
 exact identities of the bond-valence equation.  The partition equation
 is followed by an exactness statement locating the first mathematical
 approximation in the linearization.  The manuscript's Partition
-thermodynamics section now opens by motivating the ensemble reading (it supplies the
-reference length left open in the derivation and the shell radius
-that the first-principles comparison requires), declares its
-identities exact with the thermodynamic language as interpretation,
-and notes where the screened-flux and bond-valence forms coincide only
-to first order.  The screening centroid $r_{\mathrm{eff}}$ is now
-introduced in the manuscript (First-principles confirmation) by its
-physical role---if bond valence is captured screened
-flux, the shell radius resolved by the partition should track where
-screening charge accumulates along each bond---before its operational
-definition.
+thermodynamics section now opens by motivating the ensemble reading
+(it supplies the reference length left open in the derivation and the
+shell radius that the first-principles comparison requires), declares
+its identities exact with the thermodynamic language as
+interpretation, and notes where the screened-flux and bond-valence
+forms coincide only to first order.  The screening centroid
+$r_{\mathrm{eff}}$ is now introduced in the manuscript
+(First-principles confirmation) by its physical role---if bond valence
+is captured screened flux, the shell radius resolved by the partition
+should track where screening charge accumulates along each bond---%
+before its operational definition.
 
-\textbf{4. Spread near $z=3$ in Fig.~1 and slope uncertainties.}
-
-\begin{refquote}
-``The overall agreement with the predicted slope is encouraging, but
-there remains a substantial spread for some oxidation states,
-particularly around $z=3$\ldots it would therefore be useful to discuss
-the origin of this scatter more explicitly, and, if possible, to
-indicate the uncertainty associated with the fitted slopes.''
-\end{refquote}
-
-Both requests are implemented, in the manuscript and in the
-Supplemental Material, and Fig.~1 itself has been redesigned.  The
-manuscript's Fig.~1 is now a box-and-whisker summary of the
-per-species slopes at each formal charge, so the spread the referee
-noted is displayed rather than implied, and the full per-species
-scatter has moved to the Supplemental Material (``Per-species slopes
-at fixed coordination'') with species-resolved error bars.  A new
-manuscript section, ``Origin of the near-pole spread,'' analyzes the
-scatter.  The pole form itself sets the pattern.  A
-species-level perturbation $u$ of the inverse slope shifts the fitted
-slope by $-\beta^2 u$, so fixed chemical scatter is amplified
-quadratically toward the pole, and across the charge classes of
-Fig.~1 the per-class spread indeed grows as $|\beta|^{1.8}$.  The
-$z=3$ class at $n=4$ is the clearest case.  The same cations at $n=6$
-match the prediction to a median $|\Delta\beta|=0.03$, so chemical
-diversity alone is not the origin.  The largest deviations belong to
-species for which fourfold oxygen coordination is rare (chiefly the
-trivalent lanthanides and Y, median 17 structures per fit), whereas
-well-populated trivalent species lie on the curve.  Slope
-uncertainties are now reported in the manuscript (Parameter-free
-slope) and documented in the Supplemental Material (``Slope standard
-errors'').  Each fitted slope carries a bootstrap
-standard error, with median relative standard error $0.2\%$ across the
-150 slopes and 90th percentile $4\%$, so the visible scatter reflects
-real differences among species rather than fit uncertainty.
-
-\textbf{5. Near-coincidence of the coordination-dependent lines.}
+\textbf{Block 4 --- spread near $z=3$ in Fig.~1 and slope
+uncertainties.}
 
 \begin{refquote}
-``\ldots for many species the coordination-dependent $B(R_0)$ lines are
-almost coincident, making the determination of their intersection
-appear rather delicate.  This may simply reflect the logarithmic
-dependence of the predicted slopes on $z/n$\ldots if so I think it
-would be worthwhile to comment on this point explicitly.''
+``I am also only partially convinced by the empirical validation
+presented in Fig.~1.  The overall agreement with the predicted slope
+is encouraging, but there remains a substantial spread for some
+oxidation states, particularly around $z=3$.  The reported weighted
+$R^2$ values are excellent, yet the visual impression is considerably
+less compelling.  It would therefore be useful to discuss the origin
+of this scatter more explicitly, and, if possible, to indicate the
+uncertainty associated with the fitted slopes.''
 \end{refquote}
 
-The referee's surmise is exactly right, and we now comment on it
-explicitly in the manuscript (Characteristic intersections) and in
-the Supplemental Material (``Near-coincidence of same-branch
-lines'').  Subtracting two predicted slopes
-gives
+\textbf{Response.}  Both requests are implemented, in the manuscript
+and in the Supplemental Material, and Fig.~1 itself has been
+redesigned.  The manuscript's Fig.~1 is now a box-and-whisker summary
+of the per-species slopes at each formal charge, so the spread the
+referee noted is displayed rather than implied, and the full
+per-species scatter has moved to the Supplemental Material
+(``Per-species slopes at fixed coordination'') with species-resolved
+error bars.  A new manuscript section, ``Origin of the near-pole
+spread,'' analyzes the scatter.  The pole form itself sets the
+pattern.  A species-level perturbation $u$ of the inverse slope
+shifts the fitted slope by $-\beta^2 u$, so fixed chemical scatter is
+amplified quadratically toward the pole, and across the charge
+classes of Fig.~1 the per-class spread indeed grows as
+$|\beta|^{1.8}$.  The $z=3$ class at $n=4$ is the clearest case.  The
+same cations at $n=6$ match the prediction to a median
+$|\Delta\beta|=0.03$, so chemical diversity alone is not the origin.
+The largest deviations belong to species for which fourfold oxygen
+coordination is rare (chiefly the trivalent lanthanides and Y, median
+17 structures per fit), whereas well-populated trivalent species lie
+on the curve.  Slope uncertainties are now reported in the manuscript
+(Parameter-free slope) and documented in the Supplemental Material
+(``Slope standard errors'').  Each fitted slope carries a bootstrap
+standard error, with median relative standard error $0.2\%$ across
+the 150 slopes and 90th percentile $4\%$, so the visible scatter
+reflects real differences among species rather than fit uncertainty.
+
+\textbf{Block 5 --- near-coincidence of the coordination-dependent
+lines.}
+
+\begin{refquote}
+``Conversely, while examining the Supplementary Information, I was
+somewhat surprised by a different feature: for many species the
+coordination-dependent $B(R_0)$ lines are almost coincident, making
+the determination of their intersection appear rather delicate.  This
+may simply reflect the logarithmic dependence of the predicted slopes
+on $z/n$, so that the expected differences between coordination
+numbers are intrinsically small, but if so I think it would be
+worthwhile to comment on this point explicitly.  As presented, the
+figures leave the impression that the characteristic intersection is
+in some cases only weakly constrained.''
+\end{refquote}
+
+\textbf{Response.}  The referee's surmise is exactly right, and we now
+comment on it explicitly in the manuscript (Characteristic
+intersections) and in the Supplemental Material (``Near-coincidence
+of same-branch lines'').  Subtracting two predicted slopes gives
 $\beta^{(n_2)}-\beta^{(n_1)}=\ln(n_2/n_1)/[\ln(z/n_1)\ln(z/n_2)]$,
 which is small whenever $z$ is well separated from both coordination
 numbers, so same-branch lines are expected to appear nearly
@@ -201,68 +251,106 @@ A new Supplemental Material paragraph quantifies the conditioning.
 Across the 85 species with three or more lines the median
 $\sigma_B/B^*$ is $5.8\%$ and 62 fall below $10\%$, while the 18
 species constrained by only two lines have $\sigma_B=0$ by
-construction and are flagged as provisional in the table.
+construction and are flagged as provisional in the table.  The
+referee is also correct that some intersections are only weakly
+constrained, and the revised documents say so rather than leaving it
+as an impression.
 
-\textbf{6. Supplemental figure captions.}
+\textbf{Block 6 --- overall assessment and requested emphases.}
+
+\begin{refquote}
+``These comments should not be interpreted as a negative assessment of
+the work.  On the contrary, I found the central idea original and
+interesting, and I appreciated the transparency of the Supplementary
+Information, which documents the fitting procedure and underlying
+data in considerable detail.  My impression is that the manuscript
+would become considerably more accessible---and, consequently, more
+convincing to a broad materials-physics audience---if the authors
+devoted somewhat more space to explaining the construction of the
+empirical $B(R_0)$ lines, the assumptions entering the derivation,
+and the interpretation of the validation figures.
+
+Overall, I believe the manuscript has the potential to make a valuable
+contribution, but I would encourage the authors to improve the
+presentation and clarify the methodological aspects before
+publication.''
+\end{refquote}
+
+\textbf{Response.}  We thank the referee for this encouragement.  The
+three named emphases are addressed under Blocks~2 and~3 (construction
+of the lines; the assumptions entering the derivation) and, for the
+interpretation of the validation figures, by two additions.  The
+manuscript's Discussion now explains the offset of the centroid
+comparison from the identity line mechanistically---the Gibbs shell
+centroid references the oxygen nucleus while $r_{\mathrm{eff}}$ tracks
+the screening charge displaced into the bond---with the directly
+measured oxygen-side shift $\Delta_{\mathrm{O,val}}=0.39\pm0.03$~\AA{}
+matching the gap of the fitted lines, and the redesigned Fig.~1
+displays the spread that the earlier presentation obscured.
+
+\textbf{Block 7 --- Supplemental captions.}
 
 \begin{refquote}
 ``Note: many figure captions in the Supplementary seem to be
 incorrect.''
 \end{refquote}
 
-We thank the referee for catching this.  A systematic audit of every
-caption against the rendered figure pages confirmed the problem.  The
-atlas pages order panels alphabetically by element within each block,
-while the captions had assumed atomic-number ordering, so all eight
-$d$-block captions misidentified their contents.  Every atlas caption
-now lists its panels explicitly and correctly, the ordering convention
-is stated in the atlas introduction, and the remaining caption
-inaccuracies (color versus line-style encodings, species orderings)
-have been fixed.  Supplemental figures and tables now carry S-prefixed
+\textbf{Response.}  We thank the referee for catching this.  A
+systematic audit of every caption against the rendered figure pages
+confirmed the problem.  The atlas pages order panels alphabetically by
+element within each block, while the captions had assumed
+atomic-number ordering, so all eight $d$-block captions misidentified
+their contents.  Every atlas caption now lists its panels explicitly
+and correctly, the ordering convention is stated in the Supplemental
+Material's atlas introduction, and the remaining caption inaccuracies
+(color versus line-style encodings, species orderings) have been
+fixed.  Supplemental figures and tables now carry S-prefixed
 numbering to prevent ambiguity with main-text figure references.
 
-\textbf{7. Letter format.}
+\textbf{Block 8 --- Letter format.}
 
 \begin{refquote}
-``I am not sure if the Letter format is the most appropriate for this
+``Justification for/against Letter:
+
+I am not sure if the Letter format is the most appropriate for this
 paper.  As now, I find it a bit abrupt, but it is also quite short, so
 maybe the authors can add enough explanations while keeping it a
 Letter.''
 \end{refquote}
 
-We followed this suggestion.  The explanations described above were
-added while condensing elsewhere, and the revised manuscript stands at
-approximately 4{,}200 word-equivalents, within the Letter limit.
+\textbf{Response.}  We followed this suggestion.  The explanations
+described above were added while condensing elsewhere, and the
+revised manuscript stands at approximately 4{,}200 word-equivalents,
+within the Letter limit.
 
 \section*{Additional changes}
 
 Beyond the items above, the deeper revision the report prompted led to
-the following changes, each logged in the revision record.
+the following changes:
 
 \begin{itemize}
 \item The manuscript's screening-collapse discussion at $z=n$ was
-corrected.  The
-original text overstated the constraint (the valence-sum rule fixes
-only the mean bond valence, not each bond), and the manuscript now
-distinguishes truly degenerate shells, for which a single structure
-leaves $B$ unconstrained, from nearly degenerate shells, which are
-satisfied at finite $B$, with corpus counts for both.  Relatedly, the
-branch change across the pole is now correctly attributed to the sign
-reversal of the slope $\beta$ rather than to the sign of $B$.
+corrected.  The original text overstated the constraint (the
+valence-sum rule fixes only the mean bond valence, not each bond),
+and the manuscript now distinguishes truly degenerate shells, for
+which a single structure leaves $B$ unconstrained, from nearly
+degenerate shells, which are satisfied at finite $B$, with corpus
+counts for both.  Relatedly, the branch change across the pole is now
+correctly attributed to the sign reversal of the slope $\beta$ rather
+than to the sign of $B$.
 \item The tabulated screening length $\lambda^*$ now covers both
 branches (signed values for the two anti-screening species), and the
 second root $\lambda^*_-$ is tabulated for all species, supporting the
 new contact-distance analysis.
-\item A sign census of the per-shell fits, a comparison of $B^*$ with
-published softness parameterizations, and the slope-error and
-line-conditioning statistics were added to the Supplemental Material,
-and all quoted statistics are reproduced by scripts in the project
-repository.
+\item A sign census of the per-shell fits, its band-gap resolution
+(Supplemental Fig.~S1), a comparison of $B^*$ with published softness
+parameterizations, and the slope-error and line-conditioning
+statistics were added to the Supplemental Material, and all quoted
+statistics are reproduced by scripts in the project repository.
 \item Fig.~2 was redrawn for readability (smaller markers, labels
-adjacent to their points), the offset of the centroid comparison from
-the identity line is now explained mechanistically with the directly
-measured oxygen-side shift, and terminology and notation were unified
-(Gibbs ensemble language, reference length $R'$ distinguished from the
+adjacent to their points, Group-1 labels below and Group-2 labels
+above the fit line), and terminology and notation were unified (Gibbs
+ensemble language, reference length $R'$ distinguished from the
 characteristic intercept $R_0^*$).
 \end{itemize}
 

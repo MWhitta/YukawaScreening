@@ -332,6 +332,65 @@ admissible interval, and is reported for completeness. Table caption
 and the SI species-level paragraph state the geometry of both cases.
 Table generator updated accordingly (7-column longtable).
 
+## 2026-08-07 — SI content description updated (user request)
+
+New file `si_description.md` replacing the original submission's SI
+description (which lived only in the submission form). Same
+one-paragraph-per-section format, updated for the revised SI: the two
+new sections (Per-species slopes; Comparison with published softness
+parameters), the new paragraphs folded into their host sections
+(line-fitting procedure, sign census + Fig. S1, slope standard
+errors, near-coincidence, second-root anchoring, both-branch λ*),
+the S-numbering note, and the λ*₋ table column. Numbers refreshed
+against the current SI — notably the parity check (44,844 structures,
+r = 0.976, MAE 0.019 Å; the old description's 50,706 / 0.969 / 0.018
+predate the completed inclusion criteria) and the Shannon-control MAE
+(0.095 Å, not 0.094).
+
+## 2026-08-07 — Marked-up diff manuscript generated (user request)
+
+New derived artifacts `prm_main_diff.tex` / `prm_main_diff.pdf` (8
+pages): latexdiff markup of the current draft against the original
+submission baseline `theory/prl_submission/prl_main.tex`. Additions
+render blue-underlined, deletions red-struck. Options:
+`--math-markup=whole` (changed displays marked as wholes, which is
+what let the equation-dense diff compile cleanly) and
+`--append-textcmd=runinsec` (section-head arguments diffed as text).
+The diff document uses the revised preamble, so it carries the
+prmaterials class options, \raggedbottom, and the \runinsec macro.
+Compiles with zero errors; markup verified on a rendered page.
+Regeneration: `latexdiff --math-markup=whole --append-textcmd=runinsec
+../prl_submission/prl_main.tex prm_main.tex > prm_main_diff.tex`
+followed by latexmk. Note these are derived files — regenerate after
+any further manuscript edit rather than editing them directly.
+
+## 2026-08-07 — Response letter restructured around the full referee report (user request)
+
+`response_to_referee.tex` rewritten so the report's complete text
+appears verbatim, in its original order, divided at paragraph
+boundaries into eight quoted blocks, each followed by its response —
+so the editor can confirm from the letter alone that every point is
+addressed and none were selectively chosen. A sentence before the
+blocks states this explicitly. Changes from the point-by-point
+version:
+
+- The preamble paragraphs (praise + the referee's stated perspective)
+  and the overall-assessment/encouragement paragraphs are now quoted
+  and answered too; the "three named emphases" of the assessment
+  paragraph are mapped to their blocks, with the
+  validation-figure-interpretation emphasis answered by the Δ_O,val
+  offset mechanism and the Fig. 1 redesign.
+- Block 5's response now concedes explicitly that some intersections
+  are weakly constrained ("the revised documents say so rather than
+  leaving it as an impression").
+- Report text reproduced verbatim including its own typo
+  ("bond-valance community"); no [sic] added.
+- Additional-changes list updated (band-gap sign census Fig. S1;
+  Fig. 2 label grouping).
+
+Verified programmatically that every sentence of the report appears in
+the letter (zero missing). Compiles to 6 pages with zero errors.
+
 ## 2026-08-07 — Fig. 2a labels regrouped: Group 1 below the fit line, Group 2 above (user request)
 
 `analysis/scripts/make_charge_density_benchmark_figures.py`
