@@ -30,3 +30,10 @@ This file maps every manuscript figure asset in [`theory/figures`](./figures) to
 - `analysis/notebooks/thomas_fermi_screening.ipynb` remains as the exploratory notebook used to derive the charge-density benchmark, but the manuscript-facing source of record is now the checked-in `data/processed/theory/charge_density_benchmark.json`.
 - `analysis/scripts/make_charge_density_benchmark_figures.py` is expected to preserve the original PRL Fig. 2 layout and styling: flat two-panel geometry, block-colored panel-b symbols, and open markers for the four explicit outliers.
 - The consistency checker at `analysis/scripts/check_manuscript_consistency.py` validates the figure inventory plus the manuscript counts and rounded benchmark summaries that are sourced from structured JSON/TeX artifacts.
+
+## Response letter (round 2)
+
+| Figure file | Source of record | Regeneration path |
+| --- | --- | --- |
+| `response_figures/co_o_fit_lines_with_points.{png,pdf}` (letter Fig. 1, Co–O lines with per-structure points) | same pipeline and data as the Supplemental fit-line pages (`build_unified_oxygen_cn_fits`, seeded RANSAC) | `analysis/.venv/bin/python analysis/scripts/make_response_co_o_figure.py` |
+| `response_figures/lambda_per_structure_hist.png` (letter Response Figure 1, per-structure λ histogram) | `data/processed/bond_valence/consolidated_store.json::oxygen_authoritative` | `analysis/.venv/bin/python analysis/scripts/plot_lambda_distribution.py` |

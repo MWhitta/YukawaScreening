@@ -1,4 +1,3 @@
-% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/.
 \documentclass[aps,prmaterials,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
 
 \usepackage{amsmath}
@@ -155,26 +154,15 @@ chosen within the coordination shell, giving
 \end{equation}
 where $C_i$ is independent of bond index $j$ and
 $\delta_{ij}=O[(R_{ij}-R')^2/(\lambda+R')^2]$.
-Exponentiating the linear term and renormalizing reproduces the
-exponential form of Eq.~\eqref{eq:bv}.  The log-weight error
-vanishes at $R_{ij}=R'$ and is quadratic away from it.  Define the
-leading-order Yukawa exponent denominator
+Exponentiating the linear
+term and renormalizing therefore reproduces Eq.~\eqref{eq:bv} at
+$R_{ij}=R'$ with only quadratic log-weight error away from $R'$.  Define
+the leading-order Yukawa exponent denominator
 \begin{equation}\label{eq:B_composite}
 B = \frac{\lambda(\lambda+R')}{R'}.
 \end{equation}
 This $B$ is the first-order exponent denominator produced by the Taylor
-expansion of the Yukawa weight, the inverse of the log-weight slope
-$-d\ln w/dR=R/[\lambda(\lambda+R)]$ evaluated at the expansion point
-$R'$.  The power-law form $S=(R/R_1)^{-N}$ of Brown and Shannon
-\cite{Brown1973}, which traces to Donnay and Allmann
-\cite{Donnay1970} and was tabulated for cation--oxygen pairs by Brown
-and Wu \cite{Brown1976}, is the same screened weight linearized in
-$\ln R$ instead of $R$, with exponent $N=R'/B$.  This is the condition
-under which Zachariasen found the two forms to agree to within 1\%
-for $0.5<S<2$ \cite{Zachariasen1978}.  We retain the exponential
-because it is linear in the bond length, which is what gives the
-$B$--$R_0$ correlation below a parameter-free slope.  The screening
-length $\lambda$ is the
+expansion of the Yukawa weight. The screening length $\lambda$ is the
 primary physical variable, and the sign of $\lambda$ distinguishes
 screening from anti-screening.  For $\lambda>0$ the Yukawa weight
 decays with bond length, so flux reaching the more distant anions is
@@ -191,21 +179,14 @@ bonding or ambiguous coordination produces anisotropic flux capture
 outside the isotropic Yukawa assumption.
 
 \runinsec{Parameter-free slope.} In the uniform-bond limit, where
-$R_{ij}=\bar R$ for all $j$, the valence-sum rule applied to
-Eq.~\eqref{eq:bv} gives $R_0=\bar R+B\ln(z/n)$.  This relation
-involves only the fitted parameters and uses nothing from
-Eq.~\eqref{eq:B_composite}.  Differentiating at fixed $\bar R$:
+$R_{ij}=\bar R$ for all $j$, the valence-sum rule gives
+$R_0=\bar R+B\ln(z/n)$.  Differentiating:
 \begin{equation}\label{eq:pole}
 \beta := \frac{dB}{dR_0} = \frac{1}{\ln(z/n)}.
 \end{equation}
 The slope of the $B$--$R_0$ correlation at fixed
 coordination number $n$ is determined entirely by the charge-to-coordination
 ratio $z/n$, with a pole at $z=n$, with no fitting parameters.
-Equation~\eqref{eq:pole} does not prescribe a single $(R_0,B)$ for
-a species.  It fixes the direction along which the joint fit of one
-structure is degenerate, so the per-structure pairs of a species at
-fixed $n$ trace a line of predicted slope and the second-order terms
-set where each structure falls on it.
 Figure~\ref{fig:pole} shows that Eq.~\eqref{eq:pole} reproduces the
 fitted slopes for 94 cation--oxygen species at $n=4$ and $n=6$ (68 at
 $n=4$, 82 at $n=6$, 150 slopes in total).  The weighted $R^2$ is
@@ -463,17 +444,6 @@ the screened-flux derivation. We take $R'=m_i$, which centers the
 log-weight expansion of Eq.~\eqref{eq:expansion} on the weighted
 shell centroid that the partition function singles out and makes the
 operational content of $R'$ in Eq.~\eqref{eq:B_composite} explicit.
-The choice is physical rather than formal.  The expansion controls
-its error through the bond-length spread of the shell, so $R'$ must
-lie within the interval spanned by the bonds, and $R_0$ generally
-does not.  By Eq.~\eqref{eq:R0_identity} it differs from $m_i$ by
-$B(\ln q_i-H_i)$, which in the uniform-bond limit is $B\ln(z/n)$,
-placing $R_0$ below the shell for $z<n$ and above it for $z>n$.
-Among lengths within the shell, $m_i$ minimizes the valence-weighted
-second moment $\sum_j p_{ij}(R_{ij}-R')^2$, which equals the weighted
-variance of the shell plus $(m_i-R')^2$, so the leading linearization
-error, $-\sum_j p_{ij}(R_{ij}-R')^2/[2(\lambda+R')^2]$, is set by the
-distortion of the shell alone.
 
 \runinsec{Empirical validation.} Bond-valence parameters $(R_0,B)$ were
 determined for 103 cation--oxygen species using first-principles

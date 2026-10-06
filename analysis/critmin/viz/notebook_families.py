@@ -616,6 +616,9 @@ def save_manuscript_figure(
     return out
 
 
+ANNOT_LOG: list[tuple] = []
+
+
 def export_species_fit_line_atlas(
     cn_fits: Mapping[str, Any],
     cations: Sequence[str],
@@ -630,8 +633,16 @@ def export_species_fit_line_atlas(
     ncols: int = 3,
     chunk_size: int | None = None,
     panel_height_ratio: float = 0.82,
+    show_points: bool = True,
+    window: tuple | None = ((0.0, 4.0), (-1.0, 2.0)),
 ) -> list[str]:
-    """Export a chunked manuscript-safe atlas of species CN fit-line panels."""
+    """Export a chunked manuscript-safe atlas of species CN fit-line panels.
+
+    When ``show_points`` is True and a fit carries ``points`` the per-structure
+    (R0, B) pairs are drawn (RANSAC inliers in the coordination color, outliers
+    gray). When ``window`` is ``((xlo, xhi), (ylo, yhi))`` the axes are fixed to
+    it and an out-of-window annotation is added above each panel.
+    """
     if ncols != 3:
         raise ValueError("export_species_fit_line_atlas currently supports ncols=3 only")
     if legend_entry_formatter is None:
@@ -680,7 +691,28 @@ def export_species_fit_line_atlas(
             )
             r0_values: list[float] = []
             b_values: list[float] = []
+            n_in_tot = n_out_tot = k_outside = 0
             for line in lines:
+                cn_block = cn_fits.get(cation, {}).get(int(line["cn"]), {})
+                pfit = cn_block.get("oxygen_ransac") or cn_block.get("oxygen")
+                pts = (pfit or {}).get("points")
+                if show_points and pts:
+                    px_ = np.asarray(pts["R0"], dtype=float)
+                    py_ = np.asarray(pts["B"], dtype=float)
+                    pm_ = np.asarray(pts["inlier"], dtype=bool)
+                    pcol = cn_colors.get(int(line["cn"]), color_fn(cation))
+                    ax.scatter(px_[pm_], py_[pm_], s=7, color=pcol, alpha=0.55,
+                               linewidths=0, zorder=1)
+                    # Outliers are hollow so they stay distinguishable on the gray
+                    # d-block palette, where filled gray would merge with inliers.
+                    ax.scatter(px_[~pm_], py_[~pm_], s=9, facecolors="none",
+                               edgecolors="0.2", linewidths=0.4, alpha=0.6, zorder=1)
+                    n_in_tot += int(pm_.sum())
+                    n_out_tot += int((~pm_).sum())
+                    if window is not None:
+                        inw = ((px_ > window[0][0]) & (px_ < window[0][1])
+                               & (py_ > window[1][0]) & (py_ < window[1][1]))
+                        k_outside += int((pm_ & ~inw).sum())
                 r0_lo = float(line["R0_min"])
                 r0_hi = float(line["R0_max"])
                 if not np.isfinite(r0_lo) or not np.isfinite(r0_hi):
@@ -717,7 +749,10 @@ def export_species_fit_line_atlas(
                 r0_values.append(float(intersection["R0_star"]))
                 b_values.append(float(intersection["B_star"]))
 
-            if r0_values and b_values:
+            if window is not None:
+                ax.set_xlim(*window[0])
+                ax.set_ylim(*window[1])
+            elif r0_values and b_values:
                 r0_pad = max(0.03, 0.08 * (max(r0_values) - min(r0_values) or 1.0))
                 b_pad = max(0.03, 0.08 * (max(b_values) - min(b_values) or 1.0))
                 ax.set_xlim(min(r0_values) - r0_pad, max(r0_values) + r0_pad)
@@ -730,6 +765,16 @@ def export_species_fit_line_atlas(
                 xlabel="R₀ (Å)" if idx >= (nrows - 1) * ncols else None,
                 ylabel="B (Å)" if idx % ncols == 0 else None,
             )
+            if window is not None and show_points and n_in_tot + n_out_tot > 0:
+                ax.text(
+                    0.0, 1.03,
+                    f"{k_outside} of {n_in_tot} inlier structures outside window\n"
+                    f"({n_out_tot} RANSAC outliers)",
+                    transform=ax.transAxes, ha="left", va="bottom",
+                    fontsize=min(style.annotation_pt, 5.0), linespacing=1.0,
+                ).set_in_layout(False)
+                ax.set_title(f"{cation}–O", fontsize=style.title_pt, pad=5 + 2.6 * min(style.annotation_pt, 5.0))
+                ANNOT_LOG.append((filename_prefix, part_idx, cation, k_outside, n_in_tot, n_out_tot))
 
         for ax in axes_flat[len(species_chunk) :]:
             ax.set_axis_off()
@@ -752,6 +797,17 @@ def export_species_fit_line_atlas(
             )
             for cn in chunk_cns
         ]
+        if show_points:
+            legend_handles.append(
+                Line2D([0], [0], marker="o", color="0.45", linestyle="",
+                       markersize=3.5, markeredgewidth=0, alpha=0.7,
+                       label="inlier (per-structure fit)")
+            )
+            legend_handles.append(
+                Line2D([0], [0], marker="o", color="0.2", linestyle="",
+                       markersize=3.8, markerfacecolor="none", markeredgewidth=0.5,
+                       label="RANSAC outlier")
+            )
         legend_handles.append(
             Line2D(
                 [0],

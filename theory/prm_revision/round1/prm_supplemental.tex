@@ -1,4 +1,3 @@
-% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/.
 \documentclass[aps,prmaterials,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
 
 \usepackage{amsmath}
@@ -38,9 +37,7 @@ The figures and tables in this Supplemental Material cover the same
 103 cation--oxygen species analyzed in the main text, spanning $s$-,
 $p$-, $d$-, and $f$-block cations.
 
-Source structures are DFT-relaxed entries from the Materials Project,
-retrieved with an energy-above-hull window of 0 to 50~meV/atom, so
-every structure lies within 50~meV/atom of the convex hull.
+Source structures are DFT-relaxed entries from the Materials Project.
 For each structure, bond strengths were obtained by solving the
 valence-sum and loop constraints on the cation--oxygen bond graph,
 and $(R_0,B)$ were determined by linear least squares.  For
@@ -83,22 +80,11 @@ lanthanides plus actinides
 (Figs.~\ref{fig:fblock_fits_1}--\ref{fig:fblock_fits_2}).  Each
 caption quotes the species panels of its page in reading order, either
 in full or as a first--last range.  Within each block, panels are
-ordered alphabetically by element symbol and oxidation state.  Each
-panel shows the per-structure $(R_0,B)$ pairs beneath the fitted
-lines, as filled circles for the RANSAC inliers of each line (in the
-line's color) and as open circles for the RANSAC outliers.  Axes are
-fixed to the window $0<R_0<4$~\AA{} and $-1<B<2$~\AA, and the
-annotation above each panel gives the number of inlier structures
-that fall outside this window together with the number of RANSAC
-outliers.  Inliers outside the window are nearly degenerate shells
-whose joint fit is weakly constrained along the line, so their $R_0$
-and $B$ can reach $10^{2}$--$10^{3}$~\AA{} while still lying on it.
-The fitted lines are drawn over the full $R_0$ range of their
-inliers and are clipped by the window.  Within each
+ordered alphabetically by element symbol and oxidation state.  Within each
 coordination shell, the fitted parameters lie on a linear family
 $B=\beta^{(n)}R_0+\beta_0^{(n)}$, and the lines converge toward
 cation-specific characteristic pairs $(R_0^*,B^*)$ as described in the
-main text.  Together, these pages display every coordination-resolved
+main text.  Together, these atlas pages display every coordination-resolved
 fit that contributes to the pole form $\beta=1/\ln(z/n)$ shown in
 Fig.~1 of the main text.
 
@@ -171,12 +157,9 @@ band-gap map in \texttt{data/processed/theory/mp\_band\_gaps.json}.}
 \centering
 \includegraphics[width=0.85\textwidth]{group1_oxygen_cn_fit_lines.png}
 \caption[Group~1 coordination-resolved $B$--$R_0$ lines.]{$n$-resolved $B$ vs.\ $R_0$ fit lines for Group~1 X--O pairs
-(Cs, K, Li, Na, Rb, H).  Filled circles are the per-structure
-$(R_0,B)$ inliers of each line, open circles the RANSAC outliers,
-line styles distinguish coordination numbers $n$ (legend), and the
-large open circle marks the least-spread intersection point.  Axes
-are fixed to $0<R_0<4$~\AA{} and $-1<B<2$~\AA, with the number of
-inlier structures outside the window given above each panel.  The convergence of the lines defines the characteristic pair
+(Cs, K, Li, Na, Rb, H).  Line styles distinguish coordination numbers
+$n$ (legend), and the open circle marks the least-spread intersection
+point.  The convergence of the lines defines the characteristic pair
 $(R_0^*,B^*)$ for each cation.}
 \label{fig:group1_fits}
 \end{figure}
@@ -541,7 +524,7 @@ bonding environments dominate the training corpus.  The
 per-material fits used here resolve the valley instead of averaging
 over it.  At fixed species and coordination number the
 per-structure $(R_0,B)$ pairs fall on the lines of slope
-$1/\ln(z/n)$ shown in the figures above, so the covariance that
+$1/\ln(z/n)$ shown in the atlas above, so the covariance that
 pooled fitting suppresses carries the physical content, and $B^*$
 is defined geometrically as the least-spread intersection of those
 lines rather than as a corpus average.  The two estimands therefore

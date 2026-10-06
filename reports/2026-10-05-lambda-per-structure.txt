@@ -1,0 +1,4 @@
+median R' = 2.019 A; lambda for B = 0.37 A there = 0.319 A
+real lambda: 60304  (positive 53321, negative 6983); no real root: 3479
+positive: median 0.297 A, IQR 0.183-0.471 A, p95 1.165 A, max 47.9 A; negative: median -0.118 A, min -1.43 A
+wrote /Users/mwhittaker/Projects/github/YukawaScreening/theory/prm_revision/response_figures/lambda_per_structure_hist.png

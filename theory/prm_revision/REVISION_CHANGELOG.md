@@ -1380,3 +1380,365 @@ uniform font scaling self-defeating. Regenerated
 pages 2-3 confirms matched text sizes. A comment in the script records
 the derivation and warns to re-sync if Fig. 2's sizes or either
 typeset width changes.
+
+---
+
+## 2026-10-05 — Round 2 setup (second revision)
+
+Second-round reports received (`reviewer_report_round2.txt`). The First
+Referee recommends publication. A new Second Referee raises concerns
+about alternative empirical forms (Brown–Shannon power law), the R′/R₀
+notation after Eq. (3), the ranges of per-structure (R₀,B) in the SI
+atlas and the absence of the per-structure points, the derivation of
+the slope from the uniform-bond limit, structural validity of the
+corpus, the choice R′ = m_i as expansion point, and transferability.
+
+Directory restructure (no manuscript content changed):
+- `round1/` created. Moved there with `git mv`: `reviewer_report`,
+  `response_to_referee.tex/.pdf`, `prm_main_diff.tex/.pdf`,
+  `cover_letter.*`, `cover_letter_draft.md`,
+  `justification_paragraph.md`, `data_availability_statement.md`,
+  `REVISION_SUMMARY.md`. Frozen copies of the resubmitted
+  `prm_main.tex/.pdf`, `prm_supplemental.tex/.pdf`, `references.bib`,
+  `si_lambda_table.tex`, `si_description.md` placed there as the
+  round-2 diff baseline (identical to commit `80c4145`). Symlink
+  `round1/figures -> ../../figures`. `round1/README.md` documents this.
+- `README.md` added at the directory root describing the second-revision
+  layout.
+- A one-line `%` comment labelling the source as the second revision was
+  added at the top of `prm_main.tex` and `prm_supplemental.tex`
+  (invisible to latexdiff and to the PDF).
+- `make_diff_round2.sh` generates `prm_main_diff_round2.tex` and
+  `prm_supplemental_diff_round2.tex` by latexdiff against `round1/` with
+  the same options as the round-1 diff, and compiles both.
+- `response_to_referees_round2.tex` drafted in the style of the round-1
+  letter. Responses to the Second Referee's Blocks 3, 4, 5, 6, 8 and 9
+  are drafted from material already in the text. Red `\todo{}` markers
+  flag every open decision, analysis, or manuscript edit.
+
+Verification behind the Block 5 response: atlas lines are drawn over
+`[R0_min, R0_max]` of the RANSAC inlier structures of each line
+(`analysis/critmin/analysis/bond_valence_theory.py::_augment_fit_with_ranges`,
+`analysis/critmin/viz/notebook_families.py::export_species_fit_line_atlas`),
+and the axis window is set from those extents plus 8 % padding. The
+±1000 Å windows on `dblock_oxi_oxygen_cn_fit_lines_part01.png` (Co³⁺)
+are therefore real inlier R₀ values on the degenerate line, not a
+plotting bug.
+
+Open: the energy-above-hull filter actually used to build the corpus
+is not stated in the SI; the pipeline default in
+`analysis/critmin/analysis/bond_valence.py` is 0–0.05 eV/atom.
+
+## 2026-10-05 — Power-law references added (round 2 letter, Block 2)
+
+`references.bib`: added Donnay1970 (Am. Mineral. 55, 1003), Brown1973
+(Brown & Shannon, Acta Cryst. A29, 266), Brown1976 (Brown & Wu, Acta
+Cryst. B32, 1957) and Zachariasen1978 (J. Less-Common Met. 62, 1),
+drawn from `../bv-methods-review` (paper/references.bib and
+literature/corpus/corpus.bib) and rekeyed to this repo's
+first-author-year convention. All three DOIs verified against Crossref
+on 2026-10-05. `response_to_referees_round2.tex` now cites them, defines
+`\sij`, `\Ro`, `\Rij` in manuscript notation, and carries an `unsrt`
+bibliography. Not yet cited in `prm_main.tex`.
+
+## 2026-10-05 — Block 2 power-law passage verified against primary sources
+
+Checked against the PDFs in `../bv-methods-review/literature/corpus/pdfs`
+(brown1973, brown1978, zachariasen1978): Brown & Shannon 1973 fit
+individual curves s = s0 (R/R0)^-N and universal curves s = (R/R1)^-N
+(R1 = unit-valence length, N = 4.07–6.05); Brown & Shannon state their
+equation is the one Donnay & Allmann 1970 used per polyhedron for
+R < R̄; Brown 1978 eq. (3) s = (R/R0)^-N with R0 the unit-valence
+length, tables by Brown & Wu; Zachariasen 1978 eq. (6)
+D(s) = D(1) s^(-1/n) agrees with D(s) = D(1) − B ln s to <1 % for
+0.5 < s < 2 when A = 1/n (B = A·D(1)), 5–7 % off at s = 0.1. So the
+N = R0/B correspondence is in print (Zachariasen 1978). Letter Block 2
+rewritten accordingly, the "not found in print" TODO removed.
+
+## 2026-10-05 — Sentence after Eq. (3) reworded (Second Referee, Block 3a)
+
+`prm_main.tex` (Screened-flux derivation): "Exponentiating the linear
+term and renormalizing therefore reproduces Eq. (1) at R_ij = R′ with
+only quadratic log-weight error away from R′." → "Exponentiating the
+linear term and renormalizing reproduces the exponential form of
+Eq. (1). The log-weight error vanishes at R_ij = R′ and is quadratic
+away from it." Removes the ambiguity the referee read as a typo
+(R′ = R0). Rebuilt `prm_main.pdf`; regenerated
+`prm_main_diff_round2.pdf` (this is the first marked change against
+`round1/`). Letter Block 3(a) TODOs cleared.
+
+## 2026-10-05 — Clause after Eq. (4) and sentence introducing Eq. (5) (Second Referee, Block 3b)
+
+`prm_main.tex`:
+- After Eq. (4): "This B is the first-order exponent denominator
+  produced by the Taylor expansion of the Yukawa weight" now continues
+  ", the inverse of the log-weight slope −d ln w/dR = R/[λ(λ+R)]
+  evaluated at the expansion point R′." Answers why R′ (not R0)
+  appears in Eq. (4).
+- Parameter-free slope opening: "the valence-sum rule gives
+  R0 = R̄ + B ln(z/n). Differentiating:" → "the valence-sum rule applied
+  to Eq. (1) gives R0 = R̄ + B ln(z/n). This relation involves only the
+  fitted parameters and uses nothing from Eq. (4). Differentiating at
+  fixed R̄:". Answers the claim that Eq. (5) assumes R′ = R0.
+Rebuilt `prm_main.pdf` (page count unchanged), regenerated
+`prm_main_diff_round2.pdf`, letter Block 3(b) TODO cleared.
+
+## 2026-10-05 — Word "atlas" removed from prose (user request)
+
+`prm_supplemental.tex` (two places: "these atlas pages display" → "these
+pages display"; "shown in the atlas above" → "shown in the figures
+above"), `si_description.md` ("Atlas of n-resolved fit lines" → "Pages of
+n-resolved fit lines"), and seven prose occurrences in
+`response_to_referees_round2.tex` ("Supplemental figures of B–R0 lines",
+"B–R0 line figures", etc.). `prm_main.tex` had none. The script and
+function names `make_block_fit_line_atlases.py` and
+`export_species_fit_line_atlas` are unchanged and still cited by name in
+the letter's Block 5 TODO. Rebuilt SI, letter, and
+`prm_supplemental_diff_round2.pdf` (first marked SI changes vs round1/).
+
+## 2026-10-05 — Round 2 letter, Block 5: Co–O figure and corrected numbers
+
+- New `analysis/scripts/make_response_co_o_figure.py` →
+  `theory/prm_revision/response_figures/co_o_fit_lines_with_points.{png,pdf}`:
+  the four Co–O panels of SI Fig. S4 with per-structure (R0,B) inliers and
+  RANSAC outliers under the lines, full range (top) and 0<R0<4, −1<B<2 Å
+  window (bottom). Lines verified identical to the SI page (same seeded
+  RANSAC, beta/beta0 equal in all 13 species/cn fits). Report:
+  `reports/2026-10-05-co-o-response-figure.md`.
+- Letter Block 5 paragraph rewritten with verified numbers: 92.4 % of the
+  63,783 single-valence shells inside the window, 73.6 % inside
+  0<R0<4, 0<B<1 Å (the draft said ">84 %", source unknown); Co1+–Co4+
+  in-window 80/89/67/93 %; outside-window median bond-length range
+  0.034 Å vs 0.107 Å inside; Adams 2001 elimination ≈15 % (study-wide,
+  p. 283). Citations Li2025, Adams2001, Brown1985, Gagn2015 added;
+  "−1000 Å screening length" corrected to "B of 10^3 Å softness"; two
+  TODOs cleared; `graphicx` added to the letter preamble.
+
+## 2026-10-05 — Co–O response figure: all points as transparent filled circles
+
+`analysis/scripts/make_response_co_o_figure.py`: RANSAC outliers were
+× markers; now every per-structure (R0,B) point is a filled circle at
+35 % opacity (s=7, no edge), inliers in the coordination color and
+outliers gray. Legend and the letter's Fig. 1 caption updated. Figure
+regenerated (data and lines unchanged).
+
+## 2026-10-05 — Co–O response figure: bottom-row annotations moved above panels
+
+`make_response_co_o_figure.py`: the "k of N inlier structures outside
+window (m RANSAC outliers)" text is now a left-aligned panel title above
+each bottom-row panel instead of an in-axes box, so it no longer covers
+the data in the Co²⁺ and Co³⁺ panels; h_pad widened. Caption wording
+updated ("stated above each panel"). Letter rebuilt.
+
+## 2026-10-05 — Letter Block 5 "Changes" paragraph filled; statistics script added
+
+- New `analysis/scripts/response_window_fractions.py` reproduces the
+  corpus-wide numbers quoted in the letter (63,783 shells; 92.4 % inside
+  0<R0<4, −1<B<2 Å; 73.6 % inside 0<R0<4, 0<B<1 Å; median bond-length
+  range 0.107 Å inside vs 0.034 Å outside; Co1+–Co4+ 80/89/67/93 %).
+  Output saved to `reports/2026-10-05-response-window-fractions.txt`.
+- Letter Block 5 "Changes" now states what was actually done (Response
+  Figure 1, the two scripts) and that the SI figures/text are otherwise
+  unchanged, with a TODO on whether to regenerate SI Figs. S2–S16 with
+  points. Figure caption label is "Response Figure" (\figurename
+  redefined in the letter preamble).
+
+## 2026-10-05 — Parameter-free slope: degeneracy-direction statement (Second Referee, Block 6)
+
+`prm_main.tex`, after "with no fitting parameters." following Eq. (5):
+added "Equation (5) does not prescribe a single (R0,B) for a species. It
+fixes the direction along which the joint fit of one structure is
+degenerate, so the per-structure pairs of a species at fixed n trace a
+line of predicted slope and the second-order terms set where each
+structure falls on it." Answers the referee's reading that the slope is
+derived as a prescription for fitting one pair. Rebuilt `prm_main.pdf`,
+regenerated `prm_main_diff_round2.pdf`, letter Block 6 TODO cleared.
+
+## 2026-10-05 — Letter Block 8: "R0 not inside the shell" made precise
+
+User challenge: "inside the shell" was undefined. Now stated as the
+interval [Rmin, Rmax] of the shell's bond lengths, with corpus census
+added to `analysis/scripts/response_window_fractions.py`: for z<n, R0
+is below Rmin in 70 % of 42,071 shells and within the interval in 14 %
+(median R̄ − R0 = 0.27 Å vs median range 0.18 Å); for z>n above Rmax in
+64 %; at z=n within the interval in 95 %. The earlier "typical spread of
+a few hundredths of an ångström" was wrong as a corpus-typical figure
+(that is the near-degenerate subset) and is removed.
+
+## 2026-10-05 — Partition thermodynamics: expansion-point argument added (Second Referee, Block 8)
+
+`prm_main.tex`, end of the Partition thermodynamics section after
+"makes the operational content of R′ in Eq. (4) explicit.": five new
+sentences giving the physical argument for R′ = m_i (R′ must lie
+within the shell's bond-length interval; R0 is offset by B(ln q_i − H_i),
+i.e. B ln(z/n) in the uniform limit, so it lies below the shell for z<n
+and above for z>n; m_i is where the valence-weighted first-order term
+Σ p_ij (R_ij − R′) vanishes). Clean manuscript grows from 6 to 7 pages,
+but page 7 holds only the final reference entry (20 words). Rebuilt
+`prm_main.pdf`; regenerated `prm_main_diff_round2.pdf` (statement on
+p. 5 of both). Letter Block 8 now cites the location, its two TODOs are
+cleared, and the Changes paragraph quotes the inserted text.
+
+## 2026-10-05 — Expansion-point argument corrected after rigorous check (Block 8)
+
+The sentence added earlier today ("m_i is the point at which the
+valence-weighted first-order term vanishes, so the linearization error
+is set by the distortion alone") was a tautology with a non-sequitur.
+Correct statement, now in `prm_main.tex` (end of Partition
+thermodynamics): the linear term is retained exactly, so the shell
+normalization is second-order accurate for any R′; the leading error is
+−Σ p_ij (R_ij − R′)²/[2(λ+R′)²] (δ_ij = −(R−R′)²/[2(λ+R′)²] exactly at
+leading order, since d²ln w/dR² = −1/(λ+R)²); the weighted second moment
+= weighted variance + (m_i − R′)², minimized at R′ = m_i. Numerical
+check with exact Yukawa weights on three model shells:
+`analysis/scripts/check_expansion_point.py`, output in
+`reports/2026-10-05-expansion-point-check.txt` (error quadratic for all
+R′, minimum at m_i, closed form within 5 %, fixed point R′ = m_i(B(R′))
+within 3e-4 Å of the exact Yukawa mean; per-bond errors NOT minimized
+at m_i for an asymmetric shell). Letter Block 8 paragraph and its
+Changes quote rewritten accordingly. Rebuilt main, diff, letter.
+
+## 2026-10-05 — Co–O response figure: faint fit lines, points on top
+
+`make_response_co_o_figure.py`: fit lines now lw 0.6, alpha 0.3, drawn
+beneath the points (zorder 0.5); point opacity raised from 0.35 to 0.55;
+legend line handles dimmed to match. Data and lines unchanged. Figure
+regenerated, letter rebuilt.
+
+## 2026-10-05 — Per-structure screening-length histogram (response material)
+
+New `analysis/scripts/plot_lambda_distribution.py` →
+`theory/prm_revision/response_figures/lambda_per_structure_hist.png`:
+λ = (−R′ + √(R′² + 4BR′))/2 with R′ = shell mean bond length for all
+63,783 single-valence fitted shells (53,321 positive, 6,983 negative
+real roots, 3,479 with B < −R′/4 and no real root). Positive branch
+median 0.297 Å, IQR 0.183–0.471 Å, p95 1.165 Å. Reference line = λ for
+B = 0.37 Å at the median R′. Not yet used in the letter or SI. Output in
+`reports/2026-10-05-lambda-per-structure.txt`.
+
+## 2026-10-05 — Letter: λ histogram inserted as Response Figure 1 (Block 1 preamble)
+
+`response_to_referees_round2.tex`: after the "new physical content is
+the screening length" sentence, a summary paragraph (screening branch
+84 % of shells, median 0.30 Å, IQR 0.18–0.47 Å, 95 % < 1.2 Å, 1 % > 3 Å;
+B = 0.37 Å ↔ λ = 0.32 Å at median R′ = 2.02 Å; anti-screening 16 %, of
+which 11 % real root (median −0.12 Å) and 5 % no real root; species λ*
+median 0.31 Å) and the figure `lambda_per_structure_hist.png` as
+Response Figure 1. The Co–O figure is now Response Figure 2 (all
+references via \ref). FIGURE_SOURCES.md row added.
+
+## 2026-10-05 — Round 2 letter: final editorial pass
+
+- Typos fixed (screeend, projetor, transferrable ×2, Jahn–Teller, lone
+  pairs, ``not strange''); Block 2 closing sentence tightened.
+- Block 1: removed unsupported claims (that conventional fits reject
+  α-quartz; "millions of researchers"; "higher level of theory");
+  replaced with the nearly degenerate SiO₂ polymorphs already discussed
+  in the manuscript and a pointer to the Block 7 stability statement.
+- Block 7: hull-filter sentence corrected. The draft said "< 25 meV" and
+  "2× the PAW error of 10 meV"; the pipeline window
+  (`analysis/critmin/analysis/bond_valence.py`) is 0–0.05 eV/atom and the
+  stored maximum is 0.050 eV/atom (31,446 of 75,106 fitted records carry a
+  hull value; median 13 meV/atom). TODO left in place; SI Data provenance
+  still does not state the window.
+- Block 8: the on-disk letter had reverted (editor-buffer overwrite) to
+  the tautological first-order-term argument and the superseded
+  manuscript quote; re-synchronized with the manuscript's second-moment
+  sentence and the numerical check.
+- Overview paragraph written (four manuscript changes, two response
+  figures, scripts, SI unchanged apart from wording).
+- Synchronization check: every DIFadd/DIFdel block in
+  `prm_main_diff_round2.tex` (Eq. 3 sentence, Eq. 4 clause, Eq. 5 intro,
+  Eq. 5 degeneracy statement, Partition-thermodynamics closing) is
+  described in a letter "Changes" paragraph with matching text; the SI
+  diff holds only the atlas→figures wording. Page pointers (clean p. 5,
+  diff p. 5 for Block 8) verified. Letter 12 pages, 3 TODOs remain
+  (Block 7 hull note, Krivovichev–Brown SI reference, SI stability
+  statement).
+
+## 2026-10-05 — SI Data provenance: stability filter stated (Second Referee, Block 7)
+
+`prm_supplemental.tex`, Data provenance, first sentence of the second
+paragraph now reads "Source structures are DFT-relaxed entries from the
+Materials Project, retrieved with an energy-above-hull window of 0 to
+50 meV/atom, so every structure lies within 50 meV/atom of the convex
+hull." (Pipeline window in `analysis/critmin/analysis/bond_valence.py`,
+confirmed by the stored maximum of 0.050 eV/atom.) Rebuilt SI,
+regenerated `prm_supplemental_diff_round2.pdf`; letter Block 7 Changes
+updated and its TODO cleared.
+
+## 2026-10-05 — Round 2 letter: seven editorial fixes after read-through
+
+1. Block 1 screening-length claim corrected: the inversion of Eq. (4)
+   does not bound λ along the degenerate direction; λ ≈ √(BR′), so
+   B = 10³ Å → λ ≈ 45 Å (tail compressed two orders of magnitude, not
+   removed).
+2. Block 1 paragraph order restored: circularity/"our position"
+   paragraph now precedes the screening-length paragraph and Response
+   Figure 1 (float still at bottom of p. 2).
+3. Block 9: added that bond valences and the mismatch are computed with
+   (R0*, B*) exactly as with any published pair.
+4. Tone softened in Block 1 ("We clarify…", "no prior theory bounds…",
+   "carries a risk of circularity", "poor fits mark the limits") and in
+   Block 9 (opening paragraph rewritten without the "not strange"
+   rhetoric).
+5. Short "Closing remarks" section added before the references.
+6. Non-quoted references to the manuscript's Fig. 1 now read
+   "manuscript Fig. 1" (opening, Block 4 heading and text, Block 6).
+7. "Our response to this concern is that we attempt to clarify" →
+   "We clarify".
+Letter 12 pages, 0 TODOs, no undefined references.
+
+## 2026-10-06 — Power-law form discussed in the manuscript (Second Referee, Block 2)
+
+`prm_main.tex`, paragraph after Eq. (4): three sentences added placing
+the Brown–Shannon power law S = (R/R1)^−N (Brown1973; Donnay1970;
+Brown1976) as the same screened weight linearized in ln R with N = R′/B,
+noting Zachariasen's <1 % agreement condition (Zachariasen1978), and
+stating why the exponential is retained. Four references added to the
+manuscript bibliography (entries already in `references.bib`). Clean
+manuscript still 7 pages (page 7 now 211 words, up from 23: the Letter
+length should be rechecked before submission). Diff regenerated. Letter
+Block 2 gained a "Changes" paragraph quoting the insertion; summary
+paragraph now says five passages.
+
+## 2026-10-06 — SI line figures regenerated with per-structure points (Second Referee, Block 5)
+
+Code: `analysis/critmin/analysis/bond_valence_theory.py` now attaches a
+`points` entry (R0, B, inlier flags) to each serialized CN fit;
+`export_species_fit_line_atlas` in `analysis/critmin/viz/notebook_families.py`
+gained `show_points=True` and `window=((0,4),(-1,2))`, drawing inliers
+as filled circles in the line color (s=7, alpha 0.55), RANSAC outliers
+as open circles (edge 0.2, lw 0.4), lines beneath points, and a two-line
+annotation above each panel ("k of N inlier structures outside window
+(m RANSAC outliers)"); legend gained inlier/outlier entries. Outliers
+were first drawn filled gray (worker version) and changed to hollow
+because the d-block palette is gray. Regenerated all 16 PNGs in
+`theory/figures/` with unchanged names via
+`make_block_fit_line_atlases.py`. Verified beta, beta0, R0_min, R0_max,
+n_inliers identical to the previous version for 4,302 values over 103
+species (worker report `reports/2026-10-06-si-line-figures-with-points.md`,
+with the per-panel out-of-window table). Visually checked
+dblock part01 and group1 pages after the hollow-outlier fix.
+`prm_supplemental.tex`: section introduction states the plotting
+convention and the degenerate origin of out-of-window points; Group 1
+caption updated. Rebuilt SI (25 pages) and both diffs. Letter Block 5
+response and Changes, and the summary paragraph, updated accordingly.
+
+## 2026-10-06 — Final pass over all five documents
+
+Fresh rebuild of prm_main (7 pp), prm_supplemental (21 pp), both round 2
+diffs (7 / 21 pp) and the letter (12 pp): zero LaTeX errors, zero
+undefined references, zero overfull boxes, zero semicolons in the
+manuscript and SI, zero TODO markers. Every DIFadd/DIFdel block in both
+diffs is described in the letter (main: Eq. 3 sentence, Eq. 4 clause +
+power law, Eq. 5 intro, Eq. 5 degeneracy statement, Partition
+thermodynamics closing; SI: stability window, points convention
+paragraph, Group 1 caption, atlas→figures wording). Block 8 page
+pointer (clean p. 5, diff p. 5) verified. Letter summary enumeration
+fixed (First…Fifth); Block 5 wording "in the same window". SI figure
+numbering S1–S21 unchanged. `si_description.md` and `README.md` updated
+for the regenerated figures and the stability filter. Manuscript body
+word count (pdftotext, before references): 4,453 (round 1) → 4,776
+(+323); the Letter limit should be rechecked with APS's counting before
+submission. Nothing committed.

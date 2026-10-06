@@ -1,4 +1,9 @@
-% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/.
+%DIF 1a1
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL round1/prm_main.tex   Sat Aug  8 11:13:07 2026
+%DIF ADD prm_main.tex          Tue Oct  6 06:54:13 2026
+% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/. %DIF > 
+%DIF -------
 \documentclass[aps,prmaterials,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
 
 \usepackage{amsmath}
@@ -18,6 +23,87 @@
 % to separate the Letter's sections; the glue is discardable at column
 % tops. Tune the amount here.
 \newcommand{\runinsec}[1]{\medskip\emph{#1}}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
@@ -155,25 +241,33 @@ chosen within the coordination shell, giving
 \end{equation}
 where $C_i$ is independent of bond index $j$ and
 $\delta_{ij}=O[(R_{ij}-R')^2/(\lambda+R')^2]$.
-Exponentiating the linear term and renormalizing reproduces the
-exponential form of Eq.~\eqref{eq:bv}.  The log-weight error
-vanishes at $R_{ij}=R'$ and is quadratic away from it.  Define the
+Exponentiating the linear term and renormalizing \DIFdelbegin \DIFdel{therefore reproduces }\DIFdelend \DIFaddbegin \DIFadd{reproduces the
+exponential form of }\DIFaddend Eq.~\eqref{eq:bv}\DIFaddbegin \DIFadd{.  The log-weight error
+vanishes }\DIFaddend at $R_{ij}=R'$ \DIFdelbegin \DIFdel{with only quadratic log-weight error away from $R'$}\DIFdelend \DIFaddbegin \DIFadd{and is quadratic away from it}\DIFaddend .  Define the
 leading-order Yukawa exponent denominator
 \begin{equation}\label{eq:B_composite}
 B = \frac{\lambda(\lambda+R')}{R'}.
 \end{equation}
 This $B$ is the first-order exponent denominator produced by the Taylor
-expansion of the Yukawa weight, the inverse of the log-weight slope
+expansion of the Yukawa weight\DIFdelbegin \DIFdel{. The }\DIFdelend \DIFaddbegin \DIFadd{, the inverse of the log-weight slope
 $-d\ln w/dR=R/[\lambda(\lambda+R)]$ evaluated at the expansion point
 $R'$.  The power-law form $S=(R/R_1)^{-N}$ of Brown and Shannon
-\cite{Brown1973}, which traces to Donnay and Allmann
-\cite{Donnay1970} and was tabulated for cation--oxygen pairs by Brown
-and Wu \cite{Brown1976}, is the same screened weight linearized in
+\mbox{%DIFAUXCMD
+\cite{Brown1973}}\hskip0pt%DIFAUXCMD
+, which traces to Donnay and Allmann
+\mbox{%DIFAUXCMD
+\cite{Donnay1970} }\hskip0pt%DIFAUXCMD
+and was tabulated for cation--oxygen pairs by Brown
+and Wu \mbox{%DIFAUXCMD
+\cite{Brown1976}}\hskip0pt%DIFAUXCMD
+, is the same screened weight linearized in
 $\ln R$ instead of $R$, with exponent $N=R'/B$.  This is the condition
 under which Zachariasen found the two forms to agree to within 1\%
-for $0.5<S<2$ \cite{Zachariasen1978}.  We retain the exponential
+for $0.5<S<2$ \mbox{%DIFAUXCMD
+\cite{Zachariasen1978}}\hskip0pt%DIFAUXCMD
+.  We retain the exponential
 because it is linear in the bond length, which is what gives the
-$B$--$R_0$ correlation below a parameter-free slope.  The screening
+$B$--$R_0$ correlation below a parameter-free slope.  The }\DIFaddend screening
 length $\lambda$ is the
 primary physical variable, and the sign of $\lambda$ distinguishes
 screening from anti-screening.  For $\lambda>0$ the Yukawa weight
@@ -191,22 +285,22 @@ bonding or ambiguous coordination produces anisotropic flux capture
 outside the isotropic Yukawa assumption.
 
 \runinsec{Parameter-free slope.} In the uniform-bond limit, where
-$R_{ij}=\bar R$ for all $j$, the valence-sum rule applied to
-Eq.~\eqref{eq:bv} gives $R_0=\bar R+B\ln(z/n)$.  This relation
+$R_{ij}=\bar R$ for all $j$, the valence-sum rule \DIFaddbegin \DIFadd{applied to
+Eq.~\eqref{eq:bv} }\DIFaddend gives $R_0=\bar R+B\ln(z/n)$.  \DIFdelbegin \DIFdel{Differentiating}\DIFdelend \DIFaddbegin \DIFadd{This relation
 involves only the fitted parameters and uses nothing from
-Eq.~\eqref{eq:B_composite}.  Differentiating at fixed $\bar R$:
+Eq.~\eqref{eq:B_composite}.  Differentiating at fixed $\bar R$}\DIFaddend :
 \begin{equation}\label{eq:pole}
 \beta := \frac{dB}{dR_0} = \frac{1}{\ln(z/n)}.
 \end{equation}
 The slope of the $B$--$R_0$ correlation at fixed
 coordination number $n$ is determined entirely by the charge-to-coordination
 ratio $z/n$, with a pole at $z=n$, with no fitting parameters.
-Equation~\eqref{eq:pole} does not prescribe a single $(R_0,B)$ for
+\DIFaddbegin \DIFadd{Equation~\eqref{eq:pole} does not prescribe a single $(R_0,B)$ for
 a species.  It fixes the direction along which the joint fit of one
 structure is degenerate, so the per-structure pairs of a species at
 fixed $n$ trace a line of predicted slope and the second-order terms
 set where each structure falls on it.
-Figure~\ref{fig:pole} shows that Eq.~\eqref{eq:pole} reproduces the
+}\DIFaddend Figure~\ref{fig:pole} shows that Eq.~\eqref{eq:pole} reproduces the
 fitted slopes for 94 cation--oxygen species at $n=4$ and $n=6$ (68 at
 $n=4$, 82 at $n=6$, 150 slopes in total).  The weighted $R^2$ is
 $0.986$, with mean absolute error $0.15$ under the weighting scheme
@@ -462,7 +556,7 @@ The Gibbs mean also fixes the reference length left open in
 the screened-flux derivation. We take $R'=m_i$, which centers the
 log-weight expansion of Eq.~\eqref{eq:expansion} on the weighted
 shell centroid that the partition function singles out and makes the
-operational content of $R'$ in Eq.~\eqref{eq:B_composite} explicit.
+operational content of $R'$ in Eq.~\eqref{eq:B_composite} explicit\DIFaddbegin \DIFadd{.
 The choice is physical rather than formal.  The expansion controls
 its error through the bond-length spread of the shell, so $R'$ must
 lie within the interval spanned by the bonds, and $R_0$ generally
@@ -473,7 +567,7 @@ Among lengths within the shell, $m_i$ minimizes the valence-weighted
 second moment $\sum_j p_{ij}(R_{ij}-R')^2$, which equals the weighted
 variance of the shell plus $(m_i-R')^2$, so the leading linearization
 error, $-\sum_j p_{ij}(R_{ij}-R')^2/[2(\lambda+R')^2]$, is set by the
-distortion of the shell alone.
+distortion of the shell alone}\DIFaddend .
 
 \runinsec{Empirical validation.} Bond-valence parameters $(R_0,B)$ were
 determined for 103 cation--oxygen species using first-principles

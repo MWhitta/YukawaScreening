@@ -1,4 +1,9 @@
-% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/.
+%DIF 1a1
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL round1/prm_supplemental.tex   Fri Aug  7 10:22:26 2026
+%DIF ADD prm_supplemental.tex          Tue Oct  6 07:02:31 2026
+% Second revision (round 2), responding to reviewer_report_round2.txt. The first revision as resubmitted is frozen in round1/. %DIF > 
+%DIF -------
 \documentclass[aps,prmaterials,twocolumn,10pt,superscriptaddress,floatfix]{revtex4-2}
 
 \usepackage{amsmath}
@@ -11,6 +16,84 @@
 % Supplemental Material numbering: figures S1, S2, ... and tables S1, S2, ...
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
@@ -38,9 +121,9 @@ The figures and tables in this Supplemental Material cover the same
 103 cation--oxygen species analyzed in the main text, spanning $s$-,
 $p$-, $d$-, and $f$-block cations.
 
-Source structures are DFT-relaxed entries from the Materials Project,
+Source structures are DFT-relaxed entries from the Materials Project\DIFaddbegin \DIFadd{,
 retrieved with an energy-above-hull window of 0 to 50~meV/atom, so
-every structure lies within 50~meV/atom of the convex hull.
+every structure lies within 50~meV/atom of the convex hull}\DIFaddend .
 For each structure, bond strengths were obtained by solving the
 valence-sum and loop constraints on the cation--oxygen bond graph,
 and $(R_0,B)$ were determined by linear least squares.  For
@@ -83,7 +166,7 @@ lanthanides plus actinides
 (Figs.~\ref{fig:fblock_fits_1}--\ref{fig:fblock_fits_2}).  Each
 caption quotes the species panels of its page in reading order, either
 in full or as a first--last range.  Within each block, panels are
-ordered alphabetically by element symbol and oxidation state.  Each
+ordered alphabetically by element symbol and oxidation state.  \DIFaddbegin \DIFadd{Each
 panel shows the per-structure $(R_0,B)$ pairs beneath the fitted
 lines, as filled circles for the RANSAC inliers of each line (in the
 line's color) and as open circles for the RANSAC outliers.  Axes are
@@ -94,11 +177,11 @@ outliers.  Inliers outside the window are nearly degenerate shells
 whose joint fit is weakly constrained along the line, so their $R_0$
 and $B$ can reach $10^{2}$--$10^{3}$~\AA{} while still lying on it.
 The fitted lines are drawn over the full $R_0$ range of their
-inliers and are clipped by the window.  Within each
+inliers and are clipped by the window.  }\DIFaddend Within each
 coordination shell, the fitted parameters lie on a linear family
 $B=\beta^{(n)}R_0+\beta_0^{(n)}$, and the lines converge toward
 cation-specific characteristic pairs $(R_0^*,B^*)$ as described in the
-main text.  Together, these pages display every coordination-resolved
+main text.  Together, these \DIFdelbegin \DIFdel{atlas }\DIFdelend pages display every coordination-resolved
 fit that contributes to the pole form $\beta=1/\ln(z/n)$ shown in
 Fig.~1 of the main text.
 
@@ -171,12 +254,12 @@ band-gap map in \texttt{data/processed/theory/mp\_band\_gaps.json}.}
 \centering
 \includegraphics[width=0.85\textwidth]{group1_oxygen_cn_fit_lines.png}
 \caption[Group~1 coordination-resolved $B$--$R_0$ lines.]{$n$-resolved $B$ vs.\ $R_0$ fit lines for Group~1 X--O pairs
-(Cs, K, Li, Na, Rb, H).  Filled circles are the per-structure
+(Cs, K, Li, Na, Rb, H).  \DIFdelbeginFL \DIFdelFL{Line }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Filled circles are the per-structure
 $(R_0,B)$ inliers of each line, open circles the RANSAC outliers,
-line styles distinguish coordination numbers $n$ (legend), and the
-large open circle marks the least-spread intersection point.  Axes
+line }\DIFaddendFL styles distinguish coordination numbers $n$ (legend), and the
+\DIFaddbeginFL \DIFaddFL{large }\DIFaddendFL open circle marks the least-spread intersection point.  \DIFaddbeginFL \DIFaddFL{Axes
 are fixed to $0<R_0<4$~\AA{} and $-1<B<2$~\AA, with the number of
-inlier structures outside the window given above each panel.  The convergence of the lines defines the characteristic pair
+inlier structures outside the window given above each panel.  }\DIFaddendFL The convergence of the lines defines the characteristic pair
 $(R_0^*,B^*)$ for each cation.}
 \label{fig:group1_fits}
 \end{figure}
@@ -201,8 +284,7 @@ $\hat\beta_i=1/\ln(z_i/n)$ be the parameter-free closed-form prediction
 and $\bar\beta_w=\sum_i w_i\beta_i/\sum_i w_i$, the reported metrics are
 \[
 R^2_w
-= 1 - \frac{\sum_i w_i\,(\beta_i-\hat\beta_i)^2}
-            {\sum_i w_i\,(\beta_i-\bar\beta_w)^2},
+= 1 - \frac{\sum_i w_i\,(\beta_i-\hat\beta_i)^2}{\sum_i w_i\,(\beta_i-\bar\beta_w)^2},
 \qquad
 \mathrm{MAE}_w
 = \frac{\sum_i w_i\,|\beta_i-\hat\beta_i|}{\sum_i w_i}.
@@ -415,8 +497,7 @@ The characteristic abscissa is then
 \[
 R_0^*=
 -\frac{\sum_n w_n\bigl(\beta^{(n)}-\bar\beta\bigr)
-\bigl(\beta_0^{(n)}-\bar\beta_0\bigr)}
-{\sum_n w_n\bigl(\beta^{(n)}-\bar\beta\bigr)^2},
+\bigl(\beta_0^{(n)}-\bar\beta_0\bigr)}{\sum_n w_n\bigl(\beta^{(n)}-\bar\beta\bigr)^2},
 \]
 which is the point that minimizes the weighted variance of the
 line-by-line values $B_n(R_0)=\beta^{(n)}R_0+\beta_0^{(n)}$.  The
@@ -427,8 +508,7 @@ B^*=
 \qquad
 \sigma_B=
 \left[
-\frac{\sum_n w_n\bigl(B_n(R_0^*)-B^*\bigr)^2}
-{\sum_n w_n}
+\frac{\sum_n w_n\bigl(B_n(R_0^*)-B^*\bigr)^2}{\sum_n w_n}
 \right]^{1/2}.
 \]
 The tabulated $n_{\mathrm{CN}}$ counts how many distinct coordination
@@ -541,7 +621,7 @@ bonding environments dominate the training corpus.  The
 per-material fits used here resolve the valley instead of averaging
 over it.  At fixed species and coordination number the
 per-structure $(R_0,B)$ pairs fall on the lines of slope
-$1/\ln(z/n)$ shown in the figures above, so the covariance that
+$1/\ln(z/n)$ shown in the \DIFdelbegin \DIFdel{atlas }\DIFdelend \DIFaddbegin \DIFadd{figures }\DIFaddend above, so the covariance that
 pooled fitting suppresses carries the physical content, and $B^*$
 is defined geometrically as the least-spread intersection of those
 lines rather than as a corpus average.  The two estimands therefore

@@ -1,0 +1,62 @@
+----------------------------------------------------------------------
+Second Report of the First Referee -- LR20628MR/Whittaker
+----------------------------------------------------------------------
+
+The authors have substantially improved their manuscript and I can now recommend publication.
+
+----------------------------------------------------------------------
+Report of the Second Referee -- LR20628MR/Whittaker
+----------------------------------------------------------------------
+
+The manuscript proposes a theoretical basis for calculating bond strength in bond-valence theory, deriving the bond strength from the electrostatic flux associated with a Yukawa potential. Bond-valence theory is an empirical framework widely used in materials science, particularly for the validation of crystal structures and the study of ion diffusion in solid-state ionic conductors. I believe that this could be an interesting topic for the readers of Physical Review Materials.
+
+However, I did not find the manuscript particularly convincing. The exposition is not always clear, some aspects of the theoretical framework are not sufficiently justified, and I have serious concerns about the validity of some of the calculations presented, as well as about the interpretation of some of the figures.
+
+Bond-strength derivation
+
+-------------------------
+
+The derivation of the bond strength from a Yukawa potential is interesting. It is an extension of a previous idea that linked electrostatic flux with bond strength. This work shows that when the electrostatic flux is derived from a Yukawa potential, the empirical exponential form of the bond strength is recovered. However, there are other empirical forms that also work well, such as the original power-law relationship introduced in the original formulation of bond-valence theory by Brown and Shannon (Acta Cryst. A29, 266–282, 1973). The manuscript neither mentions nor discusses these alternative formulations, which give different dependencies of the bond strength on the bond distance.
+
+A minor remark. After linearizing the weights (Eq. 3), the authors state:
+“Exponentiating the linear term and renormalizing therefore reproduces Eq. 1 at R_{ij}=R'.” I suspect this is a typographical error, and that the authors actually mean R'=R0 because this is the choice that reproduces Eq. 1. Why is R' used in Eq. 4 rather than R0? In Eq. 5, the authors calculate dB/dR0 from Eq. 4, which appears to implicitly assume that the R' in Eq. 4 is in fact R0.
+
+Construction and interpretation of Figure 1
+
+----------------------------------------------
+
+I do not clearly see how Figure 1 has been calculated. My understanding is the following. For a given A–O pair, the authors have analyzed several crystal structures containing A–O interactions, obtaining one pair (R0,B) for each structure. When B is plotted against R0, a strong linear correlation is found for structures with the same coordination number. The slope of this linear correlation is 1/ln(z/n). Figure 1 appears to have been constructed from the data shown in Figure S2. If I have understood this correctly, I have several concerns.
+
+a) Unphysical range of the R0 and B values
+
+The ranges of R0 and B shown in Figure 1 are extraordinarily large. One would normally expect R0 to be of the same order of magnitude as the characteristic bond distance. Taking Co–O as an example, for Co+1–O, R0 appears to vary between approximately 0 and 200 Å; for Co2+–O, between approximately −10 and 10 Å; and for Co3+–O, between approximately −1000 and 1000 Å. These values do not appear physically meaningful. The parameter B presents a similar problem. In conventional bond-valence parameterizations, B is typically of the order of 10^-1 Å. In the case of Co3+–O, for example, the values shown in the figure appear to range from approximately −1000 to 1000 Å. Moreover, several of the curves extend into the region of negative B (anti-screening according to the formulation presented in the manuscript, so bonding forces are increasing with bond distance).
+
+A further issue is that the individual (R0,B) values obtained from the different crystal structures do not appear to be shown in Figure 1. Instead, only the least-squares regression lines are displayed. Why are the individual fitted (R0,B) pairs not shown? I think it is important to show them explicitly, this would allow the reader to assess the actual distribution of the fitted parameters, the quality of the linear correlations, and the extent to which the regression lines are representative of the underlying data. I wonder whether these extraordinarily large ranges could result from an error in the way the curves are represented or plotted. If this is indeed the case, it would be rather surprising that such an issue was not identified during the preparation or checking of the figures, even though they are included in the Supplementary Material. The authors should therefore carefully verify the numerical values and the plotting procedure used to generate these curves.
+
+b) Interpretation of the slope dB / dR0
+
+From the uniform bond limit, R = R0 - B · Ln(z/n), the authors derive the slope dB / dR0 = 1 / Ln(z/n). They then use this equation to fit the data in Figure 1. If R0 and B in the uniform bond limit equation are treated as variables, the above equation simply states that there are infinite pairs (R0,B) that satisfy the valence-sum rule for a regular coordination polyhedron with a given bond distance and coordination number.
+
+In my understanding, the uniform-bond limit is instead used to determine the constant parameters R0 and B when a set of crystal structures with regular coordination polyhedra is available, i.e., the variables are R and (z/n) and the constant parameters obtained from the fit are R0 and B. The uniform bond limit assumes that a series of structures can be described by a single (R0,B) pair. This is not the case in the authors' analysis, since R0 and B are themselves treated as the variables defining the correlation.
+
+I do not question the observed linear correlation between B and R0. However, I do not believe that this linear relationship is correctly derived from the uniform-bond limit.
+
+c) B and R0 correlation
+
+A final remark concerns the correlation between R0 and B. In the authors' previous publication (Ref. 19 in the manuscript), it is shown that the ranges of variation of R0 and B are still quite large. For instance, for Fe–O, R0 varies from 0 to 4 Å, while B varies from approximately −2 to +2 Å. In these figures the data is shown as well as the fit. I find these variations very surprising. Deviations from the commonly used value of B=0.37 Å have been investigated, for example, for Pb–O bonds by Krivovichev and Brown (Z. Kristallogr. 216 (2001), 245–247), who found that the Pb-O bonds were adequately described using B=0.49 Å. This variation is much smaller than those reported by the authors.
+
+I therefore wonder whether the structures used in the fits have been carefully checked for their physical and structural validity. If the valence-sum rule is imposed on structures that are themselves physically unrealistic, I imagine that the resulting bond-valence parameters could be expected to show large deviations from the usual values. This possibility may be particularly relevant when working with databases containing structures obtained from simulations rather than from experimentally well determined crystal structures.
+
+Partition thermodynamics
+
+-------------------------
+
+The authors introduce a thermodynamics-based formulation based on the similarity between the empirical bond strength expression and the classical partition function in thermodynamics. Despite this mathematical analogy, I believe that a physical argument is missing. I agree that this approach can capture the asymmetry of an atomic environment, but I do not see why the average distance obtained from this “thermodynamic average” should be chosen as the center point of the Taylor expansion.
+
+In fact, in my understanding, if the purpose of the expansion is to recover the empirical bond-strength expression, the relevant expansion point should be the value R0 that best describes the valence-sum rule. It is at this point that the approach based on the Yukawa potential is identified with the empirical bond-valence expression.
+
+After carefully reading the manuscript, I remain unconvinced by several aspects of the work. In particular, the R0 and B values obtained from the fits, as shown in Figures 2S, span ranges that appear to be physically difficult to justify. As I stated before, this probably can be an error in the generation of the figures, but in a previous publication of the same authors the variation shown by B was still large to me. More generally, if the variations of B and R0 for a given interaction pair are indeed as large as those reported by the authors, this raises a more fundamental question concerning the usefulness of the bond-valence formalism. One of the strengths of bond-valence theory is that, for a given interaction A–X, a single pair of parameters (R0,B) can be used to describe bonds in different structural environments. This transferability is what makes it possible to calculate bond valences from the observed bond distances and then evaluate the deviation from the valence-sum rule. The resulting bond-valence mismatch can, for example, provide useful information about local structural strain or possible ion-diffusion pathways.
+
+If, instead, each individual structure or local environment requires its own (R0,B) pair, it is not clear to me how the bond-valence mismatch should be defined.
+
+I may have misunderstood some aspects of the bond-valence formalism, as I am not an expert in this field. However, based on my reading of the manuscript, I cannot recommend the publication of the manuscript in Physical Review Materials.

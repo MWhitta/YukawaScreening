@@ -1,0 +1,12 @@
+single-valence fitted shells: 63783
+plotted window 0<R0<4, -1<B<2 A: 58929/63783 = 92.4%
+conventional 0<R0<4, 0<B<1 A: 46914/63783 = 73.6%
+median bond-length range inside window 0.107 A (n=58929), outside 0.034 A (n=4854)
+z<n: n=42071  R0 below Rmin 70%  within [Rmin,Rmax] 14%  above Rmax 16%
+z=n: n=7386  R0 below Rmin 4%  within [Rmin,Rmax] 95%  above Rmax 1%
+z>n: n=14326  R0 below Rmin 10%  within [Rmin,Rmax] 26%  above Rmax 64%
+z<n, B>0: median (Rbar - R0) = 0.268 A, median bond-length range = 0.182 A
+Co1+: 8/10 inside plotted window = 80%
+Co2+: 611/686 inside plotted window = 89%
+Co3+: 218/326 inside plotted window = 67%
+Co4+: 140/150 inside plotted window = 93%

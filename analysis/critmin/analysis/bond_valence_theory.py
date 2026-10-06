@@ -377,7 +377,22 @@ def _serialize_fit_summary(fit: Mapping[str, Any]) -> dict[str, Any]:
         "B_max",
     )
     serialized = {key: _json_ready(fit.get(key)) for key in keys if key in fit}
+    if "points" in fit:
+        serialized["points"] = {
+            "R0": [float(v) for v in fit["points"]["R0"]],
+            "B": [float(v) for v in fit["points"]["B"]],
+            "inlier": [bool(v) for v in fit["points"]["inlier"]],
+        }
     return serialized
+
+
+def _points_entry(fit_input: Sequence[Mapping[str, Any]], inlier_mask: Any) -> dict[str, Any]:
+    """Per-structure (R0, B, inlier) triples used for a fit, for plotting."""
+    return {
+        "R0": [float(rec["R0"]) for rec in fit_input],
+        "B": [float(rec["B"]) for rec in fit_input],
+        "inlier": [bool(v) for v in np.asarray(inlier_mask, dtype=bool)],
+    }
 
 
 def build_unified_oxygen_cn_fits(
@@ -410,6 +425,7 @@ def build_unified_oxygen_cn_fits(
             fit_ols = fit_bv_regression(fit_input)
             if fit_ols is not None:
                 fit_ols = _augment_fit_with_ranges(fit_ols, fit_records)
+                fit_ols["points"] = _points_entry(fit_input, np.ones(len(fit_input), dtype=bool))
                 cn_fits[cation][int(cn)]["oxygen"] = _serialize_fit_summary(fit_ols)
 
             if not ransac:
@@ -425,6 +441,7 @@ def build_unified_oxygen_cn_fits(
                 fit_records,
                 inlier_mask=inlier_mask,
             )
+            fit_ransac["points"] = _points_entry(fit_input, inlier_mask)
             cn_fits[cation][int(cn)]["oxygen_ransac"] = _serialize_fit_summary(fit_ransac)
 
             for index in np.where(~inlier_mask)[0]:
