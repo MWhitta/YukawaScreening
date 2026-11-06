@@ -4,7 +4,7 @@ Code, data, and manuscript artifacts for:
 
 > **Yukawa screening derivation of the bond-valence rule**
 > M. L. Whittaker, P. Wang, C. Li, N. Katyal, P. Zarzycki
-> *Physical Review Letters* (submitted, 2026)
+> *Physical Review Materials* (in press, 2026); [arXiv:2604.28099](https://arxiv.org/abs/2604.28099)
 
 The bond-valence model has been the standard tool for crystal-structure
 validation since Brown and Altermatt (1985), but its exponential
