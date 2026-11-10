@@ -1742,3 +1742,25 @@ for the regenerated figures and the stability filter. Manuscript body
 word count (pdftotext, before references): 4,453 (round 1) → 4,776
 (+323); the Letter limit should be rechecked with APS's counting before
 submission. Nothing committed.
+
+## 2026-11-10 — Production files (accepted, PRM in press)
+
+APS production request for unmarked TeX source, one file per figure, and a
+numbered Supplemental Material reference.
+
+- `references.bib`, entry `suppmat`. Removed the `year = {2026}` field. It
+  rendered as "(2026), see Supplemental Material at ...". The entry now
+  reads "[22] See Supplemental Material at [URL will be inserted by
+  publisher] for ...", the form APS asks for. No other reference changed
+  and the numbering is unchanged. `prm_main.tex` is untouched.
+- Checked the APS checklist item on SM-only references. All 7 keys cited in
+  `prm_supplemental.tex` are also cited in `prm_main.tex`, so no
+  "which includes Refs." clause is needed. The SM itself is unchanged.
+- New `make_production_bundle.sh` (`-n` for a dry run). It writes
+  `production/` with `prm_main.tex` (figures renamed `fig1.png`,
+  `fig2.png`, no `\graphicspath`, revision comment on line 1 dropped),
+  `prm_main.bbl`, the two figure files, `supplemental_material.pdf` and
+  `prm_production.tar.gz`. It fails if any change markup remains, if an
+  SM-only citation appears, or if the bundle compiled alone in a clean
+  directory gives text that differs from `prm_main.pdf`. Run passed
+  (7 pp main, 21 pp SM).

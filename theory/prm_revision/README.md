@@ -18,6 +18,7 @@ in [`round1/`](round1/) and the PRL baseline is in
 | `make_diff_round2.sh` | Regenerates and compiles both diff documents (`-n` for a dry run) |
 | `response_figures/` | Figures made for the letter (per-structure λ histogram, Co–O lines with points); generating scripts listed in `FIGURE_SOURCES.md` |
 | `../../reports/2026-10-05-*.md`, `2026-10-06-*.md` | Verification reports behind the numbers quoted in the letter |
+| `make_production_bundle.sh`, `production/` | APS production upload (unmarked source, `fig1.png`, `fig2.png`, `.bbl`, SM PDF), built and validated by the script (`-n` for a dry run) |
 | `REVISION_CHANGELOG.md` | Running record of every change since the PRL baseline, including round 2 |
 | `FIGURE_SOURCES.md`, `si_description.md`, `si_lambda_table.tex`, `references.bib` | Figure provenance, SI description, SI table, bibliography |
 
